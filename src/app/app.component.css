@@ -6,97 +6,6 @@
 }
 
 
-.container-fluid{
-    border-radius: 18px 18px 18px 18px;
-    border: solid 2px black;
-    margin-bottom: 5px;
-    
-}
-
-#card-perfil{
-    background-image: linear-gradient(to top, #88d3ce 0%, #6e45e2 100%);
-    background-image: url("https://www.exascaleproject.org/wp-content/uploads/2019/11/PathForward-scaled.jpg");
-    background-size: cover;
-    background-position: center;
-}
-
-.modal-content{
-    background-color: #330867;
-
-}
-
-.btn-img{
-    margin-top: 200px;
-    margin-left: 240px;
-    width: 40px;
-    height: 40px;
-    position: absolute;
-}
-
-#foto-perfil{
-    width:180px;
-    max-height: 190px;
-    border-radius: 50% 50%;
-    margin-top: 80px;
-    margin-left: 50px;
-    border: solid 2px black;
-    box-shadow: 2px 2px 2px 1px rgba(13, 10, 19, 0.534);
-    caret-color: transparent;
-
-}
-
-#info{
-    margin-left: 5px;
-    margin-bottom: 20px;
-    font-weight: bold;
-    margin-top: 15px
-}
-
-.social-icons{
-    margin-top: 60px;
-    transform: translate(0px, 200px);
-}
-
-.btn-media {
-    display: block;
-    float: right;
-    margin: 5px;
-    color: #330867;
-}
-
-.fa {
-    font-size: 15px;
-    text-align: center;
-    text-decoration: none;
-    border-radius:50%
-  }
-  
-  .fa:hover {
-      opacity: 0.7;
-  }
-
-.fa-twitter {
-    background: #55ACEE;
-    color: white;
-    font-size: 30px;
-    padding: 10px;
-  }
-  
-.fa-linkedin {
-    background: #007bb5;
-    color: white;
-    font-size: 30px;
-    padding: 10px;
-  }
-  
-  .fa-instagram {
-    background: #125688;
-    color: white;
-    font-size: 30px;
-    padding: 10px;
-  }
-  
-
 #formacion{
     border: solid 2px black;
     border-radius: 20px;
@@ -106,10 +15,6 @@
 
 #editInfo{
     margin: 5px;
-}
-
-.btn-check:focus + .btn, .btn:focus{
-    box-shadow: 0 0 0 0;
 }
 
 
@@ -139,10 +44,7 @@
     height: 20px;
 }
 
-.btn{
-    color: black;
-    padding: 0px;
-}
+
 
 .btn-right{
     background-color: transparent;

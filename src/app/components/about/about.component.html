@@ -1,0 +1,44 @@
+<!--About me-->
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <div id="card-about">
+          <!-- Button trigger modal -->
+          <button type="button" id="btn-info" class="btn btn-open" data-bs-toggle="modal" data-bs-target="#Modal"
+            style="float: right;">
+            <i class="fa fa-pencil"></i>
+          </button>
+          <div>
+            <h2 style="width: 50%">Acerca de mi</h2>
+            <p>
+              {{aboutMe}}
+            </p>
+          </div>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="ModalLabel">Acerca de mi</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <textarea 
+                  placeholder="Informacion Personal"
+                  name="about" 
+                  rows="4" 
+                  cols="55"
+                  #about                  
+                ></textarea> 
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" (click)="cambiarParrafo(about.value)">Guardar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

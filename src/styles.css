@@ -3,3 +3,23 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+.container-fluid{
+    border-radius: 18px 18px 18px 18px;
+    border: solid 2px black;
+    margin-bottom: 5px;
+    
+}
+
+.btn{
+    color: black;
+    padding: 0px;
+}
+
+.modal-content{
+    background-color: #330867;
+}
+
+.btn-check:focus + .btn, .btn:focus{
+    box-shadow: 0 0 0 0;
+  }

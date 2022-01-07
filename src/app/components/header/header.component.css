@@ -1,0 +1,48 @@
+#card-perfil{
+    background-image: linear-gradient(to top, #88d3ce 0%, #6e45e2 100%);
+    background-image: url("https://www.exascaleproject.org/wp-content/uploads/2019/11/PathForward-scaled.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+#foto-perfil{
+    width:180px;
+    max-height: 190px;
+    border-radius: 50% 50%;
+    margin-top: 80px;
+    margin-left: 50px;
+    border: solid 2px black;
+    box-shadow: 2px 2px 2px 1px rgba(13, 10, 19, 0.534);
+    caret-color: transparent;
+
+}
+
+#info{
+    margin-left: 5px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    margin-top: 15px
+}
+
+
+.btn-img{
+    margin-top: 200px;
+    margin-left: 240px;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+}
+  
+  
+.fa {
+    text-align: center;
+    text-decoration: none;
+    border-radius:50%
+  }
+
+  .fa:hover {
+    opacity: 0.7;
+}
+
+
+

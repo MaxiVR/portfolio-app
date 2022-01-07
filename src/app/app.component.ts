@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import 'src/styles.css'
 
 @Component({
   selector: 'app-root',
