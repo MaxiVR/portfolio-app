@@ -11,47 +11,6 @@
         <h2>Educacion</h2>
       </div>
     </div>
-    <div *ngFor="let card of cardEdu; let i=index">
-      <div style="float: left">
-        Institución: {{card.institucion}}<br />
-        Peridodo: {{card.periodo}}<br/><br />
-      </div>
-
-      <div class="contenedor-edit" >
-        <ul class="menu-edit">
-          <li class="btn-edit">
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-open" data-bs-toggle="modal" 
-                data-bs-target="#modal-edu">
-              <i class="fa fa-pencil"  id="{{i + 1}}" (click)="identicarDiv($event)"></i>
-            </button>
-          </li>
-          <li class="btn-edit">
-            <button type="button" class="btn-right" id="btn-thash">
-              <i class="fa fa-trash-o btn" aria-hidden="true"  id="{{i + 1}}" (click)="eliminarInfo($event)"></i>
-            </button>
-          </li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="modal fade" id="modal-edu" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="ModalLabel">Educacion</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <input type="text" name="institucion" placeholder="Institución" size="50" [(ngModel)]="inputInstitucion">
-            <input type="text" name="periodo" placeholder="Periodo" size="50" [(ngModel)]="inputPeriodo">
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-            <button type="submit" class="btn btn-primary" (click)="agregarInfo($event)">Guardar</button>
-          </div>
-        </div>
-      </div>
-    </div>
+    <app-card-edu [cardEdu]="cardEdu"></app-card-edu>
   </div>
 </div>
