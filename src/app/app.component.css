@@ -13,43 +13,6 @@
     margin-top: 10px;
 }
 
-#editInfo{
-    margin: 5px;
-}
-
-
-.card {
-    display: flow-root;
-    background-color: transparent;
-    border: none;
-}
-
-.titulos{
-    float: left;
-    width: 95%;
-}
-
-.contenedor-edit{
-    float: right;
-    padding: 0px;
-}
-
-.menu-edit{
-    padding: 0px;
-    margin: 0px;
-}
-
-.btn-edit{
-    list-style: none;
-    height: 20px;
-}
-
-
-
-.btn-right{
-    background-color: transparent;
-    border: none;
-}
 
 .cont{
     text-align: center;

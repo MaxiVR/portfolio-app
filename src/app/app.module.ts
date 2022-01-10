@@ -6,12 +6,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { AboutComponent } from './components/about/about.component';
+import { AcademicBackgroundComponent } from './components/academic-background/academic-background.component';
+import { CardEduComponent } from './components/card-edu/card-edu.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    AboutComponent
+    AboutComponent,
+    AcademicBackgroundComponent,
+    CardEduComponent
   ],
   imports: [
     BrowserModule,

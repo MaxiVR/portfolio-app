@@ -1,61 +1,8 @@
 <div id="body">
 <app-header></app-header>
 <app-about></app-about>
-<!--Educacion-->
-<div class="container-fluid">
-  <div class="row" id="EduExp">
-    <div class="col-12" id="contenedor-edu">
-      <div id="contenedor-plus">
-        <button type="button" class="btn-right" style="float: right;" onclick="agregarCamposEdu()">
-          <i class="fa fa-plus btn"></i>
-        </button>
-      </div>
-      <div id="contenedor-titulo-edu">
-        <h2>Educacion</h2>
-      </div>
-      <div class="card" id="original-edu">
-        <div class="titulos">
-          <h5 id="lugar-edu">Lugar-----</h5>
-          <h6 id="fecha-edu">Fecha </h6>
-        </div>
-        <div class="contenedor-edit">
-          <ul class="menu-edit">
-            <li class="btn-edit">
-              <!-- Button trigger modal -->
-              <button type="button" class="btn btn-open" data-bs-toggle="modal" data-bs-target="#modal-edu">
-                <i class="fa fa-pencil" onclick="cambiar(this)"></i>
-              </button>
-            </li>
-            <li class="btn-edit">
-              <button type="button" class="btn-right" id="btn-thash" onclick="eliminarInfo(this)">
-                <i class="fa fa-trash-o btn" aria-hidden="true"> </i>
-              </button>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <!-- Modal -->
-    <div class="modal fade" id="modal-edu" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="ModalLabel">Educacion</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <input type="text" placeholder="Institución" id="institucion" size="50">
-            <input type="text" placeholder="Periodo" id="periodo" size="50">
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-            <button type="button" class="btn btn-primary" onclick="editarEdu()">Guardar</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+<app-academic-background>
+</app-academic-background>
 <!---Trabajo--->
 <div class="container-fluid">
   <div class="row" id="EduExp">
