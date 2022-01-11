@@ -4,6 +4,14 @@
     box-sizing: border-box;
 }
 
+body{
+    padding: 5px;
+    background-color: #330867;
+    color: white;
+    font-family: 'Alegreya', serif;
+}
+
+
 .container-fluid{
     border-radius: 18px 18px 18px 18px;
     border: solid 2px black;
@@ -58,4 +66,8 @@
 .btn-right{
     background-color: transparent;
     border: none;
+}
+
+.categoria{
+    display:inline-block;
 }

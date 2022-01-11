@@ -1,163 +1,110 @@
-<div id="body">
-<app-header></app-header>
-<app-about></app-about>
-<app-academic-background>
-</app-academic-background>
-<!---Trabajo--->
-<div class="container-fluid">
-  <div class="row" id="EduExp">
-    <div class="col-12">
-      <div id="contenedor-plus">
-        <button type="button" class="btn-right" style="float: right;" onclick="agregarCamposTrabajo()">
-          <i class="fa fa-plus btn"></i>
-        </button>
-      </div>
-      <div id="contenedor-titulo-trabajo">
-        <h2>Experiencia Laboral</h2>
-      </div>
-      <div class="card" id="original-trabajo">
-        <div class="titulos">
-          <h5>Empresa</h5>
-          <h5>Puesto</h5>
-          <h6>Periodo</h6>
+<div>
+  <app-header></app-header>
+  <app-about></app-about>
+  <app-academic-background>
+    <!--Estudios-->
+  </app-academic-background>
+  <!---Trabajo--->
+  <app-experience></app-experience>
+  <!--Skill-->
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12" id="card-lenguajes">
+        <h2>Conocimientos Informaticos</h2>
+        <h4>Lenguajes</h4>
+        <div class="cont">
+          <div class="cont-icon-lang">
+            <img class="img-fluid lang" src="assets/icons8-html-5-144.png">
+            <h5>HTML</h5>
+          </div>
+          <div class="cont-icon-lang">
+            <img class="img-fluid lang" src="assets/icons8-css3-144.png">
+            <h5>CSS</h5>
+          </div>
+          <div class="cont-icon-lang">
+            <img class="img-fluid lang" src="assets/icons8-javascript-144.png">
+            <h5>JavaScript</h5>
+          </div>
+          <div class="cont-icon-lang">
+            <img class="img-fluid lang" src="assets/icons8-typescript-144.png">
+            <h5>TypeScript</h5>
+          </div>
+          <div class="cont-icon-lang">
+            <img class="img-fluid lang" src="assets/icons8-git-144.png">
+            <h5>Git</h5>
+          </div>
         </div>
-        <div class="contenedor-edit">
-          <ul class="menu-edit">
-            <li class="btn-edit">
-              <button type="button" id="btn-info" class="btn btn-open" data-bs-toggle="modal" data-bs-target="#exp">
-                <i class="fa fa-pencil btn" onclick="cambiar(this)"></i>
-              </button>
-            </li>
-            <li class="btn-edit">
-              <button type="button" class="btn-right" id="btn-thash" onclick="eliminarInfo(this)">
-                <i class="fa fa-trash-o btn" aria-hidden="true"> </i>
-              </button>
-            </li>
-          </ul>
+        <h4>Bibliotecas/Frameworks</h4>
+        <div class="cont">
+
+          <div class="cont-icon-lang">
+            <img class="img-fluid lang" src="assets/icons8-bootstrap-144.png">
+            <h5>Bootstrap</h5>
+          </div>
+          <div class="cont-icon-lang">
+            <img class="img-fluid lang" src="assets/icons8-angularjs-144.png">
+            <h5>Angular</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--Proyectos-->
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <div id="contenedor-plus2">
+          <button type="button" class="btn-right" style="float: right;">
+            <i class="fa fa-plus btn" onclick="addProyect()"></i>
+          </button>
+        </div>
+        <h2>Proyectos</h2>
+        <div id="card-proyect">
+          <div class="titulos">
+            <h4 style="width: 50%">Nombre Proyecto</h4>
+            <p id="info-proyecto">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur id natus perferendis animi
+              quasi itaque voluptas ad culpa distinctio, aliquid odit deleniti recusandae cum reiciendis
+              sapiente possimus
+              officiis error iste.
+            </p>
+          </div>
+          <div class="contenedor-edit">
+            <ul class="menu-edit">
+              <li class="btn-edit">
+                <button type="button" id="btn-info" class="btn btn-open" data-bs-toggle="modal"
+                  data-bs-target="#Modal-proyect">
+                  <i class="fa fa-pencil btn" onclick="cambiar(this)"></i>
+                </button>
+              </li>
+              <li class="btn-edit">
+                <button type="button" class="btn-right" id="btn-thash" onclick="eliminarInfo(this)">
+                  <i class="fa fa-trash-o btn" aria-hidden="true"> </i>
+                </button>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
       <!-- Modal -->
-      <div class=" modal fade" id="exp" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+      <div class="modal fade" id="Modal-proyect" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="ModalLabel">Experiencia Laboral</h5>
+              <h5 class="modal-title" id="ModalLabel">Comentar Proyecto</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <input type="text" placeholder="Empresa" id="empresa" size="50">
-              <input type="text" placeholder="Puesto" id="puesto" size="50">
-              <input type="text" placeholder="Periodo" id="periodoTrabajado" size="50">
+              <input type="text" placeholder="Nombre del Proyecto" id="nomProyecto" size="50">
+              <input type="text" placeholder="Comentar Proyecto" id="input-proyecto" size="50">
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-              <button type="button" class="btn btn-primary" onclick="editarTrabajo()">Guardar</button>
+              <button type="button" class="btn btn-primary" onclick="cambiarProyecto()">Guardar</button>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-<!--Skill-->
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-12" id="card-lenguajes">
-      <h2>Conocimientos Informaticos</h2>
-      <h4>Lenguajes</h4>
-      <div class="cont">
-        <div class="cont-icon-lang">
-          <img class="img-fluid lang" src="assets/icons8-html-5-144.png">
-          <h5>HTML</h5>
-        </div>
-        <div class="cont-icon-lang">
-          <img class="img-fluid lang" src="assets/icons8-css3-144.png">
-          <h5>CSS</h5>
-        </div>
-        <div class="cont-icon-lang">
-          <img class="img-fluid lang" src="assets/icons8-javascript-144.png">
-          <h5>JavaScript</h5>
-        </div>
-        <div class="cont-icon-lang">
-          <img class="img-fluid lang" src="assets/icons8-typescript-144.png">
-          <h5>TypeScript</h5>
-        </div>
-        <div class="cont-icon-lang">
-          <img class="img-fluid lang" src="assets/icons8-git-144.png">
-          <h5>Git</h5>
-        </div>
-      </div>
-      <h4>Bibliotecas/Frameworks</h4>
-      <div class="cont">
-
-        <div class="cont-icon-lang">
-          <img class="img-fluid lang" src="assets/icons8-bootstrap-144.png">
-          <h5>Bootstrap</h5>
-        </div>
-        <div class="cont-icon-lang">
-          <img class="img-fluid lang" src="assets/icons8-angularjs-144.png">
-          <h5>Angular</h5>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!--Proyectos-->
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-12">
-      <div id="contenedor-plus2">
-        <button type="button" class="btn-right" style="float: right;">
-          <i class="fa fa-plus btn" onclick="addProyect()"></i>
-        </button>
-      </div>
-      <h2>Proyectos</h2>
-      <div id="card-proyect">
-        <div class="titulos">
-          <h4 style="width: 50%">Nombre Proyecto</h4>
-          <p id="info-proyecto">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur id natus perferendis animi
-            quasi itaque voluptas ad culpa distinctio, aliquid odit deleniti recusandae cum reiciendis
-            sapiente possimus
-            officiis error iste.
-          </p>
-        </div>
-        <div class="contenedor-edit">
-          <ul class="menu-edit">
-            <li class="btn-edit">
-              <button type="button" id="btn-info" class="btn btn-open" data-bs-toggle="modal"
-                data-bs-target="#Modal-proyect">
-                <i class="fa fa-pencil btn" onclick="cambiar(this)"></i>
-              </button>
-            </li>
-            <li class="btn-edit">
-              <button type="button" class="btn-right" id="btn-thash" onclick="eliminarInfo(this)">
-                <i class="fa fa-trash-o btn" aria-hidden="true"> </i>
-              </button>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <!-- Modal -->
-    <div class="modal fade" id="Modal-proyect" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="ModalLabel">Comentar Proyecto</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <input type="text" placeholder="Nombre del Proyecto" id="nomProyecto" size="50">
-            <input type="text" placeholder="Comentar Proyecto" id="input-proyecto" size="50">
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-            <button type="button" class="btn btn-primary" onclick="cambiarProyecto()">Guardar</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 </div>

@@ -1,17 +1,17 @@
 <div>
-    <div *ngFor="let card of cardEdu; let i=index" >
-        <div class="categoria" >
-            Institución: {{card.institucion}}<br/>
-            Peridodo: {{card.periodo}}<br/><br/>
+    <div *ngFor="let card of cardExp let i=index">
+        <div class="categoria">
+            Empresa: {{card.empresa}}<br/>
+            Puesto: {{card.puesto}}<br/>
+            Periodo: {{card.periodo}}<br/><br/>
         </div>
-        
 
         <div class="contenedor-edit">
             <ul class="menu-edit">
                 <li class="btn-edit">
-                    <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-open" data-bs-toggle="modal" data-bs-target="#modal-edu">
-                        <i class="fa fa-pencil" id="{{i + 1}}" (click)="identicarDiv($event)"></i>
+                    <button type="button" id="btn-info" class="btn btn-open" data-bs-toggle="modal"
+                        data-bs-target="#exp">
+                        <i class="fa fa-pencil btn" id="{{i + 1}}" (click)="identicarDiv($event)"></i>
                     </button>
                 </li>
                 <li class="btn-edit">
@@ -22,22 +22,22 @@
             </ul>
         </div>
     </div>
-
-    <div class="modal fade" id="modal-edu" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+    <!-- Modal -->
+    <div class=" modal fade" id="exp" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="ModalLabel">Educacion</h5>
+                    <h5 class="modal-title" id="ModalLabel">Experiencia Laboral</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <input type="text" name="institucion" placeholder="Institución" size="50"
-                        [(ngModel)]="inputInstitucion">
-                    <input type="text" name="periodo" placeholder="Periodo" size="50" [(ngModel)]="inputPeriodo">
+                    <input type="text" placeholder="Empresa" [(ngModel)]="inputEmpresa" size="50">
+                    <input type="text" placeholder="Puesto" [(ngModel)]="inputPuesto" size="50">
+                    <input type="text" placeholder="Periodo"  [(ngModel)]="inputPeriodo" size="50">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="submit" class="btn btn-primary" (click)="agregarInfo($event)">Guardar</button>
+                    <button type="button" class="btn btn-primary" (click)="agregarInfo($event)">Guardar</button>
                 </div>
             </div>
         </div>

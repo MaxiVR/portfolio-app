@@ -8,6 +8,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { AboutComponent } from './components/about/about.component';
 import { AcademicBackgroundComponent } from './components/academic-background/academic-background.component';
 import { CardEduComponent } from './components/card-edu/card-edu.component';
+import { ExperienceComponent } from './components/experience/experience.component';
+import { CardExpComponent } from './components/card-exp/card-exp.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { CardEduComponent } from './components/card-edu/card-edu.component';
     HeaderComponent,
     AboutComponent,
     AcademicBackgroundComponent,
-    CardEduComponent
+    CardEduComponent,
+    ExperienceComponent,
+    CardExpComponent
   ],
   imports: [
     BrowserModule,

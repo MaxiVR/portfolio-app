@@ -1,0 +1,15 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div id="contenedor-plus">
+                <button type="button" class="btn-right" style="float: right;">
+                    <i class="fa fa-plus btn" (click)="agregarCamposExp()"></i>
+                </button>
+            </div>
+            <div id="contenedor-titulo-trabajo">
+                <h2>Experiencia Laboral</h2>
+            </div>
+        </div>
+        <app-card-exp [cardExp]="cardExp"></app-card-exp>
+    </div>
+</div>
