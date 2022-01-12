@@ -12,6 +12,7 @@ import { ExperienceComponent } from './components/experience/experience.componen
 import { CardExpComponent } from './components/card-exp/card-exp.component';
 import { ProjectsComponent } from './components/projects/projects.component';
 import { CardProjectComponent } from './components/card-project/card-project.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { CardProjectComponent } from './components/card-project/card-project.com
     ExperienceComponent,
     CardExpComponent,
     ProjectsComponent,
-    CardProjectComponent
+    CardProjectComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
