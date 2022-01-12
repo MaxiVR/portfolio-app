@@ -10,6 +10,8 @@ import { AcademicBackgroundComponent } from './components/academic-background/ac
 import { CardEduComponent } from './components/card-edu/card-edu.component';
 import { ExperienceComponent } from './components/experience/experience.component';
 import { CardExpComponent } from './components/card-exp/card-exp.component';
+import { ProjectsComponent } from './components/projects/projects.component';
+import { CardProjectComponent } from './components/card-project/card-project.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { CardExpComponent } from './components/card-exp/card-exp.component';
     AcademicBackgroundComponent,
     CardEduComponent,
     ExperienceComponent,
-    CardExpComponent
+    CardExpComponent,
+    ProjectsComponent,
+    CardProjectComponent
   ],
   imports: [
     BrowserModule,

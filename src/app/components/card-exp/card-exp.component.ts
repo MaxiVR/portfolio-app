@@ -28,7 +28,6 @@ export class CardExpComponent implements OnInit {
     this.inputEmpresa = "";
     this.inputPuesto= "";
     this.inputPeriodo = "";
-    console.log("prueba")
   }
 
   eliminarInfo($event: any){
