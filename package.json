@@ -1,9 +1,4 @@
 {
-<<<<<<< HEAD
-  "homepage": "https://maxivr.github.io/portfolio-app",
-=======
-  "homepage": maxivr.github.io/portfolio-app
->>>>>>> cf890e3dfd293c5355067ce0539a60221ce95304
   "name": "portfolio-app",
   "version": "0.0.0",
   "scripts": {
