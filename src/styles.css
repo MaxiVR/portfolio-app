@@ -71,3 +71,7 @@ body{
 .categoria{
     display:inline-block;
 }
+
+input, textarea{
+    width: fill-available;
+}
