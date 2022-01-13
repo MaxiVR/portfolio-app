@@ -1,25 +1,28 @@
 <section>
     <div *ngFor="let card of cardProject let i=index">
-        <div class="categoria" style="width: 94%;">
-            <h4>{{card.titulo}}</h4>
-            <p>{{card.comentario}}</p><br />
-        </div>
+        <div>
+            <div class="contenedor-edit">
+                <ul class="menu-edit">
+                    <li class="btn-edit">
+                        <button type="button" id="btn-info" class="btn btn-open" data-bs-toggle="modal"
+                            data-bs-target="#Modal-proyect">
+                            <i class="fa fa-pencil btn" id="{{i + 1}}" (click)=" identicarDiv($event)"></i>
+                        </button>
+                    </li>
+                    <li class="btn-edit">
+                        <button type="button" class="btn-right" id="btn-thash">
+                            <i class="fa fa-trash-o btn" aria-hidden="true" id="{{i + 1}}"
+                                (click)="eliminarInfo($event)"> </i>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <h4>{{card.titulo}}</h4>
+            </div>
 
-        <div class="contenedor-edit">
-            <ul class="menu-edit">
-                <li class="btn-edit">
-                    <button type="button" id="btn-info" class="btn btn-open" data-bs-toggle="modal"
-                        data-bs-target="#Modal-proyect">
-                        <i class="fa fa-pencil btn" id="{{i + 1}}"  (click)=" identicarDiv($event)"></i>
-                    </button>
-                </li>
-                <li class="btn-edit">
-                    <button type="button" class="btn-right" id="btn-thash">
-                        <i class="fa fa-trash-o btn" aria-hidden="true" id="{{i + 1}}" (click)="eliminarInfo($event)"> </i>
-                    </button>
-                </li>
-            </ul>
         </div>
+        <p>{{card.comentario}}</p><br />
     </div>
 
     <!-- Modal -->
@@ -32,7 +35,8 @@
                 </div>
                 <div class="modal-body">
                     <input type="text" placeholder="Nombre del Proyecto" [(ngModel)]="inputTitulo" size="55">
-                    <textarea placeholder="Comentar Proyecto" [(ngModel)]="inputComentario" rows="4" cols="55"></textarea>
+                    <textarea placeholder="Comentar Proyecto" [(ngModel)]="inputComentario" rows="4"
+                        cols="55"></textarea>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
