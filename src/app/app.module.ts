@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,6 +14,7 @@ import { ProjectsComponent } from './components/projects/projects.component';
 import { CardProjectComponent } from './components/card-project/card-project.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { LoginComponent } from './components/login/login.component';
+import { SkilsComponent } from './components/skils/skils.component';
 
 @NgModule({
   declarations: [
@@ -27,12 +28,14 @@ import { LoginComponent } from './components/login/login.component';
     ProjectsComponent,
     CardProjectComponent,
     FooterComponent,
-    LoginComponent
+    LoginComponent,
+    SkilsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

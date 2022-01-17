@@ -7,6 +7,8 @@ import { CardEdu } from 'src/app/cardEdu.model';
   styleUrls: ['./card-edu.component.css']
 })
 export class CardEduComponent implements OnInit {
+  
+
   @Input() cardEdu : CardEdu[] = [ ]
 
   inputInstitucion:string="";

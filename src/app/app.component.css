@@ -6,32 +6,7 @@
 }
 
 
-.cont{
-    text-align: center;
-    display: flex;
-}
 
 
-
-.lang{
-    height: 50px;
-}
-
-.cont-icon-lang{
-    margin-right: 10px;
-
-}
-
-@media (min-width: 460px) {
-    .lang{
-        height: 80px;
-    }
-}
-
-@media (min-width: 560px) {
-    .lang{
-        height: 100px;
-    }
-}
 
 
