@@ -1,6 +1,6 @@
 <div class="container-fluid">
     <div class="login-btn">
-        <button type="button" id="btn-login" class="btn btn-primary btn-lg" data-bs-toggle="modal"
+        <button type="button" id="btn-login" class="btn btn-primary" data-bs-toggle="modal"
             data-bs-target="#login-modal">Login
         </button>
     </div>
@@ -20,7 +20,7 @@
                 <form [formGroup]="form" (ngSubmit)="onEnviar($event)">
                     <div>
                         <label for="email">Email: </label>
-                        <input type="email" placeholder="Password" formControlName="email">
+                        <input type="email" placeholder="Email" formControlName="email">
                     </div>
                     <!-- Gracias al getter que configuramos en el controlador -->
                     <div *ngIf="Mail?.errors  && Mail?.touched">
@@ -48,7 +48,9 @@
                     </div>
                     <br />
                     <div>
-                        <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+                        <button [disabled]="Password?.errors || Password?.touched && Mail?.errors  && Mail?.touched" 
+                            type="submit" id="submit" class="btn btn-primary">Iniciar Sesión
+                        </button>
                     </div>
                 </form>
                 <div class="login-help">
