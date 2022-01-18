@@ -21,7 +21,7 @@ export class CardProjectComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  agregarInfo($event: any){
+  agregarInfo(){
     this.cardProject[this.index].titulo = this.inputTitulo;
     this.cardProject[this.index].comentario= this.inputComentario;
     this.inputTitulo = "";

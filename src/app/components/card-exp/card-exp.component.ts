@@ -21,7 +21,7 @@ export class CardExpComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  agregarInfo($event: any){
+  agregarInfo(){
     this.cardExp[this.index].empresa = this.inputEmpresa;
     this.cardExp[this.index].puesto= this.inputPuesto;
     this.cardExp[this.index].periodo= this.inputPeriodo;

@@ -15,6 +15,7 @@ import { CardProjectComponent } from './components/card-project/card-project.com
 import { FooterComponent } from './components/footer/footer.component';
 import { LoginComponent } from './components/login/login.component';
 import { SkilsComponent } from './components/skils/skils.component';
+import { ServicioEduService } from './servicios/servicio-edu.service';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,7 @@ import { SkilsComponent } from './components/skils/skils.component';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [ServicioEduService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

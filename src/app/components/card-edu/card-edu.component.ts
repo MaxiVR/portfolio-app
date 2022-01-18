@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CardEdu } from 'src/app/cardEdu.model';
+import { ServicioEduService } from 'src/app/servicios/servicio-edu.service';
 
 @Component({
   selector: 'app-card-edu',
@@ -16,14 +17,13 @@ export class CardEduComponent implements OnInit {
   id:number = 0;
   index:number = 0;
    
-  constructor() { }
+  constructor(private servicioEdu:ServicioEduService) { }
 
   ngOnInit(): void {
   }
 
-  agregarInfo($event: any){
-    this.cardEdu[this.index].institucion = this.inputInstitucion;
-    this.cardEdu[this.index].periodo= this.inputPeriodo;
+  agregarInfo(){
+    this.servicioEdu.agregarInfoServicio(this.index, this.inputInstitucion, this.inputPeriodo)
     this.inputInstitucion = "";
     this.inputPeriodo = "";
   }
