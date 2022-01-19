@@ -31,3 +31,13 @@ button{
 input{
     margin-bottom: 40px;
 }
+
+h5{
+    font-size: 1.20rem;
+
+}
+
+.form-contac{
+    padding: 1em;
+    text-align: center;
+}
