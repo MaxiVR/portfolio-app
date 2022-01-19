@@ -1,0 +1,33 @@
+.container-img{
+  background-image: url('https://www.mlgcomponentes.com/wp-content/uploads/2019/08/imagen-articulo-nombres.gif');
+  background-size: cover;
+  background-position: center;
+  border-radius: 18px 18px 18px 18px;
+  height: 100%;
+  width: 100%;
+    
+}
+
+.container-fluid{
+    padding:0px;
+    height: 900px;
+    width: 80%;
+}
+
+.row{
+    height: -webkit-fill-available;
+}
+
+button{
+    margin-top: 10px;
+}
+
+#info-personal{
+
+    text-align: center;
+
+}
+
+input{
+    margin-bottom: 40px;
+}

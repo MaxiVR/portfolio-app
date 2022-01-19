@@ -17,6 +17,7 @@ import { LoginComponent } from './components/login/login.component';
 import { SkilsComponent } from './components/skils/skils.component';
 import { Page404Component } from './components/page404/page404.component';
 import { HomeComponent } from './components/home/home.component';
+import { ContactComponent } from './components/contact/contact.component';
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import { HomeComponent } from './components/home/home.component';
     SkilsComponent,
     Page404Component,
     HomeComponent,
+    ContactComponent,
   ],
   imports: [
     BrowserModule,
