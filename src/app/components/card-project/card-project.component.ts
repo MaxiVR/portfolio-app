@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CardProject } from 'src/app/cardProject.model';
+import { ProjectsService } from 'src/app/servicios/projects.service'
 
 
 @Component({
@@ -13,29 +14,26 @@ export class CardProjectComponent implements OnInit {
 
   inputTitulo: string = "";
   inputComentario: string = "";
-  id: number = 0;
   index:number = 0;
 
-  constructor() { }
+  constructor(private projectsService:ProjectsService) { }
 
   ngOnInit(): void {
   }
 
   agregarInfo(){
-    this.cardProject[this.index].titulo = this.inputTitulo;
-    this.cardProject[this.index].comentario= this.inputComentario;
+    this.projectsService.agregarInfoServicio(this.index, this.inputTitulo, this.inputComentario)
     this.inputTitulo = "";
     this.inputComentario= "";
   }
 
   eliminarInfo($event: any){
-    this.cardProject.splice($event.target.id - 1, 1)
+    this.projectsService.eliminarInfo($event.target.id)
   }
 
 
   identicarDiv($event: any){
     this.index = $event.target.id - 1;
-    console.log(this.index)
   }
 
 }
