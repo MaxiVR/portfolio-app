@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CardExp } from 'src/app/cardExp.model';
+import { ServicioExpService } from 'src/app/servicios/servicio-exp.service';
 
 @Component({
   selector: 'app-experience',
@@ -8,25 +9,20 @@ import { CardExp } from 'src/app/cardExp.model';
 })
 export class ExperienceComponent implements OnInit {
 
-  cardExp: CardExp[] = [
-      
-      new CardExp ("Empresa 1", "Julio 2011 a Agosto 2016", "Administrativo", 0),
-      new CardExp ("Empresa 2", "Julio 2013 a Agosto 2016", "Administrativo", 1),
-      new CardExp ("Empresa 3", "Mayo 2015 a Agosto 2014", "Administrativo", 2),
-  ]
+  cardExp: CardExp[] = [];
 
   id:number = 0;
   index:number = 0;
 
-  constructor() { }
+  constructor(private servicioExp:ServicioExpService) { 
+    this.cardExp = this.servicioExp.cardExp;
+  }
 
   ngOnInit(): void {
   }
 
   agregarCamposExp(){
-    this.id = this.cardExp.length;
-    let newCampo = new CardExp("", "", "", this.id);
-    this.cardExp.push(newCampo);
+    this.servicioExp.agregarCampoServicio();
   }
 
 }

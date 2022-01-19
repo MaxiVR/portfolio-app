@@ -9,7 +9,6 @@ import { ServicioEduService } from 'src/app/servicios/servicio-edu.service';
 })
 export class CardEduComponent implements OnInit {
   
-
   @Input() cardEdu : CardEdu[] = [ ]
 
   inputInstitucion:string="";

@@ -23,7 +23,7 @@ export class AcademicBackgroundComponent implements OnInit {
 
   agregarCamposEdu(){
     
-    this.servicioEdu.agregarCamposEduServicio();
+    this.servicioEdu.agregarCamposServicio();
     
   }
 }
