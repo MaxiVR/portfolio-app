@@ -16,7 +16,7 @@ cardEdu : CardEdu[]=[
   constructor() { }
 
   
-  agregarCamposServicio(){
+  agregarCamposServicio(): void{
     let newCampo = new CardEdu("", "", this.cardEdu.length );
     this.cardEdu.push(newCampo);
   }
