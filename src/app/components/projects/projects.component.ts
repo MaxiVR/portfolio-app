@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CardProject } from 'src/app/cardProject.model'
 
+
 @Component({
   selector: 'app-projects',
   templateUrl: './projects.component.html',
@@ -31,5 +32,6 @@ export class ProjectsComponent implements OnInit {
     let newCampo = new CardProject("Titulo del Proyecto", "Comenta tu proyecto", this.id);
     this.cardProject.push(newCampo);
   }
+
 
 }

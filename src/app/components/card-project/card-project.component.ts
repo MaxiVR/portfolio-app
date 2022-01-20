@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CardProject } from 'src/app/cardProject.model';
-
+import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-card-project',
@@ -36,6 +36,10 @@ export class CardProjectComponent implements OnInit {
   identicarDiv($event: any){
     this.index = $event.target.id - 1;
     console.log(this.index)
+  }
+
+  drop(event: CdkDragDrop<string[]>) {
+    moveItemInArray(this.cardProject, event.previousIndex, event.currentIndex);
   }
 
 }

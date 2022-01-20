@@ -1,30 +1,30 @@
 <section>
-    <div *ngFor="let card of cardProject let i=index">
-        <div>
-            <div class="contenedor-edit">
-                <ul class="menu-edit">
-                    <li class="btn-edit">
-                        <button type="button" id="btn-info" class="btn btn-open" data-bs-toggle="modal"
-                            data-bs-target="#Modal-proyect">
-                            <i class="fa fa-pencil btn" id="{{i + 1}}" (click)=" identicarDiv($event)"></i>
-                        </button>
-                    </li>
-                    <li class="btn-edit">
-                        <button type="button" class="btn-right" id="btn-thash">
-                            <i class="fa fa-trash-o btn" aria-hidden="true" id="{{i + 1}}"
-                                (click)="eliminarInfo($event)"> </i>
-                        </button>
-                    </li>
-                </ul>
+    <div cdkDropList (cdkDropListDropped)="drop($event)">
+        <div *ngFor="let card of cardProject let i=index" cdkDrag>
+            <div>
+                <div class="contenedor-edit">
+                    <ul class="menu-edit">
+                        <li class="btn-edit">
+                            <button type="button" id="btn-info" class="btn btn-open" data-bs-toggle="modal"
+                                data-bs-target="#Modal-proyect">
+                                <i class="fa fa-pencil btn" id="{{i + 1}}" (click)=" identicarDiv($event)"></i>
+                            </button>
+                        </li>
+                        <li class="btn-edit">
+                            <button type="button" class="btn-right" id="btn-thash">
+                                <i class="fa fa-trash-o btn" aria-hidden="true" id="{{i + 1}}"
+                                    (click)="eliminarInfo($event)"> </i>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
             </div>
             <div>
                 <h4>{{card.titulo}}</h4>
             </div>
-
+            <p>{{card.comentario}}</p><br />
         </div>
-        <p>{{card.comentario}}</p><br />
     </div>
-
     <!-- Modal -->
     <div class="modal fade" id="Modal-proyect" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">

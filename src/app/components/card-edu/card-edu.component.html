@@ -1,25 +1,27 @@
-<section>
-    <div *ngFor="let card of cardEdu; let i=index" >
-        <div class="categoria" >
-            Institución: {{card.institucion}}<br/>
-            Peridodo: {{card.periodo}}<br/><br/>
-        </div>
-        
+<section >
+    <div cdkDropList (cdkDropListDropped)="drop($event)">
+        <div *ngFor="let card of cardEdu; let i=index" cdkDrag>
+            <div class="categoria">
+                Institución: {{card.institucion}}<br />
+                Peridodo: {{card.periodo}}<br /><br />
+            </div>
 
-        <div class="contenedor-edit">
-            <ul class="menu-edit">
-                <li class="btn-edit">
-                    <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-open" data-bs-toggle="modal" data-bs-target="#modal-edu">
-                        <i class="fa fa-pencil" id="{{i + 1}}" (click)="identicarDiv($event)"></i>
-                    </button>
-                </li>
-                <li class="btn-edit">
-                    <button type="button" class="btn-right" id="btn-thash">
-                        <i class="fa fa-trash-o btn" aria-hidden="true" id="{{i + 1}}" (click)="eliminarInfo($event)"></i>
-                    </button>
-                </li>
-            </ul>
+            <div class="contenedor-edit">
+                <ul class="menu-edit">
+                    <li class="btn-edit">
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-open" data-bs-toggle="modal" data-bs-target="#modal-edu">
+                            <i class="fa fa-pencil" id="{{i + 1}}" (click)="identicarDiv($event)"></i>
+                        </button>
+                    </li>
+                    <li class="btn-edit">
+                        <button type="button" class="btn-right" id="btn-thash">
+                            <i class="fa fa-trash-o btn" aria-hidden="true" id="{{i + 1}}"
+                                (click)="eliminarInfo($event)"></i>
+                        </button>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 
