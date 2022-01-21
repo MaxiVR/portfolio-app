@@ -4,7 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DragDropModule } from '@angular/cdk/drag-drop';
-
+import { HttpClientModule} from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -49,6 +49,7 @@ import { ContactComponent } from './components/contact/contact.component';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     DragDropModule,
+    HttpClientModule, 
   ],
   providers: [],
   bootstrap: [AppComponent]

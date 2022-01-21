@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import { AuthService } from 'src/app/servicios/auth.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,22 +12,24 @@ export class LoginComponent implements OnInit {
   form: FormGroup;
 
   // Inyectar en el constructor el formBuilder
-  constructor(private formBuilder: FormBuilder){ 
+  constructor(private formBuilder: FormBuilder, private authService:AuthService ){ 
+
     ///Creamos el grupo de controles para el formulario de login
-    this.form= this.formBuilder.group({
-      password:['',[Validators.required, Validators.minLength(8)]],
-      email:['', [Validators.required, Validators.email]],
+    this.form = new FormGroup ({
+      password: new FormControl ('',[Validators.required, Validators.minLength(8)]),
+      email: new FormControl ('', [Validators.required, Validators.email]),
+
    })
   }
 
   ngOnInit(): void {
   }
 
-  get Password(){
+  get Password(): any{
     return this.form.get("password");
   }
  
-  get Mail(){
+  get Mail(): any {
    return this.form.get("email");
   }
 
@@ -45,7 +49,7 @@ export class LoginComponent implements OnInit {
     if (this.form.valid){
       // Llamamos a nuestro servicio para enviar los datos al servidor
       // También podríamos ejecutar alguna lógica extra
-      alert("Todo salio bien ¡Enviar formuario!")
+      this.authService.login(this.form.get('email')?.value, this.form.get('password')?.value )
     }else{
       // Corremos todas las validaciones para que se ejecuten los mensajes de error en el template     
       this.form.markAllAsTouched(); 
