@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
 
-  url = 'https://reqres.in/api/login';
+  url = 'https://reqres.in/api/login'; /* apiFake para testear*/
   token : any;
 
   constructor(private http:HttpClient, private router:Router) { }
@@ -17,7 +17,7 @@ export class AuthService {
     .subscribe((resp:any) => {
       this.router.navigate(['/contacto']);
       localStorage.setItem('auth_toke', resp.token);
-      console.log(resp.token)
+      
     })
   }
 
