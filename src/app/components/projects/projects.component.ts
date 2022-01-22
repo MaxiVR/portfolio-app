@@ -17,6 +17,7 @@ export class ProjectsComponent implements OnInit {
 
   ];
 
+  
   id: number = 0;
   index: number = 0;
 

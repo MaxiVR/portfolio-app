@@ -4,11 +4,12 @@ import { ContactComponent } from './components/contact/contact.component';
 import { HomeComponent } from './components/home/home.component';
 import { Page404Component } from './components/page404/page404.component';
 import { LoginComponent } from './components/login/login.component'
+import { AdminGuard } from './guards/admin.guard';
 
 
 const routes: Routes = [
   {path: '', component:HomeComponent},
-  {path: 'contacto', component:ContactComponent},
+  {path: 'contacto', component:ContactComponent, canActivate: [AdminGuard]},
   {path: 'login', component:LoginComponent},
   {path: '**', component:Page404Component},
 ];

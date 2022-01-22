@@ -17,10 +17,11 @@ import { ProjectsComponent } from './components/projects/projects.component';
 import { CardProjectComponent } from './components/card-project/card-project.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { LoginComponent } from './components/login/login.component';
-import { SkilsComponent } from './components/skils/skils.component';
+import { SkillsComponent } from './components/skills/skills.component';
 import { Page404Component } from './components/page404/page404.component';
 import { HomeComponent } from './components/home/home.component';
 import { ContactComponent } from './components/contact/contact.component';
+import { BtnEditComponent } from './components/btn-edit/btn-edit.component';
 
 
 
@@ -37,10 +38,11 @@ import { ContactComponent } from './components/contact/contact.component';
     CardProjectComponent,
     FooterComponent,
     LoginComponent,
-    SkilsComponent,
+    SkillsComponent,
     Page404Component,
     HomeComponent,
     ContactComponent,
+    BtnEditComponent,
   ],
   imports: [
     BrowserModule,
