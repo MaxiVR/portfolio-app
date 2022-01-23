@@ -2,11 +2,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-12">
-            <div id="contenedor-plus2">
-                <button type="button" class="btn-right" style="float: right;">
-                    <i class="fa fa-plus btn" (click)="agregarCamposProject()"></i>
-                </button>
-            </div>
+            <app-btn-plus (addCampo)="agregarCampos()"></app-btn-plus>
             <div>
                 <h2>Proyectos</h2>
             </div>

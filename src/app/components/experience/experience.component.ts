@@ -16,14 +16,13 @@ export class ExperienceComponent implements OnInit {
   ]
 
   id:number = 0;
-  index:number = 0;
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  agregarCamposExp(){
+  agregarCampos(){
     this.id = this.cardExp.length;
     let newCampo = new CardExp("", "", "", this.id);
     this.cardExp.push(newCampo);

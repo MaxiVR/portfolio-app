@@ -4,14 +4,10 @@
         <div class="col-12">
           <img id="foto-perfil" class="img-fluid"
             src= "{{myImage}}">
-          <!-- Button trigger modal -->
-          <button type="button" id="btn-perfil" class="btn btn-open" data-bs-toggle="modal"
-            data-bs-target="#Modal-perfil">
-            <i class="fa fa-pencil" style="margin-bottom: 1px;"></i>
-          </button>
+          <app-btn-pencil [targetModal]="'#modalPerfil'"></app-btn-pencil>
   
           <!-- Modal -->
-          <div class="modal fade" id="Modal-perfil" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+          <div class="modal fade" id="modalPerfil" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
               <div class="modal-content">
                 <div class="modal-header">

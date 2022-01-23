@@ -14,14 +14,13 @@ cardEdu : CardEdu[]=[
   ]
 
   id:number = 0;
-  index:number = 0;
-   
+  
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  agregarCamposEdu(){
+  agregarCampos(){
     this.id = this.cardEdu.length;
     let newCampo = new CardEdu("", "", this.id);
     this.cardEdu.push(newCampo);

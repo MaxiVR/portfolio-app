@@ -7,6 +7,7 @@ import { AuthService } from 'src/app/servicios/auth.service';
   styleUrls: ['./btn-edit.component.css']
 })
 export class BtnEditComponent implements OnInit {
+  
   @Input() targetModal?: string;
   @Input () i:number = 0;
   @Output () add : EventEmitter<Event> = new EventEmitter;
@@ -26,7 +27,7 @@ export class BtnEditComponent implements OnInit {
     this.delete.emit($event);
   }
 
-  admin():boolean{
+  isAdmin():boolean{
     return this.authService.logIn;
   }
 

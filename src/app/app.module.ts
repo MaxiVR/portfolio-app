@@ -22,6 +22,8 @@ import { Page404Component } from './components/page404/page404.component';
 import { HomeComponent } from './components/home/home.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { BtnEditComponent } from './components/btn-edit/btn-edit.component';
+import { BtnPlusComponent } from './components/btn-plus/btn-plus.component';
+import { BtnPencilComponent } from './components/btn-pencil/btn-pencil.component';
 
 
 @NgModule({
@@ -42,6 +44,8 @@ import { BtnEditComponent } from './components/btn-edit/btn-edit.component';
     HomeComponent,
     ContactComponent,
     BtnEditComponent,
+    BtnPlusComponent,
+    BtnPencilComponent,
   ],
   imports: [
     BrowserModule,
