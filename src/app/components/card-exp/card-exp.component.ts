@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CardExp } from 'src/app/cardExp.model';
-import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+
 
 @Component({
   selector: 'app-card-exp',
@@ -10,19 +11,19 @@ import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
 export class CardExpComponent implements OnInit {
   @Input() cardExp : CardExp[] = [ ];
 
+  
   inputEmpresa:string = "";
   inputPuesto: string = "";
   inputPeriodo: string = "";
-  id: number = 0;
   index:number = 0;
 
 
-  constructor() { }
+  constructor( ) { }
 
   ngOnInit(): void {
   }
 
-  agregarInfo($event: any){
+  agregarInfo(){
     this.cardExp[this.index].empresa = this.inputEmpresa;
     this.cardExp[this.index].puesto= this.inputPuesto;
     this.cardExp[this.index].periodo= this.inputPeriodo;
@@ -36,10 +37,11 @@ export class CardExpComponent implements OnInit {
   }
 
   
-  identicarDiv($event: any){
+  sendId($event: any){
     this.index = $event.target.id - 1;
-    console.log(this.index)
+    
   }
+ 
 
   drop(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.cardExp, event.previousIndex, event.currentIndex);

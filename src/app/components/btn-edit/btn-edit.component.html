@@ -1,1 +1,15 @@
-<p>btn-edit works!</p>
+<div class="contenedor-edit" *ngIf="admin()">      
+    <ul class="menu-edit" >
+        <li class="btn-edit">
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-open" data-bs-toggle="modal" [attr.data-bs-target]=targetModal>
+                <i class="fa fa-pencil" aria-hidden="true"  id="{{i + 1}}" (click)="addInfo($event)"></i>
+            </button>
+        </li>
+        <li class="btn-edit">
+            <button type="button" class="btn-right" id="btn-thash">
+                <i class="fa fa-trash-o btn" aria-hidden="true" id="{{i + 1}}" (click)="deleteInfo($event)"></i>
+            </button>
+        </li>
+    </ul>
+</div>

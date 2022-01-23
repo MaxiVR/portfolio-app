@@ -1,22 +1,11 @@
 <section>
     <div cdkDropList (cdkDropListDropped)="drop($event)">
         <div *ngFor="let card of cardProject let i=index" cdkDrag>
-            <div class="contenedor-edit">
-                <ul class="menu-edit">
-                    <li class="btn-edit">
-                        <button type="button" id="btn-info" class="btn btn-open" data-bs-toggle="modal"
-                            data-bs-target="#Modal-proyect">
-                            <i class="fa fa-pencil btn" id="{{i + 1}}" (click)=" identicarDiv($event)"></i>
-                        </button>
-                    </li>
-                    <li class="btn-edit">
-                        <button type="button" class="btn-right" id="btn-thash">
-                            <i class="fa fa-trash-o btn" aria-hidden="true" id="{{i + 1}}"
-                                (click)="eliminarInfo($event)"> </i>
-                        </button>
-                    </li>
-                </ul>
-            </div>
+            <app-btn-edit (add)="sendId($event)" 
+                        (delete)="eliminarInfo($event)"
+                        [i]="i"
+                        [targetModal]="'#modalProject'">
+            </app-btn-edit>
             <div>
                 <h4>{{card.titulo}}</h4>
             </div>
@@ -24,7 +13,7 @@
         </div>
     </div>
     <!-- Modal -->
-    <div class="modal fade" id="Modal-proyect" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+    <div class="modal fade" id="modalProject" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
@@ -38,7 +27,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary" (click)="agregarInfo($event)">Guardar</button>
+                    <button type="button" class="btn btn-primary" (click)="agregarInfo()">Guardar</button>
                 </div>
             </div>
         </div>

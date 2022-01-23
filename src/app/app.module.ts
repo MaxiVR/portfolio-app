@@ -24,7 +24,6 @@ import { ContactComponent } from './components/contact/contact.component';
 import { BtnEditComponent } from './components/btn-edit/btn-edit.component';
 
 
-
 @NgModule({
   declarations: [
     AppComponent,

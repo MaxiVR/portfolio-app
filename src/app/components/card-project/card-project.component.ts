@@ -21,7 +21,7 @@ export class CardProjectComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  agregarInfo($event: any){
+  agregarInfo(){
     this.cardProject[this.index].titulo = this.inputTitulo;
     this.cardProject[this.index].comentario= this.inputComentario;
     this.inputTitulo = "";
@@ -32,10 +32,10 @@ export class CardProjectComponent implements OnInit {
     this.cardProject.splice($event.target.id - 1, 1)
   }
 
-
-  identicarDiv($event: any){
+  
+  sendId($event: any){
     this.index = $event.target.id - 1;
-    console.log(this.index)
+    
   }
 
   drop(event: CdkDragDrop<string[]>) {
