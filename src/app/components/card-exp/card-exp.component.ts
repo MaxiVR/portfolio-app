@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CardExp } from 'src/app/cardExp.model';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import { AuthService } from 'src/app/servicios/auth.service';
 
 
 @Component({
@@ -18,7 +19,7 @@ export class CardExpComponent implements OnInit {
   index:number = 0;
 
 
-  constructor( ) { }
+  constructor(private authService:AuthService) { }
 
   ngOnInit(): void {
   }
@@ -44,7 +45,9 @@ export class CardExpComponent implements OnInit {
  
 
   drop(event: CdkDragDrop<string[]>) {
-    moveItemInArray(this.cardExp, event.previousIndex, event.currentIndex);
+    if (this.authService.logIn){
+      moveItemInArray(this.cardExp, event.previousIndex, event.currentIndex);
+    }
   }
 }
 

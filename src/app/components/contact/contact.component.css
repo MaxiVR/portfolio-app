@@ -28,9 +28,6 @@ button{
 
 }
 
-input{
-    margin-bottom: 40px;
-}
 
 h5{
     font-size: 1.20rem;
@@ -40,4 +37,13 @@ h5{
 .form-contac{
     padding: 1em;
     text-align: center;
+}
+
+.error {
+    text-align: left;
+    margin:0;
+}
+
+.cont-input{
+    margin-bottom: 30px;
 }

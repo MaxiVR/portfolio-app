@@ -10,17 +10,29 @@
                 <h5>La Plata, Buenos Aires - Argentina</h5>
                 <h5>MaximilianoXXXXXX@gmail.com</h5>
             </div>
-            <form class="form-contac">
+            <form [formGroup]="form" class="form-contac">
                 <p class="h4 mb-4">Contactame</p>
                 <!-- Name -->
-                <input type="text" formControlName="contactFormName" id="defaultContactFormName" mdbInput
-                    class="form-control" placeholder="Nombre">
-                <!-- Email -->
-                <input type="email" formControlName="contactFormEmail" id="defaultContactFormEmail" mdbInput
-                    class="form-control" placeholder="E-mail">
+                <div class="cont-input">
+                    <input type="text" formControlName="name" id="defaultContactFormName" mdbInput class="form-control"
+                        placeholder="Nombre o Empresa">
+                    <!-- Email -->
+                </div>
+                <div class="cont-input">
+                    <input type="email" formControlName="email" id="defaultContactFormEmail" mdbInput
+                        class="form-control" placeholder="E-mail">
+                    <div *ngIf="Mail?.errors  && Mail?.touched">
+                        <p *ngIf="Mail?.hasError('required')" class="error">
+                            El email es requerido.
+                        </p>
+                        <p *ngIf="Mail?.hasError('email')" class="error">
+                            El formato del email debe ser válido.
+                        </p>
+                    </div>
+                </div>
                 <!-- Message -->
                 <div class="form-group">
-                    <textarea formControlName="contactFormMessage" class="form-control rounded-0" rows="3"
+                    <textarea formControlName="message" class="form-control rounded-0" rows="3"
                         placeholder="Mensaje"></textarea>
                 </div>
                 <!-- Send button -->

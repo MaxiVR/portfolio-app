@@ -13,7 +13,6 @@ export class CardEduComponent implements OnInit {
   
   @Input() cardEdu : CardEdu[] = [ ]
   
-  
   inputInstitucion:string="";
   inputPeriodo:string = "";
   index: number = 0;
@@ -42,7 +41,9 @@ export class CardEduComponent implements OnInit {
   
 
   drop(event: CdkDragDrop<string[]>) {
-    moveItemInArray(this.cardEdu, event.previousIndex, event.currentIndex);
+    if (this.authService.logIn){
+      moveItemInArray(this.cardEdu, event.previousIndex, event.currentIndex);
+    }
   }
 }
 

@@ -55,6 +55,10 @@ export class LoginComponent implements OnInit {
  
   }
 
+  isAdmin():boolean{
+    return this.authService.logIn;
+  }
+
   logout(){
     this.authService.logout()
   }
