@@ -15,18 +15,19 @@ export class AuthService {
   login (email:string, password: string){
     this.http.post (this.url , {email: email, password: password})
     .subscribe((resp:any) => {
-      this.router.navigate(['/contacto']);
+      this.router.navigate(['']);
       localStorage.setItem('auth_toke', resp.token);
+      console.log(resp.token);
       
     })
   }
 
   logout(){
-    localStorage.removeItem('token');
+    localStorage.removeItem('auth_toke');
   }
 
-  public get logIn(): boolean{
-    return (localStorage.getItem('token') !== null);
+  get logIn(): boolean{
+    return (localStorage.getItem('auth_toke') !== null);
   }
 
 

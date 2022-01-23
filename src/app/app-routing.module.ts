@@ -9,7 +9,7 @@ import { AdminGuard } from './guards/admin.guard';
 
 const routes: Routes = [
   {path: '', component:HomeComponent},
-  {path: 'contacto', component:ContactComponent, canActivate: [AdminGuard]},
+  {path: 'contacto', component:ContactComponent},
   {path: 'login', component:LoginComponent},
   {path: '**', component:Page404Component},
 ];
