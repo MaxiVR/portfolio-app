@@ -16,8 +16,8 @@ export class ProjectsService {
 
   constructor() { }
 
-  agregarCampoServicio(titulo:string, comentario:string, id: number){
-    const newCampo = new CardProject (titulo, comentario, id);
+  agregarCampoServicio(){
+    const newCampo = new CardProject ("Titulo del Proyecto", "Comenta tu proyecto", this.cardProject.length);
     this.cardProject.push(newCampo);
   }
 

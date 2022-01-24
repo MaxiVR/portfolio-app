@@ -13,16 +13,16 @@ export class AcademicBackgroundComponent implements OnInit {
   cardEdu : CardEdu[]=[]
   id:number = 0;
   
-  constructor(private servicioEdu:ServicioEduService) { }
+  constructor(private servicioEdu:ServicioEduService) {
 
- 
+    this.cardEdu = this.servicioEdu.cardEdu;
+
+  }
 
   ngOnInit(): void {
   }
 
   agregarCampos(){
-    this.id = this.cardEdu.length;
-    let newCampo = new CardEdu("", "", this.id);
-    this.cardEdu.push(newCampo);
+    this.servicioEdu.agregarCamposServicio()
   }
 }

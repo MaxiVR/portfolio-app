@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { CardEdu } from 'src/app/cardEdu.model';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { AuthService } from 'src/app/servicios/auth.service';
+import { ServicioEduService } from 'src/app/servicios/servicio-edu.service';
+
 
 
 @Component({
@@ -17,29 +19,26 @@ export class CardEduComponent implements OnInit {
   inputPeriodo:string = "";
   index: number = 0;
 
-  constructor(private authService:AuthService) { }
+  constructor(private authService:AuthService, private servicioEdu:ServicioEduService) { }
 
   ngOnInit(): void {
   }
 
   agregarInfo(){
-    this.cardEdu[this.index].institucion = this.inputInstitucion;
-    this.cardEdu[this.index].periodo= this.inputPeriodo;
+    this.servicioEdu.agregarInfoServicio(this.index,  this.inputInstitucion, this.inputPeriodo)
     this.inputInstitucion = "";
     this.inputPeriodo = "";
   }
 
   eliminarInfo($event: any){
-    /*this.servicioEdu.eliminarInfoServicio($event.target.id);*/
+    this.servicioEdu.eliminarInfoServicio($event.target.id);
     
   }
 
-  
   sendId($event: any){
     this.index = $event.target.id - 1;
     
   }
-  
 
   drop(event: CdkDragDrop<string[]>) {
     if (this.authService.logIn){

@@ -21,9 +21,7 @@ export class ExperienceComponent implements OnInit {
   }
 
   agregarCampos(){
-    this.id = this.cardExp.length;
-    let newCampo = new CardExp("", "", "", this.id);
-    this.cardExp.push(newCampo);
+    this.servicioExp.agregarCampoServicio();
   }
 
 }

@@ -1,7 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CardProject } from 'src/app/cardProject.model';
-import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { AuthService } from 'src/app/servicios/auth.service';
+import { ProjectsService } from 'src/app/servicios/projects.service';
+
 
 @Component({
   selector: 'app-card-project',
@@ -16,20 +18,19 @@ export class CardProjectComponent implements OnInit {
   inputComentario: string = "";
   index:number = 0;
 
-  constructor(private authService:AuthService) { }
+  constructor(private authService:AuthService, private projectsService:ProjectsService ) { }
 
   ngOnInit(): void {
   }
 
   agregarInfo(){
-    this.cardProject[this.index].titulo = this.inputTitulo;
-    this.cardProject[this.index].comentario= this.inputComentario;
+    this.projectsService.agregarInfoServicio(this.index, this.inputTitulo, this.inputComentario);
     this.inputTitulo = "";
     this.inputComentario= "";
   }
 
   eliminarInfo($event: any){
-    /*this.projectsService.eliminarInfo($event.target.id)*/
+    this.projectsService.eliminarInfo($event.target.id)
   }
 
   
