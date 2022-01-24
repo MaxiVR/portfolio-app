@@ -26,4 +26,12 @@ export class ContactComponent implements OnInit {
     return this.form.get("email");
    }
 
+   get Name(): any {
+    return this.form.get("name");
+   }
+
+   get Message(): any {
+    return this.form.get("message");
+   }
+
 }

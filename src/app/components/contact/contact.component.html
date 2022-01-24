@@ -16,8 +16,13 @@
                 <div class="cont-input">
                     <input type="text" formControlName="name" id="defaultContactFormName" mdbInput class="form-control"
                         placeholder="Nombre o Empresa">
-                    <!-- Email -->
+                    <div *ngIf="Name?.errors  && Name?.touched">
+                        <p *ngIf="Name?.hasError('required')" class="error">
+                            El Nombre/Empresa es requerido.
+                        </p>
+                    </div>
                 </div>
+                <!-- Email -->
                 <div class="cont-input">
                     <input type="email" formControlName="email" id="defaultContactFormEmail" mdbInput
                         class="form-control" placeholder="E-mail">
@@ -34,9 +39,14 @@
                 <div class="form-group">
                     <textarea formControlName="message" class="form-control rounded-0" rows="3"
                         placeholder="Mensaje"></textarea>
+                    <div *ngIf="Message?.errors  && Message?.touched">
+                        <p *ngIf="Message?.hasError('required')" class="error">
+                            Ingrese el mensaje que desea enviar.
+                        </p>
+                    </div>
                 </div>
                 <!-- Send button -->
-                <button class="btn-primary" type="submit">Enviar</button>
+                <button class="btn btn-primary" type="submit">Enviar</button>
             </form>
         </div>
     </div>
