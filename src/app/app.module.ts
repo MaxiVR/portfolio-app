@@ -24,7 +24,7 @@ import { ContactComponent } from './components/contact/contact.component';
 import { BtnEditComponent } from './components/btn-edit/btn-edit.component';
 import { BtnPlusComponent } from './components/btn-plus/btn-plus.component';
 import { BtnPencilComponent } from './components/btn-pencil/btn-pencil.component';
-
+import { ServicioEduService } from './servicios/servicio-edu.service';
 
 @NgModule({
   declarations: [
@@ -56,7 +56,7 @@ import { BtnPencilComponent } from './components/btn-pencil/btn-pencil.component
     DragDropModule,
     HttpClientModule, 
   ],
-  providers: [],
+  providers: [ServicioEduService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

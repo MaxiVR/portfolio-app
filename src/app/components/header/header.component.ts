@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ServicioHeaderService } from 'src/app/servicios/servicio-header.service';
+import { CardPerfil } from 'src/app/cardPerfil.model';
 
 @Component({
   selector: 'app-header',
@@ -6,19 +8,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  name: string = "Maximiliano Vazquez";
-  place: string = "La Plata, Bs As - Argentina";
-  myImage: any = 'https://img.freepik.com/vector-gratis/dibujos-animados-cara-hombre-joven_18591-59097.jpg?size=338&ext=jpg'
 
+  myImage: any;
+  inputNombre: string = "";
+  inputLocalidad: string ="";
 
-  constructor() { }
+  cardPerfil: CardPerfil[] = []
+
+  constructor(private servicioHeader:ServicioHeaderService) {
+
+    this.cardPerfil = this.servicioHeader.cardPerfil;
+    this.myImage = this.servicioHeader.myImage;
+   }
 
   ngOnInit(): void {
+    
   }
 
-  cambiarDatos(nom: string, lugar: string) {
-    this.name = nom;
-    this.place = lugar;
+  cambiarDatos() {
+    this.servicioHeader.cambiarDatosServicio(this.inputNombre, this.inputLocalidad);
+    
   }
 
   readURL(event: any): void {

@@ -30,7 +30,8 @@ export class CardEduComponent implements OnInit {
   }
 
   eliminarInfo($event: any){
-    this.cardEdu.splice($event.target.id - 1, 1)
+    /*this.servicioEdu.eliminarInfoServicio($event.target.id);*/
+    
   }
 
   

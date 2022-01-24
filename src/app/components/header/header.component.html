@@ -15,22 +15,22 @@
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                  <input type="text" placeholder="Nombre y Apellido" #nom size="50" >
-                  <input type="text" placeholder="Ubicación" #lugar size="50">
+                  <input type="text" placeholder="Nombre y Apellido" [(ngModel)]="inputNombre" size="50" >
+                  <input type="text" placeholder="Ubicación" [(ngModel)]="inputLocalidad" size="50">
                   <input type="file" accept="image/*" (change)="readURL($event)">
                 </div>
   
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                   <button type="button" class="btn btn-primary" 
-                  (click)="cambiarDatos(nom.value, lugar.value)">Guardar</button>
+                    (click)="cambiarDatos()">Guardar</button>
                 </div>
               </div>
             </div>
           </div>
-          <div id="info">
-            <h2>{{name}}</h2>
-            <p>{{place}}</p>
+          <div *ngFor="let card of cardPerfil" id="info">
+            <h2>{{card.nombre}}</h2>
+            <h6>{{card.ubicacion}}</h6>
           </div>
         </div>
       </div>

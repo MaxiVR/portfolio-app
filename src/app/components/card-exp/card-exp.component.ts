@@ -10,6 +10,7 @@ import { AuthService } from 'src/app/servicios/auth.service';
   styleUrls: ['./card-exp.component.css']
 })
 export class CardExpComponent implements OnInit {
+
   @Input() cardExp : CardExp[] = [ ];
 
   
@@ -34,7 +35,7 @@ export class CardExpComponent implements OnInit {
   }
 
   eliminarInfo($event: any){
-    this.cardExp.splice($event.target.id - 1, 1)
+    /*this.servicioExp.eliminarInfoServicio($event.target.id);*/
   }
 
   
@@ -51,4 +52,8 @@ export class CardExpComponent implements OnInit {
   }
 }
 
+
+function empresa(index: number, empresa: any) {
+  throw new Error('Function not implemented.');
+}
 

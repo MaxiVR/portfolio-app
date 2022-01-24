@@ -1,5 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import { CardEdu } from 'src/app/cardEdu.model';
+import { ServicioEduService } from 'src/app/servicios/servicio-edu.service';
+
 
 @Component({
   selector: 'app-academic-background',
@@ -8,14 +10,12 @@ import { CardEdu } from 'src/app/cardEdu.model';
 })
 export class AcademicBackgroundComponent implements OnInit {
 
-cardEdu : CardEdu[]=[
-      new CardEdu ("Inst 1", "Marzo a Abril 2010", 0 ),
-      new CardEdu ("Inst 2", "Marzo a Abril 2015", 1 ),
-  ]
-
+  cardEdu : CardEdu[]=[]
   id:number = 0;
   
-  constructor() { }
+  constructor(private servicioEdu:ServicioEduService) { }
+
+ 
 
   ngOnInit(): void {
   }

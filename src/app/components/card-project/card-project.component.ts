@@ -14,7 +14,6 @@ export class CardProjectComponent implements OnInit {
 
   inputTitulo: string = "";
   inputComentario: string = "";
-  id: number = 0;
   index:number = 0;
 
   constructor(private authService:AuthService) { }
@@ -30,7 +29,7 @@ export class CardProjectComponent implements OnInit {
   }
 
   eliminarInfo($event: any){
-    this.cardProject.splice($event.target.id - 1, 1)
+    /*this.projectsService.eliminarInfo($event.target.id)*/
   }
 
   
