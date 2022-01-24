@@ -73,5 +73,5 @@ body{
 }
 
 input, textarea{
-    width: fill-available;
+    width: stretch;
 }
