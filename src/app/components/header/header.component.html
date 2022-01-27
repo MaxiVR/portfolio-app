@@ -14,12 +14,12 @@
                   <h5 class="modal-title" id="ModalLabel">Informacion de Perfil</h5>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                  <input type="text" placeholder="Nombre y Apellido" [(ngModel)]="inputNombre" size="50" >
+                <div class="modal-body">                  
+                  <input type="text" placeholder="Apellido" [(ngModel)]="inputApellido" size="50" >
+                  <input type="text" placeholder="Nombre" [(ngModel)]="inputNombre" size="50" >
                   <input type="text" placeholder="Ubicación" [(ngModel)]="inputLocalidad" size="50">
                   <input type="file" accept="image/*" (change)="readURL($event)">
-                </div>
-  
+                </div> 
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                   <button type="button" class="btn btn-primary" 
@@ -29,8 +29,8 @@
             </div>
           </div>
           <div >
-            <h2>{{nombre}} {{apellido}}</h2>
-            <h6>{{ciudadProvincia}}</h6>
+            <h2>{{inputNombre}} {{inputApellido}}</h2>
+            <h6>{{inputLocalidad}}</h6>
           </div>
         </div>
       </div>

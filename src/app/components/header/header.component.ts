@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ServicioHeaderService } from 'src/app/servicios/servicio-header.service';
-import { CardPerfil } from 'src/app/cardPerfil.model';
 
 @Component({
   selector: 'app-header',
@@ -8,36 +7,30 @@ import { CardPerfil } from 'src/app/cardPerfil.model';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-
-  nombre: string="";
-  apellido: string = "";
-  ciudadProvincia: string = "";
+  
   myImage: any;
   inputNombre: any= "";
+  inputApellido: any = "";
   inputLocalidad: string ="";
 
-  constructor(private servicioHeader:ServicioHeaderService) {
-  
-    this.myImage = this.servicioHeader.myImage;
-   }
+  constructor(private servicioHeader:ServicioHeaderService) {  }
 
   ngOnInit(): void {
-    this.servicioHeader.getPersona().subscribe (data => {
-      this.nombre = data.persona.nombre;
-      this.apellido = data.persona.apellido;
-      this.ciudadProvincia = data.persona.ciudadProvincia;
+    this.servicioHeader.update().subscribe (data => {
+      this.inputNombre = data.nombre;
+      this.inputApellido = data.apellido;
+      this.inputLocalidad = data.ciudadProvincia;
+      this.myImage = data.url_foto;
     });
     
   }
 
   cambiarDatos() {
-    this.servicioHeader.cambiarDatosServicio(this.inputNombre).subscribe(data => {
+    this.servicioHeader.cambiarDatosServicio(this.inputNombre, this.inputApellido, this.inputLocalidad, this.myImage)
+    .subscribe(data => {
       console.log(data)} );
-    this.servicioHeader.getPersona().subscribe (data => {
-      this.nombre = data.persona.nombre;});
+    this.ngOnInit();
   }
-
-
 
 
   readURL(event: any): void {
