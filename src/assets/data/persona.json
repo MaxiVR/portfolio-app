@@ -1,0 +1,16 @@
+{
+    "persona":
+        {
+            "id": 1,
+            "nombre": "Maximiliano",
+            "apellido": "Vazquez",
+            "ciudadProvincia": "La Plata, Bs. As.",
+            "fechaNac": "31/05/1988",
+            "telefono": "2216123414",
+            "correo": "maxi_ve88@hotmail.com",
+            "sobre_mi": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ipsum ante, dapibus ac suscipit quis, aliquam vel tortor. Aenean egestas in odio non molestie. Nulla neque lectus, consectetur at euismod sit amet, euismod ut lorem. Maecenas turpis tellus, ullamcorper in velit a, ultrices semper nunc. Etiam suscipit accumsan urna, a ullamcorper ex auctor quis. Praesent tempor efficitur faucibus. Duis iaculis, ante id sollicitudin tincidunt, arcu purus elementum turpis, vitae consectetur eros purus sed lorem. Cras viverra nisl sit amet vestibulum cursu",
+            "url_foto": "www.foto.com/foto"
+
+        }
+    
+}
