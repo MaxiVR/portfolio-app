@@ -1,0 +1,39 @@
+{
+  "persona": {
+    "id": 1,
+    "nombre": "Maximiliano",
+    "apellido": "Vazquez",
+    "ciudadProvincia": "La Plata - Bs. As.",
+    "fechaNac": "31/05/1988",
+    "telefono": "2216123414",
+    "correo": "maxi_ve88@hotmail.com",
+    "sobreMi": "sdasdasdasd",
+    "url_foto": "https://img.freepik.com/vector-gratis/dibujos-animados-cara-hombre-joven_18591-59097.jpg?size=338&ext=jpg"
+  },
+  "experiencia": [
+    {
+      "nombreEmpresa": "",
+      "puesto": "",
+      "periodo": "",
+      "id": 1
+    },
+    {
+      "nombreEmpresa": "",
+      "puesto": "",
+      "periodo": "",
+      "id": 4
+    },
+    {
+      "nombreEmpresa": "",
+      "puesto": "",
+      "periodo": "",
+      "id": 5
+    },
+    {
+      "nombreEmpresa": "",
+      "puesto": "",
+      "periodo": "",
+      "id": 6
+    }
+  ]
+}

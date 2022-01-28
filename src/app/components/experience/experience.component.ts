@@ -11,17 +11,21 @@ export class ExperienceComponent implements OnInit {
 
   cardExp: CardExp[] = [];
 
-  id:number = 0;
-
   constructor(private servicioExp:ServicioExpService) { 
-    this.cardExp = this.servicioExp.cardExp;
+  this.servicioExp.getData().subscribe(data => { console.log(data)
+      this.cardExp = data})
   }
 
   ngOnInit(): void {
+    
   }
 
   agregarCampos(){
-    this.servicioExp.agregarCampoServicio();
+    console.log(this.cardExp);
+    const newCard = {nombreEmpresa:"", puesto:"", periodo:"" };
+    this.servicioExp.addCampo(newCard).subscribe(newCard => (this.cardExp.push(newCard)));
+    this.servicioExp.getData().subscribe(data => { console.log(data)
+      this.cardExp = data})
   }
 
 }

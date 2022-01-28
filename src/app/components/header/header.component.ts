@@ -16,7 +16,7 @@ export class HeaderComponent implements OnInit {
   constructor(private servicioHeader:ServicioHeaderService) {  }
 
   ngOnInit(): void {
-    this.servicioHeader.update().subscribe (data => {
+    this.servicioHeader.getData().subscribe (data => {
       this.inputNombre = data.nombre;
       this.inputApellido = data.apellido;
       this.inputLocalidad = data.ciudadProvincia;
@@ -26,9 +26,9 @@ export class HeaderComponent implements OnInit {
   }
 
   cambiarDatos() {
-    this.servicioHeader.cambiarDatosServicio(this.inputNombre, this.inputApellido, this.inputLocalidad, this.myImage)
-    .subscribe(data => {
-      console.log(data)} );
+    this.servicioHeader.updatePerfil(this.inputNombre, this.inputApellido, this.inputLocalidad, 
+      this.myImage)
+    .subscribe(data => { console.log(data.persona)} );
     this.ngOnInit();
   }
 

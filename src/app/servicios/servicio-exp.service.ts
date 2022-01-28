@@ -1,34 +1,40 @@
 import { Injectable } from '@angular/core';
 import { CardExp } from '../cardExp.model';
+import { Observable, of } from 'rxjs';
+import { HttpClient, HttpHeaders} from '@angular/common/http'
+
+const httpOption = {
+  headers: new HttpHeaders({
+    'Content-Type':'application/json'
+  })
+}
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class ServicioExpService {
 
-  cardExp: CardExp[] = [
-      
-    new CardExp ("Empresa 1", "Julio 2011 a Agosto 2016", "Administrativo", 0),
-    new CardExp ("Empresa 2", "Julio 2013 a Agosto 2016", "Administrativo", 1),
-    new CardExp ("Empresa 3", "Mayo 2015 a Agosto 2014", "Administrativo", 2),
-]
+  private apiURL = 'http://localHost:5000/experiencia';
 
-  constructor() { }
+  constructor(private http:HttpClient) { }
 
-  agregarCampoServicio(){
-    let newCampo = new CardExp("", "", "", this.cardExp.length );
-    this.cardExp.push(newCampo);
+  getData(): Observable<any> {
+    return this.http.get<any>(this.apiURL);
   }
 
-  agregarInfoServicio(index:number, empresa:string, puesto: string, periodo: string){
-    this.cardExp[index].empresa = empresa;
-    this.cardExp[index].puesto= puesto;
-    this.cardExp[index].periodo= periodo;
+  addCampo(newCampo:any): Observable<any>{
+    return this.http.post<any>(this.apiURL, newCampo, httpOption)
   }
 
-  eliminarInfoServicio(id: number){
-    this.cardExp.splice(id - 1, 1);
+  updateExperiencia(cardExp: CardExp): Observable<any>{
+    const url = `${this.apiURL}/${cardExp.id}`
+    return this.http.put<any>(url, cardExp, httpOption)
   }
 
+  deleteExperiencia(cardExp: CardExp): Observable<any>{
+      const url = `${this.apiURL}/${cardExp.id}`;
+      return this.http.delete<any>(url);
+    }
 
 }

@@ -10,14 +10,19 @@ export class ServicioHeaderService {
   
   constructor(private http:HttpClient) { }
 
-  update(): Observable<any> {
+  getData(): Observable<any> {
     return this.http.get<any>('http://localhost:5000/persona');
   }
 
-  cambiarDatosServicio(nombre:string, apellido: string, ubicacion: string, myImage:string):Observable<any> {
+  updatePerfil(nombre:string, apellido: string, ubicacion: string, myImage:string):Observable<any> {
     return this.http.patch<any>('http://localhost:5000/persona', 
-    {"nombre":nombre, "apellido": apellido, "ciudadProvincia":ubicacion, "url_foto": myImage});
+    {'nombre':nombre, 'apellido':apellido, 'ciudadProvincia':ubicacion, 'url_foto':myImage});
     
+  }
+
+  updateAbout(about:string):Observable<any>{
+    console.log(about);
+    return this.http.patch<any>('http://localhost:5000/persona', {"sobreMi":about});
   }
 
 }

@@ -27,29 +27,31 @@ export class CardExpComponent implements OnInit {
   }
 
   agregarInfo(){
-    this.servicioExp.agregarInfoServicio(this.index, this.inputEmpresa, this.inputPuesto, this.inputPeriodo);
+    this.cardExp[this.index].nombreEmpresa = this.inputEmpresa;
+    this.cardExp[this.index].puesto = this.inputPuesto;
+    this.cardExp[this.index].periodo = this.inputPeriodo;
+    this.servicioExp.updateExperiencia(this.cardExp[this.index]).subscribe();
     this.inputEmpresa = "";
     this.inputPuesto= "";
     this.inputPeriodo = "";
   }
 
   eliminarInfo($event: any){
-    this.servicioExp.eliminarInfoServicio($event.target.id);
+    this.index = $event.target.id - 1;
+    this.servicioExp.deleteExperiencia(this.cardExp[this.index])
+    .subscribe(() => (this.cardExp = this.cardExp.splice(this.index, 1)));
+    this.servicioExp.getData().subscribe(data => { console.log(data)
+      this.cardExp = data})
   }
 
   sendId($event: any){
     this.index = $event.target.id - 1;
-  }
+  } 
 
   drop(event: CdkDragDrop<string[]>) {
-    if (this.authService.logIn){
+    if (!this.authService.logIn){
       moveItemInArray(this.cardExp, event.previousIndex, event.currentIndex);
     }
   }
-}
-
-
-function empresa(index: number, empresa: any) {
-  throw new Error('Function not implemented.');
 }
 
