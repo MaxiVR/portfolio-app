@@ -37,11 +37,9 @@ export class CardExpComponent implements OnInit {
   }
 
   eliminarInfo($event: any){
-    this.index = $event.target.id - 1;
-    this.servicioExp.deleteExperiencia(this.cardExp[this.index])
-    .subscribe(() => (this.cardExp = this.cardExp.splice(this.index, 1)));
-    this.servicioExp.getData().subscribe(data => { console.log(data)
-      this.cardExp = data})
+    let i = $event.target.id - 1;
+    this.servicioExp.deleteExperiencia(this.cardExp[i])
+    .subscribe(() => (this.cardExp = this.cardExp.filter(t => t.id !== this.cardExp[i].id)))
   }
 
   sendId($event: any){

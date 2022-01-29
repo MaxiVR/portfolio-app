@@ -7,7 +7,7 @@
                         [targetModal]="'#modalProject'">
             </app-btn-edit>
             <div>
-                <h4>{{card.titulo}}</h4>
+                <h4>{{card.tituloProyecto}}</h4>
             </div>
             <p>{{card.comentario}}</p><br />
         </div>
@@ -21,7 +21,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <input type="text" placeholder="Nombre del Proyecto" [(ngModel)]="inputTitulo" size="55">
+                    <input type="text" placeholder="Nombre del Proyecto" [(ngModel)]="inputProyecto" size="55">
                     <textarea placeholder="Comentar Proyecto" [(ngModel)]="inputComentario" rows="4"
                         cols="55"></textarea>
                 </div>

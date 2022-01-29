@@ -11,22 +11,18 @@ import { ProjectsService } from 'src/app/servicios/projects.service';
 export class ProjectsComponent implements OnInit {
   
   cardProject: CardProject[] = [ ];
-  id: number = 0;
 
-  constructor(private projectsService:ProjectsService) { 
-
-    this.cardProject = this.projectsService.cardProject;
-
-  }
+  constructor(private projectsService:ProjectsService) { }
 
   ngOnInit(): void {
+    this.projectsService.getData().subscribe (data => {this.cardProject = data});
   }
 
 
   agregarCampos(){
-    this.projectsService.agregarCampoServicio()
-    
+    let newCard = {tituloProyecto:"Ingrese Titulo del Proyecto", comentario:"Comente aquí su proyecto" };
+    this.projectsService.addCampo(newCard).subscribe((newCard) => (this.cardProject.push(newCard)));
+    this.ngOnInit();
   }
-
 
 }

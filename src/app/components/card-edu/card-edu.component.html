@@ -2,7 +2,7 @@
     <div cdkDropList (cdkDropListDropped)="drop($event)" >
         <div *ngFor="let card of cardEdu; let i=index" id="{{i + 1}}" cdkDrag  >
             <div class="categoria">
-                Institución: {{card.institucion}}<br />
+                Institución: {{card.nombreInstitucion}}<br />
                 Peridodo: {{card.periodo}}<br /><br />
             </div>
 

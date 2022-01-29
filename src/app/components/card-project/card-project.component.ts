@@ -14,7 +14,7 @@ export class CardProjectComponent implements OnInit {
 
   @Input() cardProject : CardProject [] = [];
 
-  inputTitulo: string = "";
+  inputProyecto: string = "";
   inputComentario: string = "";
   index:number = 0;
 
@@ -24,13 +24,17 @@ export class CardProjectComponent implements OnInit {
   }
 
   agregarInfo(){
-    this.projectsService.agregarInfoServicio(this.index, this.inputTitulo, this.inputComentario);
-    this.inputTitulo = "";
-    this.inputComentario= "";
+    this.cardProject[this.index].tituloProyecto = this.inputProyecto;
+    this.cardProject[this.index].comentario = this.inputComentario;
+    this.projectsService.updateProyecto(this.cardProject[this.index]).subscribe();
+    this.inputProyecto = "";
+    this.inputComentario = "";
   }
 
   eliminarInfo($event: any){
-    this.projectsService.eliminarInfo($event.target.id)
+     let i = $event.target.id - 1;
+    this.projectsService.deleteProyecto(this.cardProject[i])
+    .subscribe(() => (this.cardProject = this.cardProject.filter(t => t.id !== this.cardProject[i].id)))
   }
 
   

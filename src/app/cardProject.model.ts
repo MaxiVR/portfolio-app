@@ -1,12 +1,12 @@
 export class CardProject {
 
-    titulo: string = "";
+    tituloProyecto: string = "";
     comentario: string = "";
     id: number = 0;
 
     constructor(titulo:string, comentario: string, id: number) { 
 
-        this.titulo = titulo;
+        this.tituloProyecto = titulo;
         this.comentario = comentario;
         this.id = id;
 

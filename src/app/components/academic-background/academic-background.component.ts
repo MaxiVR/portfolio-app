@@ -11,18 +11,19 @@ import { ServicioEduService } from 'src/app/servicios/servicio-edu.service';
 export class AcademicBackgroundComponent implements OnInit {
 
   cardEdu : CardEdu[]=[]
-  id:number = 0;
   
   constructor(private servicioEdu:ServicioEduService) {
-
-    this.cardEdu = this.servicioEdu.cardEdu;
 
   }
 
   ngOnInit(): void {
+    this.servicioEdu.getData().subscribe(data => { this.cardEdu = data});
   }
 
   agregarCampos(){
-    this.servicioEdu.agregarCamposServicio()
+    console.log(this.cardEdu);
+    let newCard = {nombreInstitucion:"", periodo:"" };
+    this.servicioEdu.addCampo(newCard).subscribe((newCard) => (this.cardEdu.push(newCard)));
+    this.ngOnInit();
   }
 }

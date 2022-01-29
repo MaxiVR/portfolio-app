@@ -1,13 +1,13 @@
 export class CardEdu{
 
-    institucion: string = "";
+    nombreInstitucion: string = "";
     periodo: string = "";
     id: number = 0;
     
 
     constructor(institucion:string, periodo: string, id:number) { 
 
-        this.institucion = institucion;
+        this.nombreInstitucion = institucion;
         this.periodo = periodo;
         this.id = id;
 

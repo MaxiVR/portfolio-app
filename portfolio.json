@@ -15,25 +15,48 @@
       "nombreEmpresa": "",
       "puesto": "",
       "periodo": "",
-      "id": 1
+      "id": 7
     },
     {
       "nombreEmpresa": "",
       "puesto": "",
       "periodo": "",
+      "id": 8
+    },
+    {
+      "nombreEmpresa": "4r",
+      "puesto": "4r4",
+      "periodo": "r4r",
+      "id": 9
+    }
+  ],
+  "educacion": [
+    {
+      "nombreInstitucion": "",
+      "periodo": "",
+      "id": 18
+    },
+    {
+      "nombreInstitucion": "4f4f",
+      "periodo": "4f4f",
+      "id": 19
+    },
+    {
+      "nombreInstitucion": "",
+      "periodo": "",
+      "id": 20
+    }
+  ],
+  "proyectos": [
+    {
+      "tituloProyecto": "Portfolio",
+      "comentario": "Argentina programa",
       "id": 4
     },
     {
-      "nombreEmpresa": "",
-      "puesto": "",
-      "periodo": "",
+      "tituloProyecto": "Ingrese Titulo del Proyecto",
+      "comentario": "Comente aquí su proyecto",
       "id": 5
-    },
-    {
-      "nombreEmpresa": "",
-      "puesto": "",
-      "periodo": "",
-      "id": 6
     }
   ]
 }

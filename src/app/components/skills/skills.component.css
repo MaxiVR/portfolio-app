@@ -12,6 +12,7 @@
 .cont-icon-lang{
     margin-right: 10px;
     width: -webkit-fill-available;
+    width: -moz-available;
 
 }
 

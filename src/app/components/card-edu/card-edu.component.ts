@@ -25,14 +25,20 @@ export class CardEduComponent implements OnInit {
   }
 
   agregarInfo(){
-    this.servicioEdu.agregarInfoServicio(this.index,  this.inputInstitucion, this.inputPeriodo)
+    this.cardEdu[this.index].nombreInstitucion = this.inputInstitucion;
+    this.cardEdu[this.index].periodo = this.inputPeriodo;
+    this.servicioEdu.updateEducacion(this.cardEdu[this.index]).subscribe();
     this.inputInstitucion = "";
     this.inputPeriodo = "";
   }
 
   eliminarInfo($event: any){
-    this.servicioEdu.eliminarInfoServicio($event.target.id);
-    
+     let i = $event.target.id - 1;
+    /*this.servicioEdu.deleteEducacion(this.cardEdu[this.index])
+    .subscribe(() => (this.cardEdu = this.cardEdu.splice(this.index, 1)));
+    this.servicioEdu.getData().subscribe(data => { this.cardEdu = data})*/
+    this.servicioEdu.deleteEducacion(this.cardEdu[i])
+    .subscribe(() => (this.cardEdu = this.cardEdu.filter(t => t.id !== this.cardEdu[i].id)))
   }
 
   sendId($event: any){

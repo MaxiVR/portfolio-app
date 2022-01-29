@@ -1,34 +1,41 @@
 import { Injectable } from '@angular/core';
 import { CardEdu } from '../cardEdu.model';
+import { Observable, of } from 'rxjs';
+import { HttpClient, HttpHeaders} from '@angular/common/http'
+
+const httpOption = {
+  headers: new HttpHeaders({
+    'Content-Type':'application/json'
+  })
+}
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class ServicioEduService {
 
-  
-cardEdu : CardEdu[]=[
-  new CardEdu ("Inst 1", "Marzo a Abril 2010", 0 ),
-  new CardEdu ("Inst 2", "Marzo a Abril 2015", 1 ),
-  new CardEdu ("Inst 3", "Marzo a Abril 2018", 2 ),
-  ]
+  private apiURL = 'http://localHost:5000/educacion';
 
-  constructor() { }
+  constructor(private http:HttpClient) { }
 
-  
-  agregarCamposServicio(): void{
-    let newCampo = new CardEdu("", "", this.cardEdu.length );
-    this.cardEdu.push(newCampo);
+  getData(): Observable<any> {
+    return this.http.get<any>(this.apiURL);
   }
 
-  agregarInfoServicio(index:number, institucion:string, periodo: string){
-    this.cardEdu[index].institucion = institucion;
-    this.cardEdu[index].periodo= periodo;
+  addCampo(newCampo:any): Observable<any>{
+    return this.http.post<any>(this.apiURL, newCampo, httpOption)
   }
 
-  eliminarInfoServicio(id: number){
-    this.cardEdu.splice(id - 1, 1);
+  updateEducacion(cardEdu: CardEdu): Observable<any>{
+    const url = `${this.apiURL}/${cardEdu.id}`
+    return this.http.put<any>(url, cardEdu, httpOption)
   }
 
-  
+  deleteEducacion(cardEdu: CardEdu): Observable<any>{
+      const url = `${this.apiURL}/${cardEdu.id}`;
+      return this.http.delete<any>(url);
+    }
+
 }
+
