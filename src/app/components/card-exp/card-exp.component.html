@@ -2,9 +2,10 @@
     <div cdkDropList (cdkDropListDropped)="drop($event)">
         <div *ngFor="let card of cardExp let i=index"  id="{{i + 1}}" cdkDrag>
             <div class="categoria">
-                Empresa: {{card.nombreEmpresa}}<br />
-                Puesto: {{card.puesto}}<br />
-                Periodo: {{card.periodo}}<br /><br />
+                Empresa:&nbsp; {{card.empresa}}<br />
+                Puesto:&nbsp; {{card.puesto}}<br />
+                Periodo:&nbsp; {{card.fechaInicio}} - {{card.fechaFin}}<br />
+                Descripción del Trabajo:&nbsp; {{card.descripcionTrabajo}}<br /><br />
             </div>
 
             <app-btn-edit (add)="sendId($event)" 
@@ -25,7 +26,9 @@
                 <div class="modal-body">
                     <input type="text" placeholder="Empresa" [(ngModel)]="inputEmpresa" size="50">
                     <input type="text" placeholder="Puesto"  [(ngModel)]="inputPuesto" size="50">
-                    <input type="text" placeholder="Periodo" [(ngModel)]="inputPeriodo" size="50">
+                    <input type="text" placeholder="Fecha de Inicio" [(ngModel)]="inputInicio" size="50">
+                    <input type="text" placeholder="Fecha de Finalización" [(ngModel)]="inputFin" size="50">
+                    <input type="text" placeholder="Descrición del Trabajo" [(ngModel)]="inputDescripcion" size="50">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>

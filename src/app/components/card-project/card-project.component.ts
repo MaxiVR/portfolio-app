@@ -15,7 +15,7 @@ export class CardProjectComponent implements OnInit {
   @Input() cardProject : CardProject [] = [];
 
   inputProyecto: string = "";
-  inputComentario: string = "";
+  inputDescripcion: string = "";
   index:number = 0;
 
   constructor(private authService:AuthService, private projectsService:ProjectsService ) { }
@@ -24,23 +24,24 @@ export class CardProjectComponent implements OnInit {
   }
 
   agregarInfo(){
-    this.cardProject[this.index].tituloProyecto = this.inputProyecto;
-    this.cardProject[this.index].comentario = this.inputComentario;
-    this.projectsService.updateProyecto(this.cardProject[this.index]).subscribe();
+    if (this.inputProyecto !== ""){
+      this.cardProject[this.index].nombreProyecto = this.inputProyecto;
+    }
+    this.cardProject[this.index].descripcionProyecto= this.inputDescripcion;
+    this.projectsService.updateProyecto(this.cardProject[this.index], this.cardProject[this.index].id_proyecto).subscribe();
     this.inputProyecto = "";
-    this.inputComentario = "";
+    this.inputDescripcion = "";
   }
 
   eliminarInfo($event: any){
-     let i = $event.target.id - 1;
-    this.projectsService.deleteProyecto(this.cardProject[i])
-    .subscribe(() => (this.cardProject = this.cardProject.filter(t => t.id !== this.cardProject[i].id)))
+    let id = this.cardProject[$event.target.id - 1].id_proyecto;
+    this.projectsService.deleteProyecto(id)
+    .subscribe(() => (this.cardProject = this.cardProject.filter(t => t.id_proyecto !== this.cardProject[id].id_proyecto)))
+    setTimeout (() => {this.projectsService.getData().subscribe(data => { this.cardProject = data});}, 600);
   }
 
-  
   sendId($event: any){
     this.index = $event.target.id - 1;
-    
   }
 
   drop(event: CdkDragDrop<string[]>) {

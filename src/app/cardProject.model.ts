@@ -1,14 +1,14 @@
 export class CardProject {
 
-    tituloProyecto: string = "";
-    comentario: string = "";
-    id: number = 0;
+    nombreProyecto: string = "";
+    descripcionProyecto: string = "";
+    id_proyecto: number = 0;
 
-    constructor(titulo:string, comentario: string, id: number) { 
+    constructor(proyecto:string, descripcion: string, id: number) { 
 
-        this.tituloProyecto = titulo;
-        this.comentario = comentario;
-        this.id = id;
+        this.nombreProyecto = proyecto;
+        this.descripcionProyecto = descripcion;
+        this.id_proyecto = id;
 
 
     }

@@ -15,7 +15,6 @@ export class ServicioHeaderService {
 
   getData(id: number): Observable<any> {
     return this.http.get<any>(this.apiURL + "ver/" + id);
-    console.log("anda");
   }
 
   updatePerfil(nombre:string, apellido: string, ubicacion: string, myImage:string):Observable<any> {

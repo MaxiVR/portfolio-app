@@ -1,17 +1,21 @@
 export class CardExp{
 
-    nombreEmpresa: string = "";
-    periodo: string = "";
+    empresa: string = "";
     puesto: string = "";
-    id?: number = 0;
+    descripcionTrabajo: string = "";
+    fechaInicio: string = "";
+    fechaFin: string = "";
+    id_trabajo: number = 0;
     
 
-    constructor(empresa:string, inicio: string, puesto: string, id:number) { 
+    constructor(empresa:string, puesto: string, descripcionTrabajo:string, fechaInicio:string, fechaFin:string,  id:number) { 
 
-        this.nombreEmpresa = empresa;
+        this.empresa = empresa;
         this.puesto = puesto;
-        this.periodo = inicio;;
-        this.id = id;
+        this.descripcionTrabajo = descripcionTrabajo;
+        this.fechaInicio = fechaInicio;
+        this.fechaFin = fechaFin;
+        this.id_trabajo = id;
 
     }
 

@@ -39,13 +39,9 @@ export class CardEduComponent implements OnInit {
   }
 
   eliminarInfo($event: any){
-    console.log(this.cardEdu);
-    console.log(this.cardEdu[$event.target.id - 1]);
-    console.log(this.cardEdu[$event.target.id - 1].id_edu);
     let id = this.cardEdu[$event.target.id - 1].id_edu;
     /*this.servicioEdu.deleteEducacion(id)
     .subscribe(() => (this.cardEdu = this.cardEdu.splice(this.index, 1)));*/
-    
     this.servicioEdu.deleteEducacion(id).subscribe(() => (this.cardEdu = this.cardEdu.filter(t => t.id_edu !== this.cardEdu[id].id_edu)))
     setTimeout (() => {this.servicioEdu.getData().subscribe(data => { this.cardEdu = data});}, 400);
   }

@@ -7,9 +7,9 @@
                         [targetModal]="'#modalProject'">
             </app-btn-edit>
             <div>
-                <h4>{{card.tituloProyecto}}</h4>
+                <h4>{{card.nombreProyecto}}</h4>
             </div>
-            <p>{{card.comentario}}</p><br />
+            <p>{{card.descripcionProyecto}}</p><br />
         </div>
     </div>
     <!-- Modal -->
@@ -22,7 +22,7 @@
                 </div>
                 <div class="modal-body">
                     <input type="text" placeholder="Nombre del Proyecto" [(ngModel)]="inputProyecto" size="55">
-                    <textarea placeholder="Comentar Proyecto" [(ngModel)]="inputComentario" rows="4"
+                    <textarea placeholder="Comentar Proyecto" [(ngModel)]="inputDescripcion" rows="4"
                         cols="55"></textarea>
                 </div>
                 <div class="modal-footer">

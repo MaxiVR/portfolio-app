@@ -16,7 +16,6 @@ export class AcademicBackgroundComponent implements OnInit {
 
   ngOnInit(): void {
     this.servicioEdu.getData().subscribe(data => { this.cardEdu = data})
-    this.servicioEdu.data();
   }
 
   agregarCampos(){

@@ -15,9 +15,11 @@ export class CardExpComponent implements OnInit {
   @Input() cardExp : CardExp[] = [ ];
 
   
-  inputEmpresa:string = "";
+  inputEmpresa: string = "";
   inputPuesto: string = "";
-  inputPeriodo: string = "";
+  inputInicio: string = "";
+  inputFin: string = "";
+  inputDescripcion: string = "";
   index:number = 0;
 
 
@@ -27,19 +29,23 @@ export class CardExpComponent implements OnInit {
   }
 
   agregarInfo(){
-    this.cardExp[this.index].nombreEmpresa = this.inputEmpresa;
+    this.cardExp[this.index].empresa = this.inputEmpresa;
     this.cardExp[this.index].puesto = this.inputPuesto;
-    this.cardExp[this.index].periodo = this.inputPeriodo;
-    this.servicioExp.updateExperiencia(this.cardExp[this.index]).subscribe();
-    this.inputEmpresa = "";
-    this.inputPuesto= "";
-    this.inputPeriodo = "";
+    this.cardExp[this.index].fechaInicio = this.inputInicio;
+    this.cardExp[this.index].fechaFin = this.inputFin;
+    this.cardExp[this.index].descripcionTrabajo = this.inputDescripcion;
+    this.servicioExp.updateExperiencia(this.cardExp[this.index], this.cardExp[this.index].id_trabajo).subscribe();
+    this.inputEmpresa = " ";
+    this.inputPuesto = " ";
+    this.inputInicio = " ";
+    this.inputFin = " ";
+    this.inputDescripcion = " ";
   }
 
   eliminarInfo($event: any){
-    let i = $event.target.id - 1;
-    this.servicioExp.deleteExperiencia(this.cardExp[i])
-    .subscribe(() => (this.cardExp = this.cardExp.filter(t => t.id !== this.cardExp[i].id)))
+    let id = this.cardExp[$event.target.id - 1].id_trabajo;
+    this.servicioExp.deleteExperiencia(id).subscribe(() => (this.cardExp = this.cardExp.filter(t => t.id_trabajo !== this.cardExp[id].id_trabajo)))
+    setTimeout (() => {this.servicioExp.getData().subscribe(data => { this.cardExp = data});}, 600);
   }
 
   sendId($event: any){

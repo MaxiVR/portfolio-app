@@ -14,26 +14,24 @@ const httpOption = {
 })
 export class ProjectsService {
 
-  private apiURL = 'http://localHost:5000/proyectos'
+  private apiURL = 'http://localHost:8080/persona/proyecto/'
 
   constructor(private http:HttpClient) { }
 
   getData(): Observable<any> {
-    return this.http.get<any>(this.apiURL);
+    return this.http.get<any>(this.apiURL + "ver/todo");
   }
 
   addCampo(newCampo:any): Observable<any>{
-    return this.http.post<any>(this.apiURL, newCampo, httpOption)
+    return this.http.post<any>(this.apiURL + "new", newCampo, httpOption)
   }
 
-  updateProyecto(cardProject: CardProject): Observable<any>{
-    const url = `${this.apiURL}/${cardProject.id}`
-    return this.http.put<any>(url, cardProject, httpOption)
+  updateProyecto(cardProject: CardProject, id: number): Observable<any>{
+    return this.http.patch<any>(this.apiURL + "modificar/" + id, cardProject, httpOption)
   }
 
-  deleteProyecto(cardProject: CardProject): Observable<any>{
-      const url = `${this.apiURL}/${cardProject.id}`;
-      return this.http.delete<any>(url);
+  deleteProyecto(id: number): Observable<any>{
+      return this.http.delete<any>(this.apiURL + "delete/" + id);
     }
 
 }

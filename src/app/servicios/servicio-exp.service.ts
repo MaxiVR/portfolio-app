@@ -14,25 +14,24 @@ const httpOption = {
 })
 export class ServicioExpService {
 
-  private apiURL = 'http://localHost:5000/experiencia';
+  private apiURL = 'http://localHost:8080/persona/trabajo/';
 
   constructor(private http:HttpClient) { }
 
   getData(): Observable<any> {
-    return this.http.get<any>(this.apiURL);
+    return this.http.get<any>(this.apiURL + "ver/todo");
   }
 
   addCampo(newCampo:any): Observable<any>{
-    return this.http.post<any>(this.apiURL, newCampo, httpOption)
+    return this.http.post<any>(this.apiURL + "new", newCampo, httpOption)
   }
 
-  updateExperiencia(cardExp: CardExp): Observable<any>{
-    const url = `${this.apiURL}/${cardExp.id}`
-    return this.http.put<any>(url, cardExp, httpOption)
+  updateExperiencia(cardExp: CardExp,  id: number): Observable<any>{
+    return this.http.patch<any>(this.apiURL + "modificar/" + id, cardExp, httpOption)
   }
 
-  deleteExperiencia(cardExp: CardExp): Observable<any>{
-      const url = `${this.apiURL}/${cardExp.id}`;
+  deleteExperiencia(id: number): Observable<any>{
+      const url = this.apiURL + "delete/" + id;
       return this.http.delete<any>(url);
     }
 
