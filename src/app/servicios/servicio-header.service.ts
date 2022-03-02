@@ -7,22 +7,25 @@ import { HttpClient} from '@angular/common/http'
   providedIn: 'root'
 })
 export class ServicioHeaderService {
+
+  private apiURL = "http://localhost:8080/persona/";
+  
   
   constructor(private http:HttpClient) { }
 
-  getData(): Observable<any> {
-    return this.http.get<any>('http://localhost:5000/persona');
+  getData(id: number): Observable<any> {
+    return this.http.get<any>(this.apiURL + "ver/" + id);
+    console.log("anda");
   }
 
   updatePerfil(nombre:string, apellido: string, ubicacion: string, myImage:string):Observable<any> {
-    return this.http.patch<any>('http://localhost:5000/persona', 
-    {'nombre':nombre, 'apellido':apellido, 'ciudadProvincia':ubicacion, 'url_foto':myImage});
-    
+    return this.http.patch<any>(this.apiURL + "modificar/1" , 
+    {'nombre':nombre, 'apellido':apellido, 'ubicacion':ubicacion});
   }
 
   updateAbout(about:string):Observable<any>{
     console.log(about);
-    return this.http.patch<any>('http://localhost:5000/persona', {"sobreMi":about});
+    return this.http.patch<any>(this.apiURL + "modificar/1", {"sobre_mi":about});
   }
 
 }

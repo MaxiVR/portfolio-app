@@ -15,25 +15,32 @@ const httpOption = {
 
 export class ServicioEduService {
 
-  private apiURL = 'http://localHost:5000/educacion';
+  edu : CardEdu[] = [ ];
+
+  private apiURL = "http://localhost:8080/persona/";
 
   constructor(private http:HttpClient) { }
 
+  data() {
+    this.getData().subscribe(data => { this.edu = data});
+    
+  }
+
   getData(): Observable<any> {
-    return this.http.get<any>(this.apiURL);
+    return this.http.get<any>(this.apiURL + "educacion/ver/todo");
   }
 
   addCampo(newCampo:any): Observable<any>{
-    return this.http.post<any>(this.apiURL, newCampo, httpOption)
+    return this.http.post<any>(this.apiURL + "educacion/new", newCampo, httpOption)
   }
 
-  updateEducacion(cardEdu: CardEdu): Observable<any>{
-    const url = `${this.apiURL}/${cardEdu.id}`
-    return this.http.put<any>(url, cardEdu, httpOption)
+  updateEducacion(cardEdu: CardEdu, id: number): Observable<any>{
+    const url = this.apiURL + "educacion/modificar/" + id;
+    return this.http.patch<any>(url, cardEdu, httpOption)
   }
 
-  deleteEducacion(cardEdu: CardEdu): Observable<any>{
-      const url = `${this.apiURL}/${cardEdu.id}`;
+  deleteEducacion(id: number): Observable<any>{
+      const url = this.apiURL + "educacion/delete/" + id;
       return this.http.delete<any>(url);
     }
 

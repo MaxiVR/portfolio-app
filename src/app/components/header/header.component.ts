@@ -8,18 +8,19 @@ import { ServicioHeaderService } from 'src/app/servicios/servicio-header.service
 })
 export class HeaderComponent implements OnInit {
   
-  myImage: any;
-  inputNombre: any= "";
-  inputApellido: any = "";
+  myImage: any = "";
+  inputNombre: string = "";
+  inputApellido: string = "";
   inputLocalidad: string ="";
+  id: number= 1;
 
   constructor(private servicioHeader:ServicioHeaderService) {  }
 
   ngOnInit(): void {
-    this.servicioHeader.getData().subscribe (data => {
+    this.servicioHeader.getData(this.id).subscribe (data => {
       this.inputNombre = data.nombre;
       this.inputApellido = data.apellido;
-      this.inputLocalidad = data.ciudadProvincia;
+      this.inputLocalidad = data.ubicacion;
       this.myImage = data.url_foto;
     });
     
@@ -29,7 +30,7 @@ export class HeaderComponent implements OnInit {
     this.servicioHeader.updatePerfil(this.inputNombre, this.inputApellido, this.inputLocalidad, 
       this.myImage)
     .subscribe(data => { console.log(data.persona)} );
-    this.ngOnInit();
+    setTimeout (this.ngOnInit, 1000);
   }
 
 

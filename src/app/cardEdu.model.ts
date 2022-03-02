@@ -1,15 +1,17 @@
 export class CardEdu{
 
     nombreInstitucion: string = "";
-    periodo: string = "";
-    id: number = 0;
+    fechaInicio: string = "";
+    fechaFin: string = "";
+    id_edu: number = 0;
     
 
-    constructor(institucion:string, periodo: string, id:number) { 
+    constructor(institucion:string, inicio: string, fin: string, id:number) { 
 
         this.nombreInstitucion = institucion;
-        this.periodo = periodo;
-        this.id = id;
+        this.fechaInicio = inicio;
+        this.fechaFin = fin;
+        this.id_edu = id;
 
     }
 

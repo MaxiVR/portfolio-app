@@ -16,34 +16,42 @@ export class CardEduComponent implements OnInit {
   @Input() cardEdu : CardEdu[] = [ ]
   
   inputInstitucion:string="";
-  inputPeriodo:string = "";
+  inputInicio:string = "";
+  inputFin: string = "";
   index: number = 0;
+  
 
   constructor(private authService:AuthService, private servicioEdu:ServicioEduService) { }
 
   ngOnInit(): void {
+
   }
 
   agregarInfo(){
+    
     this.cardEdu[this.index].nombreInstitucion = this.inputInstitucion;
-    this.cardEdu[this.index].periodo = this.inputPeriodo;
-    this.servicioEdu.updateEducacion(this.cardEdu[this.index]).subscribe();
-    this.inputInstitucion = "";
-    this.inputPeriodo = "";
+    this.cardEdu[this.index].fechaInicio = this.inputInicio;
+    this.cardEdu[this.index].fechaFin = this.inputFin;
+    this.servicioEdu.updateEducacion(this.cardEdu[this.index], this.cardEdu[this.index].id_edu).subscribe();
+    this.inputInstitucion = " ";
+    this.inputInicio = " ";
+    this.inputFin = " ";
   }
 
   eliminarInfo($event: any){
-     let i = $event.target.id - 1;
-    /*this.servicioEdu.deleteEducacion(this.cardEdu[this.index])
-    .subscribe(() => (this.cardEdu = this.cardEdu.splice(this.index, 1)));
-    this.servicioEdu.getData().subscribe(data => { this.cardEdu = data})*/
-    this.servicioEdu.deleteEducacion(this.cardEdu[i])
-    .subscribe(() => (this.cardEdu = this.cardEdu.filter(t => t.id !== this.cardEdu[i].id)))
+    console.log(this.cardEdu);
+    console.log(this.cardEdu[$event.target.id - 1]);
+    console.log(this.cardEdu[$event.target.id - 1].id_edu);
+    let id = this.cardEdu[$event.target.id - 1].id_edu;
+    /*this.servicioEdu.deleteEducacion(id)
+    .subscribe(() => (this.cardEdu = this.cardEdu.splice(this.index, 1)));*/
+    
+    this.servicioEdu.deleteEducacion(id).subscribe(() => (this.cardEdu = this.cardEdu.filter(t => t.id_edu !== this.cardEdu[id].id_edu)))
+    setTimeout (() => {this.servicioEdu.getData().subscribe(data => { this.cardEdu = data});}, 400);
   }
 
   sendId($event: any){
     this.index = $event.target.id - 1;
-    
   }
 
   drop(event: CdkDragDrop<string[]>) {

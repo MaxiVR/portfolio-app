@@ -12,18 +12,17 @@ export class AcademicBackgroundComponent implements OnInit {
 
   cardEdu : CardEdu[]=[]
   
-  constructor(private servicioEdu:ServicioEduService) {
-
-  }
+  constructor(private servicioEdu:ServicioEduService) {  }
 
   ngOnInit(): void {
-    this.servicioEdu.getData().subscribe(data => { this.cardEdu = data});
+    this.servicioEdu.getData().subscribe(data => { this.cardEdu = data})
+    this.servicioEdu.data();
   }
 
   agregarCampos(){
-    console.log(this.cardEdu);
-    let newCard = {nombreInstitucion:"", periodo:"" };
+    let newCard = {id_edu: 0,  nombreInstitucion:" ", fechaInicio:" ", fechaFin: " " };
     this.servicioEdu.addCampo(newCard).subscribe((newCard) => (this.cardEdu.push(newCard)));
-    this.ngOnInit();
+    setTimeout (() => {this.ngOnInit();}, 400);
+    
   }
 }

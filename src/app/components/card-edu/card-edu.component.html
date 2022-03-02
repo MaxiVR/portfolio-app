@@ -3,7 +3,7 @@
         <div *ngFor="let card of cardEdu; let i=index" id="{{i + 1}}" cdkDrag  >
             <div class="categoria">
                 Institución: {{card.nombreInstitucion}}<br />
-                Peridodo: {{card.periodo}}<br /><br />
+                Peridodo: {{card.fechaInicio}} - {{card.fechaFin}}<br /><br />
             </div>
 
             <app-btn-edit (add)="sendId($event)" 
@@ -24,7 +24,8 @@
                 <div class="modal-body">
                     <input type="text" name="institucion" placeholder="Institución" size="50"
                         [(ngModel)]="inputInstitucion">
-                    <input type="text" name="periodo" placeholder="Periodo" size="50" [(ngModel)]="inputPeriodo">
+                    <input type="text" name="inicio" placeholder="Fecha de Inicio" size="50" [(ngModel)]="inputInicio">
+                    <input type="text" name="fin" placeholder="Fecha de finalización" size="50" [(ngModel)]="inputFin">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
