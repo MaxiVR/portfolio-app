@@ -7,16 +7,17 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
 
-  url = 'https://reqres.in/api/login'; /* apiFake para testear*/
+  url = 'http://localhost:8080/persona/auth/login'; 
   token : any;
 
   constructor(private http:HttpClient, private router:Router) { }
 
   login (email:string, password: string){
-    this.http.post (this.url , {email: email, password: password})
+    this.http.post(this.url , {email: email, password: password})
     .subscribe((resp:any) => {
       this.router.navigate(['']);
       localStorage.setItem('auth_toke', resp.token);
+      console.log("asdasdasdasdasdasd");
       console.log(resp.token);
       
     })
