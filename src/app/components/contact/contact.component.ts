@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
+import { formMail } from 'src/app/formContact.model';
+import { FormContactService } from 'src/app/servicios/contacto.service';
 
 @Component({
   selector: 'app-contact',
@@ -8,9 +10,11 @@ import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 })
 export class ContactComponent implements OnInit {
 
+  mailModel : formMail = new formMail (" ", " ", " ") ;
+
   form: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private contactoService: FormContactService) {
 
     this.form = new FormGroup ({
       name: new FormControl ('', [Validators.required]),
@@ -20,6 +24,10 @@ export class ContactComponent implements OnInit {
    }
 
   ngOnInit(): void {
+  }
+
+  sendMail (){
+    this.contactoService.sendMail(this.form.value).subscribe(r=>{});;
   }
 
   get Mail(): any {

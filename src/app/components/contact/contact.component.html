@@ -10,7 +10,7 @@
                 <h5>La Plata, Buenos Aires - Argentina</h5>
                 <h5>MaximilianoXXXXXX@gmail.com</h5>
             </div>
-            <form [formGroup]="form" class="form-contac">
+            <form [formGroup]="form" class="form-contac" (submit)="sendMail()">
                 <p class="h4 mb-4">Contactame</p>
                 <!-- Name -->
                 <div class="cont-input">

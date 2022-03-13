@@ -20,7 +20,7 @@ export class ExperienceComponent implements OnInit {
   agregarCampos(){
     const newCard = {nombreEmpresa:"", puesto:"", periodo:"" };
     this.servicioExp.addCampo(newCard).subscribe(newCard => (this.cardExp.push(newCard)));
-    setTimeout (() => {this.ngOnInit();}, 1000);
+    setTimeout (() => {this.ngOnInit();}, 300);
   }
 
 }
