@@ -25,6 +25,7 @@ import { BtnEditComponent } from './components/btn-edit/btn-edit.component';
 import { BtnPlusComponent } from './components/btn-plus/btn-plus.component';
 import { BtnPencilComponent } from './components/btn-pencil/btn-pencil.component';
 import { ServicioEduService } from './servicios/servicio-edu.service';
+import { CardHardSkillComponent } from './components/card-hard-skill/card-hard-skill.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { ServicioEduService } from './servicios/servicio-edu.service';
     BtnEditComponent,
     BtnPlusComponent,
     BtnPencilComponent,
+    CardHardSkillComponent,
   ],
   imports: [
     BrowserModule,
