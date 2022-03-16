@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CardHardSkill } from 'src/app/cardHardSkill.model';
 
 @Component({
   selector: 'app-skills',
@@ -7,15 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SkillsComponent implements OnInit {
 
-  ocultar : boolean = true;
+  cardHardSkill : CardHardSkill[] = [];
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  ocultarDiv(){
-    this.ocultar=!this.ocultar
+  agregarCampos(){
+    const newCard = {lenguaje:"", porcentaje:10, url: ""};
+    this.cardHardSkill.push(newCard);
+    //this.-----.addCampo(newCard).subscribe(newCard => (this.cardHardSkill.push(newCard)));
+
   }
 
 }

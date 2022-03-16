@@ -34,10 +34,13 @@ export class CardProjectComponent implements OnInit {
   }
 
   eliminarInfo($event: any){
+    console.log ( $event.target.id );
+    let id_div =  $event.target.id - 1;
     let id = this.cardProject[$event.target.id - 1].id_proyecto;
+    console.log (id);
     this.projectsService.deleteProyecto(id)
-    .subscribe(() => (this.cardProject = this.cardProject.filter(t => t.id_proyecto !== this.cardProject[id].id_proyecto)))
-    setTimeout (() => {this.projectsService.getData().subscribe(data => { this.cardProject = data});}, 600);
+    .subscribe(() => (this.cardProject = this.cardProject.filter(t => t.id_proyecto !== this.cardProject[id_div].id_proyecto)))
+    
   }
 
   sendId($event: any){

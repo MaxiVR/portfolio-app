@@ -1,7 +1,9 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-12" id="card-lenguajes">
+      <app-btn-plus (addCampo)="agregarCampos()"></app-btn-plus>
       <h2>Programming Skills</h2>
-      <app-card-hard-skill></app-card-hard-skill>
+      <app-card-hard-skill [cardHardSkill]="cardHardSkill"></app-card-hard-skill>
+    </div>
   </div>
 </div>

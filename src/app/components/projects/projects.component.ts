@@ -10,7 +10,7 @@ import { ProjectsService } from 'src/app/servicios/projects.service';
 })
 export class ProjectsComponent implements OnInit {
   
-  cardProject: CardProject[] = [ ];
+  cardProject: CardProject[] = [];
 
   constructor(private projectsService:ProjectsService) { }
 

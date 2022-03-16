@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { formMail } from 'src/app/formContact.model';
 import { FormContactService } from 'src/app/servicios/contacto.service';
 

@@ -1,64 +1,99 @@
-<div class="container">
-  <div class="cont-lang">
-    <div>
-      <img class="lang" src="assets/icons8-html-5-144.png" />
+<section>
+    <div cdkDropList (cdkDropListDropped)="drop($event)">
+        <div *ngFor="let card of cardHardSkill let i=index" cdkDrag>
+            <app-btn-edit (add)="sendId($event)" (delete)="eliminarInfo($event)" [i]="i"
+                [targetModal]="'#modalHardSkill'">
+            </app-btn-edit>
+            <div class="cont-lang">
+                <div>
+                    <img class="lang" src={{inputUrl}} />
+                </div>
+                <div class="wrap">
+                    <p>{{inputLenguaje}}</p>
+                    <div class="bar html delay-html"><span>{{inputPorcentaje}}%</span></div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="wrap">
-      <p>HTML</p>
-      <div class="bar html delay-html"><span>90%</span></div>
+    <div class="container">
+        <div class="cont-lang">
+            <div>
+                <img class="lang" src="assets/icons8-html-5-144.png" />
+            </div>
+            <div class="wrap">
+                <p>HTML</p>
+                <div class="bar html delay-html"><span>90%</span></div>
+            </div>
+        </div>
+        <div class="cont-lang">
+            <div>
+                <img class="lang" src="assets/icons8-css3-144.png" />
+            </div>
+            <div class="wrap">
+                <p>CSS</p>
+                <div class="bar css delay-css"><span>85%</span></div>
+            </div>
+        </div>
+        <div class="cont-lang">
+            <div>
+                <img class="lang" src="assets/icons8-javascript-144.png" />
+            </div>
+            <div class="wrap">
+                <p>JavaScript</p>
+                <div class="bar js delay-js"><span>40%</span></div>
+            </div>
+        </div>
+        <div class="cont-lang">
+            <div>
+                <img class="lang" src="assets\icons8-logotipo-de-java-coffee-cup-144.png" />
+            </div>
+            <div class="wrap">
+                <p>Java</p>
+                <div class="bar java delay-java"><span>55%</span></div>
+            </div>
+        </div>
+        <div class="cont-lang">
+            <div>
+                <img class="lang" src="assets\icons8-logo-de-sql-144.png" />
+            </div>
+            <div class="wrap">
+                <p>SQL</p>
+                <div class="bar sql delay-sql"><span>63%</span></div>
+            </div>
+        </div>
     </div>
-  </div>
-  <div class="cont-lang">
-    <div>
-      <img class="lang" src="assets/icons8-css3-144.png" />
+    <div class="cont">
+        <div class="cont-icon-lang">
+            <img class="lang" src="assets/icons8-git-144.png" />
+        </div>
+        <div class="cont-icon-lang">
+            <img class="lang" src="assets/icons8-bootstrap-144.png" />
+        </div>
+        <div class="cont-icon-lang">
+            <img class="lang" src="assets/icons8-angularjs-144.png" />
+        </div>
+        <div class="cont-icon-lang">
+            <img class="lang" src="assets\spring-3-logo-png.png" />
+        </div>
     </div>
-    <div class="wrap">
-      <p>CSS</p>
-      <div class="bar css delay-css"><span>85%</span></div>
+    <!-- Modal -->
+    <div class="modal fade" id="modalHardSkill" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="ModalLabel">Hard Skills</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="text" placeholder="Lenguaje" [(ngModel)]="inputLenguaje" size="55">
+                    <input placeholder="Porcentaje" [(ngModel)]="inputPorcentaje" rows="4"   size="55">
+                    <input placeholder="Url de la imagen" [(ngModel)]="inputUrl" rows="4"   size="55">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" (click)="agregarInfo()">Guardar</button>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-  <div class="cont-lang">
-    <div>
-      <img class="lang" src="assets/icons8-javascript-144.png" />
-    </div>
-    <div class="wrap">
-      <p>JavaScript</p>
-      <div class="bar js delay-js"><span>40%</span></div>
-    </div>
-  </div>
-  <div class="cont-lang">
-    <div>
-      <img
-        class="lang"
-        src="assets\icons8-logotipo-de-java-coffee-cup-144.png"
-      />
-    </div>
-    <div class="wrap">
-      <p>Java</p>
-      <div class="bar java delay-java"><span>55%</span></div>
-    </div>
-  </div>
-  <div class="cont-lang">
-    <div>
-      <img class="lang" src="assets\icons8-logo-de-sql-144.png" />
-    </div>
-    <div class="wrap">
-      <p>SQL</p>
-      <div class="bar sql delay-sql"><span>63%</span></div>
-    </div>
-  </div>
-</div>
-<div class="cont">
-  <div class="cont-icon-lang">
-    <img class="lang" src="assets/icons8-git-144.png" />
-  </div>
-  <div class="cont-icon-lang">
-    <img class="lang" src="assets/icons8-bootstrap-144.png" />
-  </div>
-  <div class="cont-icon-lang">
-    <img class="lang" src="assets/icons8-angularjs-144.png" />
-  </div>
-  <div class="cont-icon-lang">
-    <img class="lang" style="height: 40px" src="assets\spring-3-logo-png.png" />
-  </div>
-</div>
+</section>

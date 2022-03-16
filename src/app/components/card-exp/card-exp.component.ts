@@ -43,9 +43,9 @@ export class CardExpComponent implements OnInit {
   }
 
   eliminarInfo($event: any){
+    let id_div = $event.target.id - 1;
     let id = this.cardExp[$event.target.id - 1].id_trabajo;
-    this.servicioExp.deleteExperiencia(id).subscribe(() => (this.cardExp = this.cardExp.filter(t => t.id_trabajo !== this.cardExp[id].id_trabajo)))
-    setTimeout (() => {this.servicioExp.getData().subscribe(data => { this.cardExp = data});}, 600);
+    this.servicioExp.deleteExperiencia(id).subscribe(() => (this.cardExp = this.cardExp.filter(t => t.id_trabajo !== this.cardExp[id_div].id_trabajo)))
   }
 
   sendId($event: any){
