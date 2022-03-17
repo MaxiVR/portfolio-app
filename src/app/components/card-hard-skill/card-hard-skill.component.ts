@@ -2,6 +2,7 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, Input, OnInit } from '@angular/core';
 import { CardHardSkill } from 'src/app/cardHardSkill.model';
 import { AuthService } from 'src/app/servicios/auth.service';
+import { HardSkillService } from 'src/app/servicios/hard-skill.service';
 
 @Component({
   selector: 'app-card-hard-skill',
@@ -15,23 +16,35 @@ export class CardHardSkillComponent implements OnInit {
   inputLenguaje : string = "";
   inputPorcentaje : number = 0;
   inputUrl : string = "";
+  index : number = 0;
 
-  constructor(private authService:AuthService) { }
+  constructor(private authService:AuthService, private hardSkillService: HardSkillService) { }
 
   ngOnInit(): void {
   }
 
 
   agregarInfo(){
-    
-  }
-
-  sendId ($event: any){
-
+    console.log(this.index);
+    this.cardHardSkill[this.index].lenguaje = this.inputLenguaje;
+    this.cardHardSkill[this.index].porcentaje = this.inputPorcentaje;
+    this.cardHardSkill[this.index].url = this.inputUrl;
+    this.hardSkillService.updateSkill(this.cardHardSkill[this.index], this.cardHardSkill[this.index].id_hardSkill).subscribe();
+    this.inputLenguaje = "";
+    this.inputPorcentaje = 0;
+    this.inputUrl = "";
   }
 
   eliminarInfo($event: any){
+    let id_div =  $event.target.id - 1;
+    let id = this.cardHardSkill[$event.target.id - 1].id_hardSkill;
+    console.log (id);
+    this.hardSkillService.deleteSkill(id)
+    .subscribe(() => (this.cardHardSkill = this.cardHardSkill.filter(t => t.id_hardSkill !== this.cardHardSkill[id_div].id_hardSkill)))
+  }
 
+  sendId($event: any){
+    this.index = $event.target.id - 1;
   }
 
   drop(event: CdkDragDrop<string[]>) {

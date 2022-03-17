@@ -1,16 +1,18 @@
 <section>
     <div cdkDropList (cdkDropListDropped)="drop($event)">
         <div *ngFor="let card of cardHardSkill let i=index" cdkDrag>
-            <app-btn-edit (add)="sendId($event)" (delete)="eliminarInfo($event)" [i]="i"
-                [targetModal]="'#modalHardSkill'">
-            </app-btn-edit>
-            <div class="cont-lang">
-                <div>
-                    <img class="lang" src={{inputUrl}} />
-                </div>
-                <div class="wrap">
-                    <p>{{inputLenguaje}}</p>
-                    <div class="bar html delay-html"><span>{{inputPorcentaje}}%</span></div>
+            <div class="container">
+                <div class="cont-lang">
+                    <div>
+                        <img class="lang" src={{card.url}} />
+                    </div>
+                    <div class="wrap">
+                        <p>{{card.lenguaje}}</p>
+                        <div class="bar {{card.lenguaje}} delay-{{card.lenguaje}}"><span>{{card.porcentaje}}%</span></div>
+                    </div>
+                    <app-btn-edit (add)="sendId($event)" (delete)="eliminarInfo($event)" [i]="i"
+                        [targetModal]="'#modalHardSkill'">
+                    </app-btn-edit>
                 </div>
             </div>
         </div>
@@ -86,8 +88,8 @@
                 </div>
                 <div class="modal-body">
                     <input type="text" placeholder="Lenguaje" [(ngModel)]="inputLenguaje" size="55">
-                    <input placeholder="Porcentaje" [(ngModel)]="inputPorcentaje" rows="4"   size="55">
-                    <input placeholder="Url de la imagen" [(ngModel)]="inputUrl" rows="4"   size="55">
+                    <input placeholder="Porcentaje" [(ngModel)]="inputPorcentaje" rows="4" size="55">
+                    <input placeholder="Url de la imagen" [(ngModel)]="inputUrl" rows="4" size="55">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>

@@ -24,9 +24,7 @@ export class CardProjectComponent implements OnInit {
   }
 
   agregarInfo(){
-    if (this.inputProyecto !== ""){
-      this.cardProject[this.index].nombreProyecto = this.inputProyecto;
-    }
+    this.cardProject[this.index].nombreProyecto = this.inputProyecto;
     this.cardProject[this.index].descripcionProyecto= this.inputDescripcion;
     this.projectsService.updateProyecto(this.cardProject[this.index], this.cardProject[this.index].id_proyecto).subscribe();
     this.inputProyecto = "";
