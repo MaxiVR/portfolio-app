@@ -28,7 +28,7 @@ export class CardHardSkillComponent implements OnInit {
     console.log(this.index);
     this.cardHardSkill[this.index].lenguaje = this.inputLenguaje;
     this.cardHardSkill[this.index].porcentaje = this.inputPorcentaje;
-    this.cardHardSkill[this.index].url = this.inputUrl;
+    this.cardHardSkill[this.index].urlImagen = this.inputUrl;
     this.hardSkillService.updateSkill(this.cardHardSkill[this.index], this.cardHardSkill[this.index].id_hardSkill).subscribe();
     this.inputLenguaje = "";
     this.inputPorcentaje = 0;
@@ -45,6 +45,10 @@ export class CardHardSkillComponent implements OnInit {
 
   sendId($event: any){
     this.index = $event.target.id - 1;
+    this.inputLenguaje = this.cardHardSkill[this.index].lenguaje;
+    this.inputPorcentaje =  this.cardHardSkill[this.index].porcentaje;
+    this.inputUrl = this.cardHardSkill[this.index].urlImagen;
+    
   }
 
   drop(event: CdkDragDrop<string[]>) {

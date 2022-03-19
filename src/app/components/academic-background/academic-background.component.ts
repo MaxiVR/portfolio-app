@@ -19,7 +19,7 @@ export class AcademicBackgroundComponent implements OnInit {
   }
 
   agregarCampos(){
-    let newCard = {id_edu: 0,  nombreInstitucion:" ", fechaInicio:" ", fechaFin: " " };
+    let newCard = {nombreInstitucion:" ", fechaInicio:" ", fechaFin: " " };
     this.servicioEdu.addCampo(newCard).subscribe((newCard) => (this.cardEdu.push(newCard)));
     setTimeout (() => {this.ngOnInit();}, 100);
     
