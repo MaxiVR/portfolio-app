@@ -16,7 +16,7 @@ export class AdminGuard implements CanActivate {
     
     if (!this.authService.logIn){
       console.log("no esta logueado");
-      this.router.navigate(['']);
+      this.router.navigate(['/login']);
       return false;
     }else{
       return true;

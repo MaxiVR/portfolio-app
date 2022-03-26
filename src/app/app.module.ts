@@ -26,6 +26,7 @@ import { BtnPlusComponent } from './components/btn-plus/btn-plus.component';
 import { BtnPencilComponent } from './components/btn-pencil/btn-pencil.component';
 import { ServicioEduService } from './servicios/servicio-edu.service';
 import { CardHardSkillComponent } from './components/card-hard-skill/card-hard-skill.component';
+import { LogoutComponent } from './components/logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { CardHardSkillComponent } from './components/card-hard-skill/card-hard-s
     BtnPlusComponent,
     BtnPencilComponent,
     CardHardSkillComponent,
+    LogoutComponent,
   ],
   imports: [
     BrowserModule,

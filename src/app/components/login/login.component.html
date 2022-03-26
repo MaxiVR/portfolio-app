@@ -1,69 +1,40 @@
-<div class="container-fluid" >
-    <div class="login-btn" *ngIf="!isAdmin(); else elseBlock;">
-        <button type="button" id="btn-login" class="btn btn-primary" data-bs-toggle="modal"
-            data-bs-target="#Modal-proyect">Login
-        </button>
-    </div>
-    <ng-template #elseBlock>
-        <div class="login-btn" >
-            <button type="button" id="btn-logout" class="btn btn-primary" (click)="logout()">Logout
-        </button>
-    </div>
-    </ng-template>
-    
-    <!---<div class="redes-social">
-        <a href="https://github.com/MaxiVR" target="_blank"><i class="icon ion-social-github"></i></a>
-        <a href="#" target="_blank"><i class="icon ion-social-twitter"></i></a>
-        <a href="#" target="_blank"><i class="icon ion-social-linkedin"></i></a>
-    </div>--->
-</div>
-
-
-<div class="modal fade" id="Modal-proyect" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="loginmodal-container">
-                <h1>Login to Your Account</h1><br>
-                <form [formGroup]="form" (ngSubmit)="onEnviar($event)">
-                    <div>
-                        <label for="email">Email: </label>
-                        <input type="email" placeholder="Email" formControlName="email">
-                    </div>
-                    <!-- Gracias al getter que configuramos en el controlador -->
-                    <div *ngIf="Mail?.errors  && Mail?.touched">
-                        <p *ngIf="Mail?.hasError('required')" class="error">
-                            El email es requerido.
-                        </p>
-                        <p *ngIf="Mail?.hasError('email')" class="error">
-                            El formato del email debe ser válido.
-                        </p>
-                    </div>
-                    <br />
-                    <div>
-                        <label for="password" class="form-label">Password: </label>
-                        <input type="password"  placeholder="Password" formControlName="password" 
-                        [class.border-danger]="MailValid" >
-                    </div>
-                    <!-- Gracias al getter que configuramos en el controlador -->
-                    <div *ngIf="Password?.errors  && Password?.touched">
-                        <p *ngIf="Password?.hasError('required')" class="error">
-                            El password es requerido.
-                        </p>
-                        <p *ngIf="Password?.errors?.['minlength']" class="error">
-                            El password debe ser de 8 o más caracteres.
-                        </p>
-                    </div>
-                    <br />
-                    <div>
-                        <button [disabled]="Password?.errors || Password?.touched && Mail?.errors  && Mail?.touched" 
-                            type="submit" id="submit" class="btn btn-primary" data-bs-dismiss="modal">Iniciar Sesión
-                        </button>
-                    </div>
-                </form>
-                <div class="login-help">
-                    <a href="#">Register</a> - <a href="#">Forgot Password</a>
-                </div>
+<div class="modal-content">
+    <div class="loginmodal-container">
+        <h1>Iniciar Sesión</h1>
+        <form [formGroup]="form" (ngSubmit)="onEnviar($event)">
+            <div>
+                <label for="email">Email: </label>
+                <input type="email" placeholder="Email" formControlName="email">
             </div>
-        </div>
+            <!-- Configuramos en el controlador -->
+            <div *ngIf="Mail?.errors  && Mail?.touched">
+                <p *ngIf="Mail?.hasError('required')" class="error">
+                    El email es requerido.
+                </p>
+                <p *ngIf="Mail?.hasError('email')" class="error">
+                    El formato del email debe ser válido.
+                </p>
+            </div>
+            <div>
+                <label for="password" class="form-label">Password: </label>
+                <input type="password" placeholder="Password" formControlName="password"
+                    [class.border-danger]="MailValid">
+            </div>
+            <!-- Configuramos en el controlador -->
+            <div *ngIf="Password?.errors  && Password?.touched">
+                <p *ngIf="Password?.hasError('required')" class="error">
+                    El password es requerido.
+                </p>
+                <p *ngIf="Password?.errors?.['minlength']" class="error">
+                    El password debe ser de 8 o más caracteres.
+                </p>
+            </div>
+            <div>
+                <button [disabled]="Password?.errors || Password?.touched && Mail?.errors  && Mail?.touched"
+                    type="submit" id="submit" class="btn btn-primary" data-bs-dismiss="modal">Iniciar Sesión
+                </button>
+            </div>
+        </form>
     </div>
 </div>
+<app-footer></app-footer>
