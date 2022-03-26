@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core'; 
 import { catchError, Observable } from 'rxjs';
 import { HttpClient, HttpHeaders} from '@angular/common/http'
-import { formMail } from '../formContact.model';
+import { formMail } from '../formContact.model'
 
 const httpOption = {
   headers: new HttpHeaders({

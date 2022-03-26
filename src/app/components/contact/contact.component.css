@@ -16,6 +16,8 @@
 
 .row{
     height: -webkit-fill-available;
+    height: -moz-available;
+    height: 100%;
 }
 
 button{
@@ -49,3 +51,4 @@ h5{
 .cont-input{
     margin-bottom: 30px;
 }
+
