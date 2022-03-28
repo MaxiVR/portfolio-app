@@ -1,4 +1,4 @@
-<div id="contenedor-plus" *ngIf="!isAdmin()">
+<div id="contenedor-plus" *ngIf="isAdmin()">
     <button type="button" class="btn-right" style="float: right;">
         <i class="fa fa-plus btn" (click)="addCampos()"></i>
     </button>

@@ -23,12 +23,10 @@ export class CardProjectComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  agregarInfo(){
+  guardarInfo(){
     this.cardProject[this.index].nombreProyecto = this.inputProyecto;
     this.cardProject[this.index].descripcionProyecto= this.inputDescripcion;
     this.projectsService.updateProyecto(this.cardProject[this.index], this.cardProject[this.index].id_proyecto).subscribe();
-    this.inputProyecto = "";
-    this.inputDescripcion = "";
   }
 
   eliminarInfo($event: any){
@@ -41,8 +39,11 @@ export class CardProjectComponent implements OnInit {
     
   }
 
-  sendId($event: any){
+  actulizarId_Info($event: any){
     this.index = $event.target.id - 1;
+    this.inputProyecto = this.cardProject[this.index].nombreProyecto;
+    this.inputDescripcion = this.cardProject[this.index].descripcionProyecto;
+    
   }
 
   drop(event: CdkDragDrop<string[]>) {

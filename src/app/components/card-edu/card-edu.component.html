@@ -6,7 +6,7 @@
                 Peridodo:&nbsp; {{card.fechaInicio}} - {{card.fechaFin}}<br /><br />
             </div>
 
-            <app-btn-edit (add)="sendId($event)" 
+            <app-btn-edit (add)="actulizarId_Info($event)" 
                         (delete)="eliminarInfo($event)"
                         [targetModal]="'#modalEdu'"
                         [i]="i">
@@ -29,7 +29,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="submit" class="btn btn-primary" (click)="agregarInfo()">Guardar</button>
+                    <button type="submit" class="btn btn-primary" (click)="guardarInfo()">Guardar</button>
                 </div>
             </div>
         </div>

@@ -10,7 +10,7 @@
                         <p>{{card.lenguaje}}</p>
                         <div style.width="{{card.porcentaje}}%" class="bar"><span>{{card.porcentaje}}%</span></div>
                     </div>
-                    <app-btn-edit (add)="sendId($event)" (delete)="eliminarInfo($event)" [i]="i"
+                    <app-btn-edit (add)="actulizarId_Info($event)" (delete)="eliminarInfo($event)" [i]="i"
                         [targetModal]="'#modalHardSkill'">
                     </app-btn-edit>
                 </div>
@@ -32,7 +32,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary" (click)="agregarInfo()">Guardar</button>
+                    <button type="button" class="btn btn-primary" (click)="guardarInfo()">Guardar</button>
                 </div>
             </div>
         </div>

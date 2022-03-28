@@ -8,7 +8,7 @@
                 Descripción del Trabajo:&nbsp; {{card.descripcionTrabajo}}<br /><br />
             </div>
 
-            <app-btn-edit (add)="sendId($event)" 
+            <app-btn-edit (add)="actulizarId_Info($event)" 
                           (delete)="eliminarInfo($event)"
                             [i]="i"
                             [targetModal]="'#modalExp'">
@@ -32,7 +32,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary" (click)="agregarInfo()">Guardar</button>
+                    <button type="button" class="btn btn-primary" (click)="guardarInfo()">Guardar</button>
                 </div>
             </div>
         </div>

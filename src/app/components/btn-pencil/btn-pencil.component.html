@@ -1,6 +1,6 @@
 <!-- Button trigger modal -->
 <button type="button" id="btn-info" class="btn btn-open" data-bs-toggle="modal" 
     [attr.data-bs-target]=targetModal
-    *ngIf="!isAdmin()">
+    *ngIf="isAdmin()">
     <i class="fa fa-pencil"></i>
 </button>

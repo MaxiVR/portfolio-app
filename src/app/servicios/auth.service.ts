@@ -17,7 +17,6 @@ export class AuthService {
     .subscribe((resp:any) => {
       this.router.navigate(['']);
       localStorage.setItem('auth_toke', resp.token);
-      console.log("asdasdasdasdasdasd");
       console.log(resp.token);
       
     })
@@ -25,6 +24,7 @@ export class AuthService {
 
   logout(){
     localStorage.removeItem('auth_toke');
+    console.log("Sesion Cerrada");
   }
 
   get logIn(): boolean{

@@ -28,18 +28,13 @@ export class CardExpComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  agregarInfo(){
+  guardarInfo(){
     this.cardExp[this.index].empresa = this.inputEmpresa;
     this.cardExp[this.index].puesto = this.inputPuesto;
     this.cardExp[this.index].fechaInicio = this.inputInicio;
     this.cardExp[this.index].fechaFin = this.inputFin;
     this.cardExp[this.index].descripcionTrabajo = this.inputDescripcion;
     this.servicioExp.updateExperiencia(this.cardExp[this.index], this.cardExp[this.index].id_trabajo).subscribe();
-    this.inputEmpresa = " ";
-    this.inputPuesto = " ";
-    this.inputInicio = " ";
-    this.inputFin = " ";
-    this.inputDescripcion = " ";
   }
 
   eliminarInfo($event: any){
@@ -48,8 +43,13 @@ export class CardExpComponent implements OnInit {
     this.servicioExp.deleteExperiencia(id).subscribe(() => (this.cardExp = this.cardExp.filter(t => t.id_trabajo !== this.cardExp[id_div].id_trabajo)))
   }
 
-  sendId($event: any){
+  actulizarId_Info($event: any){
     this.index = $event.target.id - 1;
+    this.inputEmpresa = this.cardExp[this.index].empresa;
+    this.inputPuesto = this.cardExp[this.index].puesto ;
+    this.inputInicio = this.cardExp[this.index].fechaInicio;
+    this.inputFin = this.cardExp[this.index].fechaFin;
+    this.inputDescripcion = this.cardExp[this.index].descripcionTrabajo;
   } 
 
   drop(event: CdkDragDrop<string[]>) {

@@ -24,15 +24,13 @@ export class CardHardSkillComponent implements OnInit {
   }
 
 
-  agregarInfo(){
+  guardarInfo(){
     console.log(this.index);
     this.cardHardSkill[this.index].lenguaje = this.inputLenguaje;
     this.cardHardSkill[this.index].porcentaje = this.inputPorcentaje;
     this.cardHardSkill[this.index].urlImagen = this.inputUrl;
     this.hardSkillService.updateSkill(this.cardHardSkill[this.index], this.cardHardSkill[this.index].id_hardSkill).subscribe();
-    this.inputLenguaje = "";
-    this.inputPorcentaje = 0;
-    this.inputUrl = "";
+   
   }
 
   eliminarInfo($event: any){
@@ -43,7 +41,7 @@ export class CardHardSkillComponent implements OnInit {
     .subscribe(() => (this.cardHardSkill = this.cardHardSkill.filter(t => t.id_hardSkill !== this.cardHardSkill[id_div].id_hardSkill)))
   }
 
-  sendId($event: any){
+  actulizarId_Info($event: any){
     this.index = $event.target.id - 1;
     this.inputLenguaje = this.cardHardSkill[this.index].lenguaje;
     this.inputPorcentaje =  this.cardHardSkill[this.index].porcentaje;

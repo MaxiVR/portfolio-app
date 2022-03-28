@@ -27,15 +27,12 @@ export class CardEduComponent implements OnInit {
 
   }
 
-  agregarInfo(){
+  guardarInfo(){
     
     this.cardEdu[this.index].nombreInstitucion = this.inputInstitucion;
     this.cardEdu[this.index].fechaInicio = this.inputInicio;
     this.cardEdu[this.index].fechaFin = this.inputFin;
     this.servicioEdu.updateEducacion(this.cardEdu[this.index], this.cardEdu[this.index].id_edu).subscribe();
-    this.inputInstitucion = " ";
-    this.inputInicio = " ";
-    this.inputFin = " ";
   }
 
   eliminarInfo($event: any){
@@ -44,8 +41,11 @@ export class CardEduComponent implements OnInit {
     this.servicioEdu.deleteEducacion(id).subscribe(() => (this.cardEdu = this.cardEdu.filter(t => t.id_edu !== this.cardEdu[id_div].id_edu)))
   }
 
-  sendId($event: any){
+  actulizarId_Info($event: any){
     this.index = $event.target.id - 1;
+    this.inputInstitucion = this.cardEdu[this.index].nombreInstitucion;
+    this.inputInicio = this.cardEdu[this.index].fechaInicio;
+    this.inputFin = this.cardEdu[this.index].fechaFin;
   }
 
   drop(event: CdkDragDrop<string[]>) {
