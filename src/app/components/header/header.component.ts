@@ -28,7 +28,7 @@ export class HeaderComponent implements OnInit {
 
   cambiarDatos() {
     this.servicioHeader.updatePerfil(this.inputNombre, this.inputApellido, this.inputLocalidad, 
-      this.myImage)
+      this.myImage, this.id)
     .subscribe(data => { console.log(data.persona)} );
     setTimeout (this.ngOnInit, 1000);
   }

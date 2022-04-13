@@ -18,8 +18,7 @@ export class AboutComponent implements OnInit {
   }
 
   cambiarParrafo(value:string){
-    this.servicioHeader.updateAbout(value).subscribe(data => { console.log(data)} );
-    this.aboutMe = value;
+    this.servicioHeader.updateAbout(value, this.id).subscribe ();
   }
 
 }
