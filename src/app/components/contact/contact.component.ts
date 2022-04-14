@@ -27,7 +27,11 @@ export class ContactComponent implements OnInit {
   }
 
   sendMail (){
-    this.contactoService.sendMail(this.form.value).subscribe(r=>{});;
+    this.contactoService.sendMail(this.form.value).subscribe(r=>{});
+  }
+
+  reloadPage (){
+    window.location.reload();
   }
 
   get Mail(): any {

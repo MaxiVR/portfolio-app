@@ -15,7 +15,7 @@ export class AuthService {
   login (email:string, password: string){
     this.http.post(this.url , {email: email, password: password})
     .subscribe((resp:any) => {
-      this.router.navigate(['']);
+      this.router.navigate(['editar']);
       localStorage.setItem('auth_toke', resp.token);
       console.log(resp.token);
       

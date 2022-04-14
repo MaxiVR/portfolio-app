@@ -1,6 +1,6 @@
 <div class="modal-content">
     <div class="loginmodal-container">
-        <h1>Iniciar Sesión</h1>
+        <h1>Iniciar Sesión Como Administrador</h1>
         <form [formGroup]="form" (ngSubmit)="onEnviar($event)">
             <div>
                 <label for="email">Email: </label>
@@ -31,15 +31,18 @@
             </div>
             <div>
                 <button [disabled]="Password?.errors || Password?.touched && Mail?.errors  && Mail?.touched"
-                    type="submit" id="submit" class="btn btn-primary" data-bs-dismiss="modal">Iniciar Sesión
+                    type="submit" id="submit" class="btn btn-primary" data-bs-dismiss="modal">Iniciar Sesión 
                 </button>
             </div>
         </form>
     </div>
-</div>
-<div>
+<div id="invitado">
     <button 
-        type="submit" id="submit" class="btn btn-primary" data-bs-dismiss="modal">Invitado
+        class="btn btn-primary"
+        (click)="irPortfolio()"
+        >Ingresar como invitado
     </button>
+</div>    
 </div>
+
 <app-footer></app-footer>

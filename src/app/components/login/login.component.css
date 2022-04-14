@@ -42,3 +42,8 @@
   font-weight: bold;
   margin-top: 5px;
 }
+
+#invitado{
+  width: fit-content;
+  margin: 5px auto;
+}

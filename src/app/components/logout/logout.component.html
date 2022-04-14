@@ -1,4 +1,4 @@
-<div class="container-fluid">
-    <button type="button" id="btn-logout" class="btn btn-primary" data-bs-toggle="modal" (click)="logout()">Logout
+<div class="container-fluid" *ngIf="isAdmin()">
+    <button type="button" id="btn-logout" class="btn btn-primary" data-bs-toggle="modal"  (click)="logout()">Logout
     </button>
 </div>

@@ -47,24 +47,23 @@
                 </div>
                 <!-- Send button -->
                 <button class="btn btn-primary" type="submit" data-bs-toggle="modal" data-bs-target="#modalSaludo"
-                [disabled]="Name?.errors  || Mail?.errors || Message?.errors"
+                [disabled]="Name?.errors  || Mail?.errors || Message?.errors" 
                 >Enviar</button>
             </form>
         </div>
     </div>
 </div>
-<div class="modal fade" id="modalSaludo" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+<div class="modal fade" id="modalSaludo" tabindex="-1" aria-labelledby="ModalLabel" data-bs-backdrop="static" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-
             </div>
             <div class="modal-body">
                 <h4>Muchas gracias por tu interes. <br>
                     A la brevedad me estaré comunicando.</h4>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="reloadPage()">Cerrar</button>
             </div>
         </div>
     </div>

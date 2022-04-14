@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/servicios/auth.service';
 
 @Component({
@@ -10,8 +11,8 @@ import { AuthService } from 'src/app/servicios/auth.service';
 export class LoginComponent implements OnInit {
   form: FormGroup;
 
-  // Inyectar en el constructor el formBuilder
-  constructor(private formBuilder: FormBuilder, private authService:AuthService ){ 
+  
+  constructor(private authService:AuthService, private router:Router ){ 
 
     ///Creamos el grupo de controles para el formulario de login
     this.form = new FormGroup ({
@@ -46,7 +47,6 @@ export class LoginComponent implements OnInit {
     event.preventDefault; 
     if (this.form.valid){
       // Llamamos a nuestro servicio para enviar los datos al servidor
-      // También podríamos ejecutar alguna lógica extra
       this.authService.login(this.form.get('email')?.value, this.form.get('password')?.value )
     }else{
       // Corremos todas las validaciones para que se ejecuten los mensajes de error en el template     
@@ -61,6 +61,10 @@ export class LoginComponent implements OnInit {
 
   logout(){
     this.authService.logout()
+  }
+
+  irPortfolio(){
+    this.router.navigate(['home']);
   }
 
 }
