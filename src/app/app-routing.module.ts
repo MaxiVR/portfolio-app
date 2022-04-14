@@ -9,7 +9,7 @@ import { AdminGuard } from './guards/admin.guard';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
-  {path: 'home', component:HomeComponent, canActivate: [AdminGuard]}, // visit home only if authenticated},
+  {path: 'home', component:HomeComponent, canActivate: [AdminGuard]}, // visit home only if authenticated
   {path: 'contacto', component:ContactComponent},
   {path: 'login', component:LoginComponent},
   {path: '**', component:Page404Component},

@@ -29,9 +29,12 @@ button{
 #info-personal{
 
     text-align: center;
-
 }
 
+#container-form{
+    transform: translate(0px, 100px);
+    height: min-content;
+}
 
 h5{
     font-size: 1.20rem;

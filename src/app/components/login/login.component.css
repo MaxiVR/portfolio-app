@@ -1,11 +1,8 @@
 
 /****** LOGIN MODAL ******/
 .loginmodal-container {
-  padding: 30px;
   max-width: 350px;
-  width: 100% !important;
-  margin: 0 auto;
-  overflow: hidden;
+  margin: 100px auto;
 }
 
 .loginmodal-container h1 {
