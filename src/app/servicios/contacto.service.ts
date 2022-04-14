@@ -22,7 +22,7 @@ export class FormContactService {
     console.log (mail);
     let json =  JSON.stringify(mail);
     console.log(json);
-    return this.http.post<any>(this.apiURL, json  , httpOption);
+    return this.http.post<any>(this.apiURL, json, httpOption);
   }
 
 }
