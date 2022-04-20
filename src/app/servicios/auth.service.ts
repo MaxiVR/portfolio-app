@@ -18,8 +18,10 @@ export class AuthService {
       this.router.navigate(['editar']);
       localStorage.setItem('auth_toke', resp.token);
       console.log(resp.token);
-      
-    })
+    }, err => {
+      // Entra aquí si el servicio entrega un código http de error
+      alert("Usuario o contraseña inconrecto");
+  } )
   }
 
   logout(){
