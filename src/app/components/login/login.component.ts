@@ -47,7 +47,11 @@ export class LoginComponent implements OnInit {
     event.preventDefault; 
     if (this.form.valid){
       // Llamamos a nuestro servicio para enviar los datos al servidor
-      this.authService.login(this.form.get('email')?.value, this.form.get('password')?.value )
+      this.authService.login(this.form.get('email')?.value, this.form.get('password')?.value).subscribe(data =>{
+        console.log("DATA: " + JSON.stringify(data));
+        this.router.navigate(['editar'])
+      })
+      
     }else{
       // Corremos todas las validaciones para que se ejecuten los mensajes de error en el template     
       this.form.markAllAsTouched(); 

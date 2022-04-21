@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
 import { Router } from '@angular/router';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -9,11 +11,15 @@ export class AuthService {
 
   url = 'http://localhost:8080/persona/auth/login'; 
   token : any;
+  currentUserSubject: BehaviorSubject<any>;
 
-  constructor(private http:HttpClient, private router:Router) { }
+  constructor(private http:HttpClient, private router:Router) { 
+    console.log("El servicio auth está corriendo");
+    this.currentUserSubject = new BehaviorSubject<any> (JSON.parse(sessionStorage.getItem('currentUser')||'{}'));
+  }
 
-  login (email:string, password: string){
-    this.http.post(this.url , {email: email, password: password})
+  login (email:string, password: string):Observable<any>{
+    /**this.http.post(this.url , {email: email, password: password})
     .subscribe((resp:any) => {
       this.router.navigate(['editar']);
       localStorage.setItem('auth_toke', resp.token);
@@ -21,16 +27,20 @@ export class AuthService {
     }, err => {
       // Entra aquí si el servicio entrega un código http de error
       alert("Usuario o contraseña inconrecto");
-  } )
+  } )**/
+    return this.http.post(this.url, {email: email, password: password}).pipe(map(data =>{
+      sessionStorage.setItem('currentUser', JSON.stringify(data));
+      return data;
+    } ))
   }
 
   logout(){
-    localStorage.removeItem('auth_toke');
+    sessionStorage.removeItem('currentUser');
     console.log("Sesion Cerrada");
   }
 
   get logIn(): boolean{
-    return (localStorage.getItem('auth_toke') !== null);
+    return (sessionStorage.getItem('currentUser') !== null);
   }
 
 
