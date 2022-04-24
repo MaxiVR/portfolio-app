@@ -31,7 +31,7 @@ export class AuthService {
     return this.http.post(this.url, {email: email, password: password}).pipe(map(data =>{
       sessionStorage.setItem('currentUser', JSON.stringify(data));
       return data;
-    } ))
+    }))
   }
 
   logout(){
