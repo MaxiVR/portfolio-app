@@ -1,6 +1,6 @@
 <section>
     <div cdkDropList (cdkDropListDropped)="drop($event)">
-        <div *ngFor="let card of cardExp let i=index"  id="{{i + 1}}" cdkDrag>
+        <div *ngFor="let card of cardExp let i=index" id="{{i + 1}}" cdkDrag>
             <div class="categoria">
                 Empresa:&nbsp; {{card.empresa}}<br />
                 Puesto:&nbsp; {{card.puesto}}<br />
@@ -8,10 +8,8 @@
                 Descripción del Trabajo:&nbsp; {{card.descripcionTrabajo}}<br /><br />
             </div>
 
-            <app-btn-edit (add)="actulizarId_Info($event)" 
-                          (delete)="eliminarInfo($event)"
-                            [i]="i"
-                            [targetModal]="'#modalExp'">
+            <app-btn-edit (add)="actulizarId_Info($event)" (delete)="eliminarInfo($event)" [i]="i"
+                [targetModal]="'#modalExp'">
             </app-btn-edit>
         </div>
     </div>
@@ -23,17 +21,59 @@
                     <h5 class="modal-title" id="ModalLabel">Experiencia Laboral</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    <input type="text" placeholder="Empresa" [(ngModel)]="inputEmpresa" size="50">
-                    <input type="text" placeholder="Puesto"  [(ngModel)]="inputPuesto" size="50">
-                    <input type="text" placeholder="Fecha de Inicio" [(ngModel)]="inputInicio" size="50">
-                    <input type="text" placeholder="Fecha de Finalización" [(ngModel)]="inputFin" size="50">
-                    <input type="text" placeholder="Descrición del Trabajo" [(ngModel)]="inputDescripcion" size="50">
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary" (click)="guardarInfo()">Guardar</button>
-                </div>
+                <form [formGroup]="formExp" (ngSubmit)="onSubmit()">
+                    <div class="modal-body">
+                        <input type="text" placeholder="Empresa" formControlName="empresa" size="50">
+                        <div *ngIf="Empresa?.errors  && Empresa?.touched">
+                            <p *ngIf="Empresa?.hasError('required')" class="error">
+                                El nombre de la empresa es requerido.
+                            </p>
+                            <p *ngIf="Empresa?.errors?.['minlength']" class="error">
+                                El nombre debe ser al menos 3 caracteres.
+                            </p>
+                        </div>    
+                        <input type="text" placeholder="Puesto" formControlName="puesto" size="50">
+                        <div *ngIf="Puesto?.errors  && Puesto?.touched">
+                            <p *ngIf="Puesto?.hasError('required')" class="error">
+                                El nombre de la puesto es requerido.
+                            </p>
+                            <p *ngIf="Puesto?.errors?.['minlength']" class="error">
+                                El nombre debe ser al menos 5 caracteres.
+                            </p>
+                        </div>    
+                        <input type="text" placeholder="Fecha de Inicio" formControlName="fechaInicio" size="50">
+                        <div *ngIf="FechaInicio?.errors  && FechaInicio?.touched">
+                            <p *ngIf="FechaInicio?.hasError('required')" class="error">
+                                La fecha de inicio es requerida
+                            </p>
+                            <p *ngIf="FechaInicio?.errors?.['minlength']" class="error">
+                                La fecha debe ser al menos 8 caracteres.
+                            </p>
+                        </div>   
+                        <input type="text" placeholder="Fecha de Finalización" formControlName="fechaFin" size="50">
+                        <div *ngIf="FechaFin?.errors  && FechaFin?.touched">
+                            <p *ngIf="FechaFin?.hasError('required')" class="error">
+                                La fecha de finalización es requerida
+                            </p>
+                            <p *ngIf="FechaFin?.errors?.['minlength']" class="error">
+                                La fecha debe ser al menos 8 caracteres.
+                            </p>
+                        </div>   
+                        <input type="text" placeholder="Descrición del Trabajo" formControlName="descripcion" size="50">
+                        <div *ngIf="Descripcion?.errors  && Descripcion?.touched">
+                            <p *ngIf="Descripcion.hasError('required')" class="error">
+                                Ingrese una breve descripción del trabajo
+                            </p>
+                            <p *ngIf="Descripcion?.errors?.['minlength']" class="error">
+                                La descripción debe ser al menos 20 caracteres.
+                            </p>
+                        </div>   
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

@@ -3,6 +3,7 @@ import { CardProject } from 'src/app/cardProject.model';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { AuthService } from 'src/app/servicios/auth.service';
 import { ProjectsService } from 'src/app/servicios/projects.service';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 
 @Component({
@@ -14,18 +15,27 @@ export class CardProjectComponent implements OnInit {
 
   @Input() cardProject : CardProject [] = [];
 
-  inputProyecto: string = "";
-  inputDescripcion: string = "";
   index:number = 0;
 
-  constructor(private authService:AuthService, private projectsService:ProjectsService ) { }
+  formProyecto : FormGroup
+
+  constructor(private authService:AuthService, private projectsService:ProjectsService ) {
+
+    this.formProyecto = new FormGroup ({
+
+      proyecto: new FormControl ('',[Validators.required, Validators.minLength(4)]),
+      descripcion: new FormControl ('', [Validators.required, Validators.minLength(20)]),
+
+    })    
+
+  }
 
   ngOnInit(): void {
   }
 
-  guardarInfo(){
-    this.cardProject[this.index].nombreProyecto = this.inputProyecto;
-    this.cardProject[this.index].descripcionProyecto= this.inputDescripcion;
+  onSubmit(){
+    this.cardProject[this.index].nombreProyecto = this.formProyecto.value.proyecto;
+    this.cardProject[this.index].descripcionProyecto= this.formProyecto.value.descripcion;
     this.projectsService.updateProyecto(this.cardProject[this.index], this.cardProject[this.index].id_proyecto).subscribe();
   }
 
@@ -41,10 +51,21 @@ export class CardProjectComponent implements OnInit {
 
   actulizarId_Info($event: any){
     this.index = $event.target.id - 1;
-    this.inputProyecto = this.cardProject[this.index].nombreProyecto;
-    this.inputDescripcion = this.cardProject[this.index].descripcionProyecto;
-    
+    this.formProyecto.setValue({
+      proyecto: this.cardProject[this.index].nombreProyecto,
+      descripcion : this.cardProject[this.index].descripcionProyecto
+    }) 
   }
+
+  get Proyecto (): any {
+    return this.formProyecto.get("proyecto");
+  }
+
+   get Descripcion (): any {
+    return this.formProyecto.get("descripcion");
+  }
+    
+   
 
   drop(event: CdkDragDrop<string[]>) {
     if (this.authService.logIn){

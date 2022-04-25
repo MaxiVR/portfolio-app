@@ -3,6 +3,7 @@ import { CardExp } from 'src/app/cardExp.model';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { AuthService } from 'src/app/servicios/auth.service';
 import { ServicioExpService } from 'src/app/servicios/servicio-exp.service';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 
 @Component({
@@ -14,26 +15,31 @@ export class CardExpComponent implements OnInit {
 
   @Input() cardExp : CardExp[] = [ ];
 
-  
-  inputEmpresa: string = "";
-  inputPuesto: string = "";
-  inputInicio: string = "";
-  inputFin: string = "";
-  inputDescripcion: string = "";
   index:number = 0;
 
+  formExp : FormGroup;
+  
+  constructor(private authService:AuthService, private servicioExp:ServicioExpService) { 
 
-  constructor(private authService:AuthService, private servicioExp:ServicioExpService) { }
+    this.formExp= new FormGroup ({
+      empresa: new FormControl ('',[Validators.required, Validators.minLength(3)]),
+      puesto: new FormControl ('',[Validators.required, Validators.minLength(5)]),
+      fechaInicio: new FormControl ('', [Validators.required, Validators.minLength(8)]),
+      fechaFin: new FormControl ('', [Validators.required, Validators.minLength(8)]),
+      descripcion: new FormControl ('',[Validators.required, Validators.minLength(20)])
+   })
+
+  }
 
   ngOnInit(): void {
   }
 
-  guardarInfo(){
-    this.cardExp[this.index].empresa = this.inputEmpresa;
-    this.cardExp[this.index].puesto = this.inputPuesto;
-    this.cardExp[this.index].fechaInicio = this.inputInicio;
-    this.cardExp[this.index].fechaFin = this.inputFin;
-    this.cardExp[this.index].descripcionTrabajo = this.inputDescripcion;
+  onSubmit(){
+    this.cardExp[this.index].empresa = this.formExp.value.empresa;
+    this.cardExp[this.index].puesto = this.formExp.value.puesto;
+    this.cardExp[this.index].fechaInicio = this.formExp.value.fechaInicio;
+    this.cardExp[this.index].fechaFin = this.formExp.value.fechaFin;
+    this.cardExp[this.index].descripcionTrabajo = this.formExp.value.descripcion;
     this.servicioExp.updateExperiencia(this.cardExp[this.index], this.cardExp[this.index].id_trabajo).subscribe();
   }
 
@@ -45,12 +51,34 @@ export class CardExpComponent implements OnInit {
 
   actulizarId_Info($event: any){
     this.index = $event.target.id - 1;
-    this.inputEmpresa = this.cardExp[this.index].empresa;
-    this.inputPuesto = this.cardExp[this.index].puesto ;
-    this.inputInicio = this.cardExp[this.index].fechaInicio;
-    this.inputFin = this.cardExp[this.index].fechaFin;
-    this.inputDescripcion = this.cardExp[this.index].descripcionTrabajo;
+    this.formExp.setValue({
+      institucion : this.cardExp[this.index].empresa,
+      puesto : this.cardExp[this.index].puesto,
+      fechaInicio : this.cardExp[this.index].fechaInicio,
+      fechaFin : this.cardExp[this.index].fechaInicio,
+      descripcion :  this.cardExp[this.index].descripcionTrabajo
+    }) 
   } 
+
+  get Empresa (): any {
+    return this.formExp.get("empresa");
+   }
+  
+   get Puesto (): any {
+    return this.formExp.get("puesto");
+   } 
+   
+  get FechaInicio (): any {
+    return this.formExp.get("fechaInicio");
+  } 
+
+  get FechaFin (): any {
+    return this.formExp.get("fechaFin");
+  } 
+
+  get Descripcion (): any {
+    return this.formExp.get("descripcion");
+   } 
 
   drop(event: CdkDragDrop<string[]>) {
     if (!this.authService.logIn){

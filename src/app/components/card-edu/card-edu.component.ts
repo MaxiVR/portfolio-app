@@ -3,6 +3,7 @@ import { CardEdu } from 'src/app/cardEdu.model';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { AuthService } from 'src/app/servicios/auth.service';
 import { ServicioEduService } from 'src/app/servicios/servicio-edu.service';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 
 
@@ -15,25 +16,25 @@ export class CardEduComponent implements OnInit {
   
   @Input() cardEdu : CardEdu[] = [ ]
   
-  inputInstitucion:string="";
   inputInicio:string = "";
   inputFin: string = "";
   index: number = 0;
   
+  formEdu: FormGroup;
 
-  constructor(private authService:AuthService, private servicioEdu:ServicioEduService) { }
+  constructor(private authService:AuthService, private servicioEdu:ServicioEduService) { 
+    
+    this.formEdu = new FormGroup ({
+      institucion: new FormControl ('',[Validators.required, Validators.minLength(3)]),
+      fechaInicio: new FormControl ('', [Validators.required, Validators.minLength(8)]),
+      fechaFin: new FormControl ('', [Validators.required, Validators.minLength(8)])
+   })
+
+  }
 
   ngOnInit(): void {
-
   }
 
-  guardarInfo(){
-    
-    this.cardEdu[this.index].nombreInstitucion = this.inputInstitucion;
-    this.cardEdu[this.index].fechaInicio = this.inputInicio;
-    this.cardEdu[this.index].fechaFin = this.inputFin;
-    this.servicioEdu.updateEducacion(this.cardEdu[this.index], this.cardEdu[this.index].id_edu).subscribe();
-  }
 
   eliminarInfo($event: any){
     let id_div = $event.target.id - 1;
@@ -43,10 +44,31 @@ export class CardEduComponent implements OnInit {
 
   actulizarId_Info($event: any){
     this.index = $event.target.id - 1;
-    this.inputInstitucion = this.cardEdu[this.index].nombreInstitucion;
-    this.inputInicio = this.cardEdu[this.index].fechaInicio;
-    this.inputFin = this.cardEdu[this.index].fechaFin;
+    this.formEdu.setValue({
+      institucion : this.cardEdu[this.index].nombreInstitucion,
+      fechaInicio : this.cardEdu[this.index].fechaInicio,
+      fechaFin : this.cardEdu[this.index].fechaFin
+    }) 
   }
+
+  onSubmit(){
+    this.cardEdu[this.index].nombreInstitucion = this.formEdu.value.institucion;
+    this.cardEdu[this.index].fechaInicio = this.formEdu.value.fechaInicio;
+    this.cardEdu[this.index].fechaFin = this.formEdu.value.fechaFin;
+    this.servicioEdu.updateEducacion(this.cardEdu[this.index], this.cardEdu[this.index].id_edu).subscribe();
+  }
+
+  get Institucion (): any {
+    return this.formEdu.get("institucion");
+   }
+   
+  get FechaInicio (): any {
+    return this.formEdu.get("fechaInicio");
+  } 
+
+  get FechaFin (): any {
+    return this.formEdu.get("fechaFin");
+  } 
 
   drop(event: CdkDragDrop<string[]>) {
     if (this.authService.logIn){

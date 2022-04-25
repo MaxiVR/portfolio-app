@@ -58,6 +58,10 @@
     color: #222;
   }
   
+  .error {
+    margin: 0;
+    font-size: smaller;
+  }
   
   @keyframes bar {
     0% { width: 0; }

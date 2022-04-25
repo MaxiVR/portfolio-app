@@ -1,5 +1,6 @@
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, Input, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CardHardSkill } from 'src/app/cardHardSkill.model';
 import { AuthService } from 'src/app/servicios/auth.service';
 import { HardSkillService } from 'src/app/servicios/hard-skill.service';
@@ -13,22 +14,28 @@ export class CardHardSkillComponent implements OnInit {
 
   @Input() cardHardSkill : CardHardSkill [] = []
 
-  inputLenguaje : string = "";
-  inputPorcentaje : number = 0;
-  inputUrl : string = "";
   index : number = 0;
 
-  constructor(private authService:AuthService, private hardSkillService: HardSkillService) { }
+  formHardSkill : FormGroup;
+
+  constructor(private authService:AuthService, private hardSkillService: HardSkillService) { 
+
+    this.formHardSkill = new FormGroup({
+      lenguaje: new FormControl ('',[Validators.required, Validators.minLength(3)]),
+      porcentaje: new FormControl ('',[Validators.required, Validators.pattern("^[0-9]*$")]),
+      urlImagen: new FormControl ('',[Validators.required, Validators.minLength(20)]),
+    })
+  }
 
   ngOnInit(): void {
   }
 
 
-  guardarInfo(){
+  onSubmit(){
     console.log(this.index);
-    this.cardHardSkill[this.index].lenguaje = this.inputLenguaje;
-    this.cardHardSkill[this.index].porcentaje = this.inputPorcentaje;
-    this.cardHardSkill[this.index].urlImagen = this.inputUrl;
+    this.cardHardSkill[this.index].lenguaje = this.formHardSkill.value.lenguaje;
+    this.cardHardSkill[this.index].porcentaje = this.formHardSkill.value.porcentaje;
+    this.cardHardSkill[this.index].urlImagen = this.formHardSkill.value.urlImagen;
     this.hardSkillService.updateSkill(this.cardHardSkill[this.index], this.cardHardSkill[this.index].id_hardSkill).subscribe();
    
   }
@@ -43,11 +50,24 @@ export class CardHardSkillComponent implements OnInit {
 
   actulizarId_Info($event: any){
     this.index = $event.target.id - 1;
-    this.inputLenguaje = this.cardHardSkill[this.index].lenguaje;
-    this.inputPorcentaje =  this.cardHardSkill[this.index].porcentaje;
-    this.inputUrl = this.cardHardSkill[this.index].urlImagen;
-    
+    this.formHardSkill.setValue({
+      lenguaje : this.cardHardSkill[this.index].lenguaje,
+      porcentaje : this.cardHardSkill[this.index].porcentaje,
+      urlImagen : this.cardHardSkill[this.index].urlImagen,
+    }) 
   }
+
+  get Lenguaje (): any {
+    return this.formHardSkill.get("lenguaje");
+   }
+   
+  get Porcentaje (): any {
+    return this.formHardSkill.get("porcentaje");
+  } 
+
+  get UrlImagen (): any {
+    return this.formHardSkill.get("urlImagen");
+  } 
 
   drop(event: CdkDragDrop<string[]>) {
     if (this.authService.logIn){

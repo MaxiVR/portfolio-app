@@ -25,15 +25,41 @@
                     <h5 class="modal-title" id="ModalLabel">Hard Skills</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    <input type="text" placeholder="Lenguaje" [(ngModel)]="inputLenguaje" size="55">
-                    <input placeholder="Porcentaje" [(ngModel)]="inputPorcentaje" rows="4" size="55">
-                    <input placeholder="Url de la imagen" [(ngModel)]="inputUrl" rows="4" size="55">
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary" (click)="guardarInfo()">Guardar</button>
-                </div>
+                <form [formGroup]="formHardSkill" (ngSubmit)="onSubmit()">
+                    <div class="modal-body">
+                        <input type="text" placeholder="Lenguaje" formControlName="lenguaje" size="55">
+                        <div *ngIf="Lenguaje?.errors  && Lenguaje?.touched">
+                            <p *ngIf="Lenguaje?.hasError('required')" class="error">
+                                El nombre del lenguaje es requerido.
+                            </p>
+                            <p *ngIf="Lenguaje?.errors?.['minlength']" class="error">
+                                El nombre del lenguaje debe ser al menos 3 caracteres.
+                            </p>
+                        </div>
+                        <input placeholder="Porcentaje" rows="4" formControlName="porcentaje" size="55">
+                        <div *ngIf="Porcentaje?.errors  && Porcentaje?.touched">
+                            <p *ngIf="Porcentaje?.hasError('required')" class="error">
+                                El valor del porcentaje es requerido.
+                            </p>
+                            <p *ngIf="Porcentaje?.errors?.['pattern']" class="error">
+                                Solo admite valores numéricos.
+                            </p>
+                        </div>
+                        <input placeholder="Url de la imagen" formControlName="urlImagen" size="55">
+                        <div *ngIf="UrlImagen?.errors  && UrlImagen?.touched">
+                            <p *ngIf="UrlImagen?.hasError('required')" class="error">
+                                La Url Imagen es requerido.
+                            </p>
+                            <p *ngIf="UrlImagen?.errors?.['minlength']" class="error">
+                                El nombre debe ser al menos 20 caracteres.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

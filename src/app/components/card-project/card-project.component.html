@@ -1,15 +1,13 @@
 <section>
     <div cdkDropList (cdkDropListDropped)="drop($event)">
         <div *ngFor="let card of cardProject let i=index" cdkDrag>
-            <app-btn-edit (add)="actulizarId_Info($event)" 
-                        (delete)="eliminarInfo($event)"
-                        [i]="i"
-                        [targetModal]="'#modalProject'">
+            <app-btn-edit (add)="actulizarId_Info($event)" (delete)="eliminarInfo($event)" [i]="i"
+                [targetModal]="'#modalProject'">
             </app-btn-edit>
             <div>
-                <h4>{{card.nombreProyecto}}</h4>
+                <h4>Título: {{card.nombreProyecto}}</h4>
             </div>
-            <p>{{card.descripcionProyecto}}</p><br />
+            <p>Descripción: {{card.descripcionProyecto}}</p><br />
         </div>
     </div>
     <!-- Modal -->
@@ -20,15 +18,32 @@
                     <h5 class="modal-title" id="ModalLabel">Comentar Proyecto</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    <input type="text" placeholder="Nombre del Proyecto" [(ngModel)]="inputProyecto" size="55">
-                    <textarea placeholder="Comentar Proyecto" [(ngModel)]="inputDescripcion" rows="4"
-                        cols="55"></textarea>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary" (click)="guardarInfo()">Guardar</button>
-                </div>
+                <form [formGroup]="formProyecto" (ngSubmit)="onSubmit()">
+                    <div class="modal-body">
+                        <input type="text" placeholder="Nombre del Proyecto" formControlName="proyecto" size="55">
+                        <div *ngIf="Proyecto?.errors  && Proyecto?.touched">
+                            <p *ngIf="Proyecto?.hasError('required')" class="error">
+                                El nombre de la proyecto es requerido.
+                            </p>
+                            <p *ngIf="Proyecto?.errors?.['minlength']" class="error">
+                                El nombre debe ser al menos 3 caracteres.
+                            </p>
+                        </div>    
+                        <textarea placeholder="Comentar Proyecto" formControlName="descripcion" rows="4" cols="55"></textarea>
+                        <div *ngIf="Descripcion?.errors  && Descripcion?.touched">
+                            <p *ngIf="Descripcion?.hasError('required')" class="error">
+                                Describa brevemente su proyecto.
+                            </p>
+                            <p *ngIf="Descripcion?.errors?.['minlength']" class="error">
+                                No tan breve.
+                            </p>
+                        </div>   
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

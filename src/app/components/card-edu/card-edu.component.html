@@ -1,15 +1,13 @@
 <section>
-    <div cdkDropList (cdkDropListDropped)="drop($event)" >
-        <div *ngFor="let card of cardEdu; let i=index" id="{{i + 1}}" cdkDrag  >
+    <div cdkDropList (cdkDropListDropped)="drop($event)">
+        <div *ngFor="let card of cardEdu; let i=index" id="{{i + 1}}" cdkDrag>
             <div class="categoria">
                 Institución:&nbsp; {{card.nombreInstitucion}}<br />
                 Peridodo:&nbsp; {{card.fechaInicio}} - {{card.fechaFin}}<br /><br />
             </div>
 
-            <app-btn-edit (add)="actulizarId_Info($event)" 
-                        (delete)="eliminarInfo($event)"
-                        [targetModal]="'#modalEdu'"
-                        [i]="i">
+            <app-btn-edit (add)="actulizarId_Info($event)" (delete)="eliminarInfo($event)" [targetModal]="'#modalEdu'"
+                [i]="i">
             </app-btn-edit>
         </div>
     </div>
@@ -21,16 +19,41 @@
                     <h5 class="modal-title" id="ModalLabel">Educacion</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    <input type="text" name="institucion" placeholder="Institución" size="50"
-                        [(ngModel)]="inputInstitucion">
-                    <input type="text" name="inicio" placeholder="Fecha de Inicio" size="50" [(ngModel)]="inputInicio">
-                    <input type="text" name="fin" placeholder="Fecha de finalización" size="50" [(ngModel)]="inputFin">
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="submit" class="btn btn-primary" (click)="guardarInfo()">Guardar</button>
-                </div>
+                <form [formGroup]="formEdu" (ngSubmit)="onSubmit()">
+                    <div class="modal-body">
+                        <input type="text" name="institucion" formControlName="institucion" placeholder="Institución" size="50">
+                        <div *ngIf="Institucion?.errors  && Institucion?.touched">
+                            <p *ngIf="Institucion?.hasError('required')" class="error">
+                                El nombre de la institucion es requerido.
+                            </p>
+                            <p *ngIf="Institucion?.errors?.['minlength']" class="error">
+                                El nombre debe ser al menos 3 caracteres.
+                            </p>
+                        </div>    
+                        <input type="text" name="inicio" formControlName="fechaInicio" placeholder="Fecha de Inicio" size="50">
+                        <div *ngIf="FechaInicio?.errors  && FechaInicio?.touched">
+                            <p *ngIf="FechaInicio?.hasError('required')" class="error">
+                                La fecha de inicio es requerida
+                            </p>
+                            <p *ngIf="FechaInicio?.errors?.['minlength']" class="error">
+                                La fecha debe ser al menos 8 caracteres.
+                            </p>
+                        </div>   
+                        <input type="text" name="fin" placeholder="Fecha de Finalización" formControlName="fechaFin" size="50">
+                        <div *ngIf="FechaFin?.errors  && FechaFin?.touched">
+                            <p *ngIf="FechaFin?.hasError('required')" class="error">
+                                La fecha de finalización es requerida
+                            </p>
+                            <p *ngIf="FechaInicio?.errors?.['minlength']" class="error">
+                                La fecha debe ser al menos 8 caracteres.
+                            </p>
+                        </div>   
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
