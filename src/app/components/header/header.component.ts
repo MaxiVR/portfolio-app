@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ServicioHeaderService } from 'src/app/servicios/servicio-header.service';
 
 @Component({
@@ -7,41 +8,59 @@ import { ServicioHeaderService } from 'src/app/servicios/servicio-header.service
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  
-  myImage: any = "";
-  inputNombre: string = "";
-  inputApellido: string = "";
-  inputLocalidad: string ="";
-  id: number= 1;
 
-  constructor(private servicioHeader:ServicioHeaderService) {  }
+
+  nombre : string = "";
+  apellido : string = "";
+  ubicacion : string = "";
+  urlImagen : string = "";;
+  id: number = 1;
+  
+  formPersona: FormGroup;
+
+  constructor(private servicioHeader:ServicioHeaderService) {  
+
+    this.formPersona = new FormGroup({
+      
+      apellido: new FormControl ('',[Validators.required, Validators.minLength(4)]),
+      nombre: new FormControl ('', [Validators.required, Validators.minLength(4)]),
+      ubicacion: new FormControl ('', [Validators.required, Validators.minLength(10)]),
+      urlFoto : new FormControl ('', [Validators.required, Validators.minLength(20)])
+
+    })
+  }
 
   ngOnInit(): void {
     this.servicioHeader.getData(this.id).subscribe (data => {
-      this.inputNombre = data.nombre;
-      this.inputApellido = data.apellido;
-      this.inputLocalidad = data.ubicacion;
-      this.myImage = data.url_foto;
+      this.nombre = data.nombre;
+      this.apellido = data.apellido;
+      this.ubicacion = data.ubicacion;
+      this.urlImagen = data.url_foto;
     });
     
   }
 
-  cambiarDatos() {
-    this.servicioHeader.updatePerfil(this.inputNombre, this.inputApellido, this.inputLocalidad, 
-      this.myImage, this.id)
+  onSubmit() {
+    this.servicioHeader.updatePerfil(this.nombre, this.apellido, this.ubicacion, 
+      this.urlImagen, this.id)
     .subscribe(data => { console.log(data.persona)} );
     setTimeout (this.ngOnInit, 1000);
   }
 
-
-  readURL(event: any): void {
-    if (event.target.files && event.target.files[0]) {
-      const file = event.target.files[0];
-
-      const reader = new FileReader();
-      reader.onload = e => this.myImage = reader.result;
-
-      reader.readAsDataURL(file);
-    }
+  get Apellido(): any {
+    return this.formPersona.get("apellido");
   }
+
+  get Nombre(): any {
+    return this.formPersona.get("nombre");
+  }
+
+  get Ubicacion(): any {
+    return this.formPersona.get("ubicacion");
+  }
+
+  get UrlFoto(): any {
+    return this.formPersona.get("urlFoto");
+  }
+  
 }

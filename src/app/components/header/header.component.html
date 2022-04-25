@@ -1,38 +1,71 @@
 <header>
-    <div class="container-fluid" id="card-perfil">
-      <div class="row">
-        <div class="col-12">
-          <img id="foto-perfil" class="img-fluid"
-            src= "{{myImage}}">
-          <app-btn-pencil [targetModal]="'#modalPerfil'"></app-btn-pencil>
-  
-          <!-- Modal -->
-          <div class="modal fade" id="modalPerfil" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="ModalLabel">Informacion de Perfil</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+  <div class="container-fluid" id="card-perfil">
+    <div class="row">
+      <div class="col-12">
+        <img id="foto-perfil" class="img-fluid" src="{{urlImagen}}">
+        <app-btn-pencil [targetModal]="'#modalPerfil'"></app-btn-pencil>
+
+        <!-- Modal -->
+        <div class="modal fade" id="modalPerfil" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="ModalLabel">Informacion de Perfil</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <form [formGroup]="formPersona" (ngSubmit)="onSubmit()">
+                <div class="modal-body">
+                  <input type="text" placeholder="Apellido" formControlName="apellido" size="55">
+                  <div *ngIf="Apellido?.errors  && Apellido?.touched">
+                    <p *ngIf="Apellido?.hasError('required')" class="error">
+                        El apellido es requerido.
+                    </p>
+                    <p *ngIf="Apellido?.errors?.['minlength']" class="error">
+                        El apellido debe tener al menos 3 caracteres.
+                    </p>
+                </div>    
+                  <input type="text" placeholder="Nombre" formControlName="nombre" size="55">
+                  <div *ngIf="Nombre?.errors  && Nombre?.touched">
+                    <p *ngIf="Nombre?.hasError('required')" class="error">
+                        El nombre es requerido.
+                    </p>
+                    <p *ngIf="Apellido?.errors?.['minlength']" class="error">
+                        El nombre debe tener al menos 3 caracteres.
+                    </p>
+                  </div>
+                  <input type="text" placeholder="Ubicación" formControlName="ubicacion" size="55">
+                  <div *ngIf="Ubicacion?.errors  && Ubicacion?.touched">
+                    <p *ngIf="Ubicacion?.hasError('required')" class="error">
+                        La ubicacion es requerido.
+                    </p>
+                    <p *ngIf="Ubicacion?.errors?.['minlength']" class="error">
+                        La ubicacion debe tener al menos 10 caracteres.
+                    </p>
+                  </div>
+                  <input type="url" placeholder="Url Foto" formControlName="urlFoto" size="55">
+                  <div *ngIf="UrlFoto?.errors  && UrlFoto?.touched">
+                    <p *ngIf="UrlFoto?.hasError('required')" class="error">
+                        La Url es requerido.
+                    </p>
+                    <p *ngIf="UrlFoto?.errors?.['minlength']" class="error">
+                        La Url debe tener al menos 20 caracteres.
+                    </p>
+                  </div>
                 </div>
-                <div class="modal-body">                  
-                  <input type="text" placeholder="Apellido" [(ngModel)]="inputApellido" size="50" >
-                  <input type="text" placeholder="Nombre" [(ngModel)]="inputNombre" size="50" >
-                  <input type="text" placeholder="Ubicación" [(ngModel)]="inputLocalidad" size="50">
-                  <input type="file" accept="image/*" (change)="readURL($event)">
-                </div> 
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                  <button type="button" class="btn btn-primary" 
-                    (click)="cambiarDatos()">Guardar</button>
+                  <button [disabled]="Apellido?.errors || Nombre?.errors || Ubicacion?.errors || UrlFoto?.errors" 
+                  type="submit" class="btn btn-primary">Guardar</button>
                 </div>
-              </div>
+              </form>
             </div>
           </div>
-          <div >
-            <h2>{{inputNombre}} {{inputApellido}}</h2>
-            <h6>{{inputLocalidad}}</h6>
-          </div>
+        </div>
+        <div>
+          <h2>{{nombre}} {{apellido}}</h2>
+          <h6>{{ubicacion}}</h6>
         </div>
       </div>
     </div>
-  </header>
+  </div>
+</header>

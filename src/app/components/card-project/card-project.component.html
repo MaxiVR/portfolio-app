@@ -26,7 +26,7 @@
                                 El nombre de la proyecto es requerido.
                             </p>
                             <p *ngIf="Proyecto?.errors?.['minlength']" class="error">
-                                El nombre debe ser al menos 3 caracteres.
+                                El nombre debe tener al menos 3 caracteres.
                             </p>
                         </div>    
                         <textarea placeholder="Comentar Proyecto" formControlName="descripcion" rows="4" cols="55"></textarea>
@@ -41,7 +41,8 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                        <button type="submit" class="btn btn-primary">Guardar</button>
+                        <button [disabled]="Proyecto?.errors || Descripcion?.errors" 
+                            type="submit" class="btn btn-primary">Guardar</button>
                     </div>
                 </form>
             </div>

@@ -23,34 +23,34 @@
                 </div>
                 <form [formGroup]="formExp" (ngSubmit)="onSubmit()">
                     <div class="modal-body">
-                        <input type="text" placeholder="Empresa" formControlName="empresa" size="50">
+                        <input type="text" placeholder="Empresa" formControlName="empresa" size="55">
                         <div *ngIf="Empresa?.errors  && Empresa?.touched">
                             <p *ngIf="Empresa?.hasError('required')" class="error">
                                 El nombre de la empresa es requerido.
                             </p>
                             <p *ngIf="Empresa?.errors?.['minlength']" class="error">
-                                El nombre debe ser al menos 3 caracteres.
+                                El nombre debe tener al menos 3 caracteres.
                             </p>
                         </div>    
-                        <input type="text" placeholder="Puesto" formControlName="puesto" size="50">
+                        <input type="text" placeholder="Puesto" formControlName="puesto" size="55">
                         <div *ngIf="Puesto?.errors  && Puesto?.touched">
                             <p *ngIf="Puesto?.hasError('required')" class="error">
                                 El nombre de la puesto es requerido.
                             </p>
                             <p *ngIf="Puesto?.errors?.['minlength']" class="error">
-                                El nombre debe ser al menos 5 caracteres.
+                                El nombre debe tener al menos 5 caracteres.
                             </p>
                         </div>    
-                        <input type="text" placeholder="Fecha de Inicio" formControlName="fechaInicio" size="50">
+                        <input type="text" placeholder="Fecha de Inicio" formControlName="fechaInicio" size="55">
                         <div *ngIf="FechaInicio?.errors  && FechaInicio?.touched">
                             <p *ngIf="FechaInicio?.hasError('required')" class="error">
                                 La fecha de inicio es requerida
                             </p>
                             <p *ngIf="FechaInicio?.errors?.['minlength']" class="error">
-                                La fecha debe ser al menos 8 caracteres.
+                                La fecha debe tener al menos 8 caracteres.
                             </p>
                         </div>   
-                        <input type="text" placeholder="Fecha de Finalización" formControlName="fechaFin" size="50">
+                        <input type="text" placeholder="Fecha de Finalización" formControlName="fechaFin" size="55">
                         <div *ngIf="FechaFin?.errors  && FechaFin?.touched">
                             <p *ngIf="FechaFin?.hasError('required')" class="error">
                                 La fecha de finalización es requerida
@@ -59,7 +59,7 @@
                                 La fecha debe ser al menos 8 caracteres.
                             </p>
                         </div>   
-                        <input type="text" placeholder="Descrición del Trabajo" formControlName="descripcion" size="50">
+                        <input type="text" placeholder="Descrición del Trabajo" formControlName="descripcion" size="55">
                         <div *ngIf="Descripcion?.errors  && Descripcion?.touched">
                             <p *ngIf="Descripcion.hasError('required')" class="error">
                                 Ingrese una breve descripción del trabajo
@@ -71,7 +71,8 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                        <button type="submit" class="btn btn-primary">Guardar</button>
+                        <button [disabled]="Empresa?.errors || Puesto?.errors || FechaInicio?.errors || FechaFin?.errors || Descripcion?.errors" 
+                            type="submit" class="btn btn-primary">Guardar</button>
                     </div>
                 </form>
             </div>
