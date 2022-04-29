@@ -20,7 +20,7 @@ export class ProjectsComponent implements OnInit {
 
 
   agregarCampos(){
-    let newCard = {nombreProyecto:"", descripcionProyecto:"" };
+    let newCard = {};
     this.projectsService.addCampo(newCard).subscribe((newCard) => (this.cardProject.push(newCard)));
     setTimeout (() => {this.ngOnInit();}, 100);
 

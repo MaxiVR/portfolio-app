@@ -18,7 +18,7 @@ export class SkillsComponent implements OnInit {
   }
 
   agregarCampos(){
-    let newCard = {lenguaje:"", porcentaje:0, url: ""};
+    let newCard = {};
     this.hardSkillService.addCampo(newCard).subscribe(newCard => (this.cardHardSkill.push(newCard)));
     setTimeout (() => {this.hardSkillService.getData().subscribe(data => { this.cardHardSkill = data});}, 600);
   }

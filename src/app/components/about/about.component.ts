@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ServicioHeaderService } from 'src/app/servicios/servicio-header.service';
 
 @Component({
@@ -11,14 +12,31 @@ export class AboutComponent implements OnInit {
   aboutMe : string = ""
   id : number = 1;
 
-  constructor(private servicioHeader:ServicioHeaderService) { }
+  formAbout : FormGroup;
+
+  constructor(private servicioHeader:ServicioHeaderService) { 
+
+    this.formAbout = new FormGroup ({
+      about : new FormControl ('', [Validators.required, Validators.minLength(20)]),
+    })
+  }
 
   ngOnInit(): void {
-    this.servicioHeader.getData(this.id).subscribe (data => {this.aboutMe = data.sobre_mi});
+    this.servicioHeader.getData(this.id).subscribe(data => {this.aboutMe = data.sobre_mi; console.log(data.sobre_mi)});
   }
 
-  cambiarParrafo(value:string){
-    this.servicioHeader.updateAbout(value, this.id).subscribe ();
+  onSubmit(){
+    this.servicioHeader.updateAbout(this.formAbout.value.about, this.id).subscribe(data => {this.aboutMe = data.sobre; console.log(data)});
+    
   }
 
+  actualizarForm (){
+    this.formAbout.setValue({
+      about : this.aboutMe
+    }) 
+  }
+
+  get About(): any {
+    return this.formAbout.get("about");
+   }
 }

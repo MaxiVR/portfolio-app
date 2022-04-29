@@ -13,7 +13,7 @@ export class HeaderComponent implements OnInit {
   nombre : string = "";
   apellido : string = "";
   ubicacion : string = "";
-  urlImagen : string = "";;
+  urlFoto : string = "";;
   id: number = 1;
   
   formPersona: FormGroup;
@@ -22,8 +22,8 @@ export class HeaderComponent implements OnInit {
 
     this.formPersona = new FormGroup({
       
-      apellido: new FormControl ('',[Validators.required, Validators.minLength(4)]),
-      nombre: new FormControl ('', [Validators.required, Validators.minLength(4)]),
+      apellido: new FormControl ('',[Validators.required, Validators.minLength(3)]),
+      nombre: new FormControl ('', [Validators.required, Validators.minLength(3)]),
       ubicacion: new FormControl ('', [Validators.required, Validators.minLength(10)]),
       urlFoto : new FormControl ('', [Validators.required, Validators.minLength(20)])
 
@@ -35,16 +35,27 @@ export class HeaderComponent implements OnInit {
       this.nombre = data.nombre;
       this.apellido = data.apellido;
       this.ubicacion = data.ubicacion;
-      this.urlImagen = data.url_foto;
-    });
-    
+      this.urlFoto = data.url_foto; 
+    }); 
   }
 
+  actualizarForm (){
+    this.formPersona.setValue({
+      nombre : this.nombre,
+      apellido : this.apellido,
+      ubicacion : this.ubicacion,
+      urlFoto : this.urlFoto
+    }) 
+  }
+
+
   onSubmit() {
-    this.servicioHeader.updatePerfil(this.nombre, this.apellido, this.ubicacion, 
-      this.urlImagen, this.id)
-    .subscribe(data => { console.log(data.persona)} );
-    setTimeout (this.ngOnInit, 1000);
+    this.servicioHeader.updatePerfil(this.formPersona.value.nombre, this.formPersona.value.apellido, this.formPersona.value.ubicacion, 
+      this.formPersona.value.urlFoto, this.id)
+    .subscribe(data => {this.nombre = data.nombre;
+      this.apellido = data.apellido;
+      this.ubicacion = data.ubicacion;
+      this.urlFoto = data.url_foto; } );
   }
 
   get Apellido(): any {

@@ -2,8 +2,8 @@
   <div class="container-fluid" id="card-perfil">
     <div class="row">
       <div class="col-12">
-        <img id="foto-perfil" class="img-fluid" src="{{urlImagen}}">
-        <app-btn-pencil [targetModal]="'#modalPerfil'"></app-btn-pencil>
+        <img id="foto-perfil" class="img-fluid" src="{{urlFoto}}">
+        <app-btn-pencil [targetModal]="'#modalPerfil'" (click)="actualizarForm()"></app-btn-pencil>
 
         <!-- Modal -->
         <div class="modal fade" id="modalPerfil" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
@@ -18,44 +18,44 @@
                   <input type="text" placeholder="Apellido" formControlName="apellido" size="55">
                   <div *ngIf="Apellido?.errors  && Apellido?.touched">
                     <p *ngIf="Apellido?.hasError('required')" class="error">
-                        El apellido es requerido.
+                      El apellido es requerido.
                     </p>
                     <p *ngIf="Apellido?.errors?.['minlength']" class="error">
-                        El apellido debe tener al menos 3 caracteres.
+                      El apellido debe tener al menos 3 caracteres.
                     </p>
-                </div>    
+                  </div>
                   <input type="text" placeholder="Nombre" formControlName="nombre" size="55">
                   <div *ngIf="Nombre?.errors  && Nombre?.touched">
                     <p *ngIf="Nombre?.hasError('required')" class="error">
-                        El nombre es requerido.
+                      El nombre es requerido.
                     </p>
                     <p *ngIf="Apellido?.errors?.['minlength']" class="error">
-                        El nombre debe tener al menos 3 caracteres.
+                      El nombre debe tener al menos 3 caracteres.
                     </p>
                   </div>
                   <input type="text" placeholder="Ubicación" formControlName="ubicacion" size="55">
                   <div *ngIf="Ubicacion?.errors  && Ubicacion?.touched">
                     <p *ngIf="Ubicacion?.hasError('required')" class="error">
-                        La ubicacion es requerido.
+                      La ubicacion es requerido.
                     </p>
                     <p *ngIf="Ubicacion?.errors?.['minlength']" class="error">
-                        La ubicacion debe tener al menos 10 caracteres.
+                      La ubicacion debe tener al menos 10 caracteres.
                     </p>
                   </div>
                   <input type="url" placeholder="Url Foto" formControlName="urlFoto" size="55">
                   <div *ngIf="UrlFoto?.errors  && UrlFoto?.touched">
                     <p *ngIf="UrlFoto?.hasError('required')" class="error">
-                        La Url es requerido.
+                      La Url es requerido.
                     </p>
                     <p *ngIf="UrlFoto?.errors?.['minlength']" class="error">
-                        La Url debe tener al menos 20 caracteres.
+                      La Url debe tener al menos 20 caracteres.
                     </p>
                   </div>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                  <button [disabled]="Apellido?.errors || Nombre?.errors || Ubicacion?.errors || UrlFoto?.errors" 
-                  type="submit" class="btn btn-primary">Guardar</button>
+                  <button [disabled]="Apellido?.errors || Nombre?.errors || Ubicacion?.errors || UrlFoto?.errors"
+                    type="submit" class="btn btn-primary">Guardar</button>
                 </div>
               </form>
             </div>

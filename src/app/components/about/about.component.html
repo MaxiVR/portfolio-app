@@ -1,41 +1,45 @@
 <!--About me-->
 <div class="container-fluid">
-    <div class="row">
-      <div class="col-12">
+  <div class="row">
+    <div class="col-12">
+      <div>
+        <app-btn-pencil [targetModal]="'#modalAbout'" style="float: right;" (click)="actualizarForm()"></app-btn-pencil>
         <div>
-          <app-btn-pencil [targetModal]="'#modalAbout'" style="float: right;"></app-btn-pencil>
-          <div>
-            <h2 style="width: 50%">Acerca de mi</h2>
-            <p>
-              {{aboutMe}}
-            </p>
-          </div>
+          <h2 style="width: 50%">Acerca de mi</h2>
+          <p>
+            {{aboutMe}}
+          </p>
         </div>
-        <!-- Modal -->
-        <div class="modal fade" id="modalAbout" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="ModalLabel">Acerca de mi</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
+      </div>
+      <!-- Modal -->
+      <div class="modal fade" id="modalAbout" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="ModalLabel">Acerca de mi</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form [formGroup]="formAbout" class="form-contac" (submit)="onSubmit()">
               <div class="modal-body">
-                <textarea 
-                  placeholder="Informacion Personal"
-                  name="about" 
-                  [(ngModel)]="aboutMe"
-                  rows="4" 
-                  cols="55"
-                  #about                  
-                ></textarea> 
+                <textarea placeholder="Informacion Personal" name="about" formControlName="about" rows="4" cols="55"
+                  #about></textarea>
+                <div *ngIf="About?.errors  && About?.touched">
+                  <p *ngIf="About?.hasError('required')" class="error">
+                    Ingrese una descripción personal.
+                  </p>
+                  <p *ngIf="About?.errors?.['minlength']" class="error">
+                    La descripción debe tener al menos 20 caracteres.
+                  </p>
+                </div>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-primary" (click)="cambiarParrafo(about.value)">Guardar</button>
+                <button type="submit" [disabled]="About?.errors" class="btn btn-primary">Guardar</button>
               </div>
-            </div>
+            </form>
           </div>
         </div>
       </div>
     </div>
+  </div>
 </div>

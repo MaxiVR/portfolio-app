@@ -16,8 +16,6 @@ export class CardEduComponent implements OnInit {
   
   @Input() cardEdu : CardEdu[] = [ ]
   
-  inputInicio:string = "";
-  inputFin: string = "";
   index: number = 0;
   
   formEdu: FormGroup;
