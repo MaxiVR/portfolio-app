@@ -26,12 +26,11 @@ export class AuthService {
       console.log(resp.token);
     }, err => {
       // Entra aquí si el servicio entrega un código http de error
-      alert("Usuario o contraseña inconrecto");
+      alert("Usuario o contraseña inconrecta");
   } )**/
     return this.http.post(this.url, {email: email, password: password}).pipe(map(data =>{
       sessionStorage.setItem('currentUser', JSON.stringify(data));
-      return data;
-    }))
+      return data;}))
   }
 
   logout(){

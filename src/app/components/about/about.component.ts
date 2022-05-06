@@ -26,7 +26,7 @@ export class AboutComponent implements OnInit {
   }
 
   onSubmit(){
-    this.servicioHeader.updateAbout(this.formAbout.value.about, this.id).subscribe(data => {this.aboutMe = data.sobre; console.log(data)});
+    this.servicioHeader.updateAbout(this.formAbout.value.about, this.id).subscribe(data => {this.aboutMe = data.sobre_mi; console.log(data)});
     
   }
 

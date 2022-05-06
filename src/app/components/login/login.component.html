@@ -30,19 +30,15 @@
                 </p>
             </div>
             <div>
-                <button [disabled]="Password?.errors || Mail?.errors"
-                    type="submit" id="submit" class="btn btn-primary" data-bs-dismiss="modal">Iniciar Sesión 
+                <button [disabled]="Password?.errors || Mail?.errors" type="submit" id="submit" class="btn btn-primary">Iniciar Sesión
                 </button>
             </div>
         </form>
     </div>
-<div id="invitado">
-    <button 
-        class="btn btn-primary"
-        (click)="irPortfolio()"
-        >Ingresar como invitado
-    </button>
-</div>    
+    <div id="invitado">
+        <button class="btn btn-primary" (click)="irPortfolio()">Ingresar como invitado
+        </button>
+    </div>
 </div>
 
 <app-footer></app-footer>

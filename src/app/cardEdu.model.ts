@@ -1,10 +1,9 @@
 export class CardEdu{
 
-    nombreInstitucion: string = "";
-    fechaInicio: string = "";
-    fechaFin: string = "";
-    id_edu: number = 0;
-    
+    nombreInstitucion: string;
+    fechaInicio: string;
+    fechaFin: string ;
+    id_edu : number;
 
     constructor(institucion:string, inicio: string, fin: string, id:number) { 
 
@@ -12,7 +11,6 @@ export class CardEdu{
         this.fechaInicio = inicio;
         this.fechaFin = fin;
         this.id_edu = id;
-
     }
 
 }

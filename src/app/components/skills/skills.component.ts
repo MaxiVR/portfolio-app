@@ -18,9 +18,9 @@ export class SkillsComponent implements OnInit {
   }
 
   agregarCampos(){
-    let newCard = {};
+    let newCard : CardHardSkill = new CardHardSkill (0, "", 0, "");
     this.hardSkillService.addCampo(newCard).subscribe(newCard => (this.cardHardSkill.push(newCard)));
-    setTimeout (() => {this.hardSkillService.getData().subscribe(data => { this.cardHardSkill = data});}, 600);
+    setTimeout (() => {this.ngOnInit();}, 100);
   }
 
 }

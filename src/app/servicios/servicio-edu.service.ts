@@ -21,11 +21,7 @@ export class ServicioEduService {
 
   constructor(private http:HttpClient) { }
 
-  data() {
-    this.getData().subscribe(data => { this.edu = data});
-    
-  }
-
+ 
   getData(): Observable<any> {
     return this.http.get<any>(this.apiURL + "ver/todo");
   }
