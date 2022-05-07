@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from "@angular/forms";
-import { formMail } from 'src/app/formContact.model';
 import { FormContactService } from 'src/app/servicios/contacto.service';
 
 @Component({
@@ -9,8 +8,6 @@ import { FormContactService } from 'src/app/servicios/contacto.service';
   styleUrls: ['./contact.component.css']
 })
 export class ContactComponent implements OnInit {
-
-  mailModel : formMail = new formMail (" ", " ", " ") ;
 
   form: FormGroup;
 

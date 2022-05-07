@@ -27,6 +27,8 @@ import { BtnPencilComponent } from './components/btn-pencil/btn-pencil.component
 import { ServicioEduService } from './servicios/servicio-edu.service';
 import { CardHardSkillComponent } from './components/card-hard-skill/card-hard-skill.component';
 import { LogoutComponent } from './components/logout/logout.component';
+import { SoftSkillsComponent } from './components/soft-skills/soft-skills.component';
+import { CardSoftSkillComponent } from './components/card-soft-skill/card-soft-skill.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +52,8 @@ import { LogoutComponent } from './components/logout/logout.component';
     BtnPencilComponent,
     CardHardSkillComponent,
     LogoutComponent,
+    SoftSkillsComponent,
+    CardSoftSkillComponent,
   ],
   imports: [
     BrowserModule,

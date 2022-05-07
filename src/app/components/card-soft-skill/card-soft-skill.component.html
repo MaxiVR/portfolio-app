@@ -1,0 +1,57 @@
+<section>
+    <div cdkDropList (cdkDropListDropped)="drop($event)">
+        <div *ngFor="let card of cardSoftSkill let i=index" cdkDrag>
+            <div class="container">
+                <div class="softSkill">
+                    <div>
+                        <img class="icon" src={{card.urlImagen}} />
+                    </div>
+                    <div>
+                        <p>{{card.skill}} tyutyutyuyt</p>
+                    </div>
+                    <app-btn-edit (add)="actulizarId_Info($event)" (delete)="eliminarInfo($event)" [i]="i"
+                        [targetModal]="'#modalSoftSkill'">
+                    </app-btn-edit>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="modalSoftSkill" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="ModalLabel">Soft Skills</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form [formGroup]="formSoftSkill" (ngSubmit)="onSubmit()">
+                    <div class="modal-body">
+                        <input type="text" placeholder="Skill" formControlName="skill" size="55">
+                        <div *ngIf="Skill?.errors  && Skill?.touched">
+                            <p *ngIf="Skill?.hasError('required')" class="error">
+                                El nombre del Skill es requerido.
+                            </p>
+                            <p *ngIf="Skill?.errors?.['minlength']" class="error">
+                                El nombre del Skill debe ser al menos 3 caracteres.
+                            </p>
+                        </div>
+                        <input type="url" placeholder="Url de la imagen" formControlName="urlImagen" size="55">
+                        <div *ngIf="UrlImagen?.errors  && UrlImagen?.touched">
+                            <p *ngIf="UrlImagen?.hasError('required')" class="error">
+                                La Url Imagen es requerido.
+                            </p>
+                            <p *ngIf="UrlImagen?.errors?.['minlength']" class="error">
+                                El nombre debe tener al menos 20 caracteres.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <button [disabled]="Skill?.errors || UrlImagen?.errors" 
+                            type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
