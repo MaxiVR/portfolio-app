@@ -1,18 +1,16 @@
 <section>
-    <div cdkDropList (cdkDropListDropped)="drop($event)">
+    <div cdkDropList (cdkDropListDropped)="drop($event)" class="container-sofSkill">
         <div *ngFor="let card of cardSoftSkill let i=index" cdkDrag>
-            <div class="container">
-                <div class="softSkill">
-                    <div>
-                        <img class="icon" src={{card.urlImagen}} />
-                    </div>
-                    <div>
-                        <p>{{card.skill}} tyutyutyuyt</p>
-                    </div>
-                    <app-btn-edit (add)="actulizarId_Info($event)" (delete)="eliminarInfo($event)" [i]="i"
-                        [targetModal]="'#modalSoftSkill'">
-                    </app-btn-edit>
+            <div class="softSkill">
+                <div>
+                    <img class="icon" src={{card.urlImagen}} />
                 </div>
+                <div>
+                    <p>{{card.skill}}</p>
+                </div>
+                <app-btn-edit (add)="actulizarId_Info($event)" (delete)="eliminarInfo($event)" [i]="i"
+                    [targetModal]="'#modalSoftSkill'">
+                </app-btn-edit>
             </div>
         </div>
     </div>
@@ -47,8 +45,8 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                        <button [disabled]="Skill?.errors || UrlImagen?.errors" 
-                            type="submit" class="btn btn-primary">Guardar</button>
+                        <button [disabled]="Skill?.errors || UrlImagen?.errors" type="submit"
+                            class="btn btn-primary">Guardar</button>
                     </div>
                 </form>
             </div>

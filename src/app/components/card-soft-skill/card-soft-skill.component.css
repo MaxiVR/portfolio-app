@@ -1,4 +1,30 @@
 .softSkill{
     float: inline-start;
-    margin: 0px 10px 5px 5px;
+    margin: 0px 15px 20px 5px;
+    width: 70px;
+    height: 150px;
+}
+
+.icon{
+    height: 70px;
+    width: 70px;
+}
+
+/** Aplica el estilo solo a la clase que pertenece a este componetne**/
+:host::ng-deep.btn-edit{
+    float: inline-start;
+}
+
+:host::ng-deep.contenedor-edit{
+    float: left;
+}
+
+p{
+    margin: 0;
+}
+
+.container-sofSkill{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
 }

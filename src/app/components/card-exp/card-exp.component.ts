@@ -52,7 +52,7 @@ export class CardExpComponent implements OnInit {
   actulizarId_Info($event: any){
     this.index = $event.target.id - 1;
     this.formExp.setValue({
-      institucion : this.cardExp[this.index].empresa,
+      empresa : this.cardExp[this.index].empresa,
       puesto : this.cardExp[this.index].puesto,
       fechaInicio : this.cardExp[this.index].fechaInicio,
       fechaFin : this.cardExp[this.index].fechaInicio,
