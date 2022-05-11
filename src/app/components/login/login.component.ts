@@ -54,7 +54,7 @@ export class LoginComponent implements OnInit {
         console.log("DATA: " + JSON.stringify(data));
         this.router.navigate(['editar']);
       }, 
-      () => alert("error")
+      () => alert("Email o Cotraseña incorrecta")
       );
     } else {
       // Corremos todas las validaciones para que se ejecuten los mensajes de error en el template     
