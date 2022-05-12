@@ -17,9 +17,9 @@ export class ServicioHeaderService {
     return this.http.get<any>(this.apiURL + "ver/" + id);
   }
 
-  updatePerfil(nombre:string, apellido: string, ubicacion: string, urlFoto:string, id : number):Observable<any> {
+  updatePerfil(nombre:string, apellido: string, ubicacion: string, fechaNac: string, email:string, urlFoto:string, id : number):Observable<any> {
     return this.http.patch<any>(this.apiURL + "modificar/" + id , 
-    {'nombre':nombre, 'apellido':apellido, 'ubicacion':ubicacion, 'url_foto':urlFoto});
+    {'nombre':nombre, 'apellido':apellido, 'ubicacion':ubicacion, 'fechaNac':fechaNac, 'email':email, 'url_foto':urlFoto});
   }
 
   updateAbout(about:string, id:number):Observable<any>{
