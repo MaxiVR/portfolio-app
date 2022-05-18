@@ -8,7 +8,7 @@ import { HttpClient} from '@angular/common/http'
 })
 export class ServicioHeaderService {
 
-  private apiURL = "http://localhost:8080/persona/";
+  private apiURL = "https://api-portfolio-maxivr.herokuapp.com/persona/";
   
   
   constructor(private http:HttpClient) { }

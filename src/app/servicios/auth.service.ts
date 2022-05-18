@@ -9,7 +9,7 @@ import { map } from 'rxjs/operators';
 })
 export class AuthService {
 
-  url = 'http://localhost:8080/persona/auth/login'; 
+  url = 'https://api-portfolio-maxivr.herokuapp.com/persona/auth/login'; 
   token : any;
   currentUserSubject: BehaviorSubject<any>;
 

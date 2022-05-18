@@ -66,5 +66,5 @@
   
   @keyframes bar {
     0% { width: 0; }
-    max-content { width:100; }
+    max-content { width:100%; }
   }

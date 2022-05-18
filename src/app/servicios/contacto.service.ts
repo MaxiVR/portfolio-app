@@ -14,7 +14,7 @@ const httpOption = {
 })
 export class FormContactService {
 
-  private apiURL = 'http://localHost:8080/persona/sendMail'
+  private apiURL = 'https://api-portfolio-maxivr.herokuapp.com/persona/sendMail'
 
   constructor(private http:HttpClient) { }
 

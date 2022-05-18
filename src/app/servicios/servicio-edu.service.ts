@@ -17,7 +17,7 @@ export class ServicioEduService {
 
   edu : CardEdu[] = [ ];
 
-  private apiURL = "http://localhost:8080/persona/educacion/";
+  private apiURL = "https://api-portfolio-maxivr.herokuapp.com/persona/educacion/";
 
   constructor(private http:HttpClient) { }
 

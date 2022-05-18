@@ -14,7 +14,7 @@ const httpOption = {
 })
 export class HardSkillService {
 
-  private apiURL = 'http://localHost:8080/persona/hardskill/'
+  private apiURL = 'https://api-portfolio-maxivr.herokuapp.com/persona/hardskill/'
 
   constructor(private http:HttpClient) { }
 

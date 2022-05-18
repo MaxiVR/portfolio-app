@@ -14,7 +14,7 @@ const httpOption = {
 })
 export class ProjectsService {
 
-  private apiURL = 'http://localHost:8080/persona/proyecto/'
+  private apiURL = 'https://api-portfolio-maxivr.herokuapp.com/persona/proyecto/'
 
   constructor(private http:HttpClient) { }
 
