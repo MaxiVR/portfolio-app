@@ -68,4 +68,8 @@ export class CardSoftSkillComponent implements OnInit {
     }
   }
 
+  isAdmin():boolean{
+    return this.authService.logIn;
+  }
+
 }

@@ -73,4 +73,8 @@ export class CardProjectComponent implements OnInit {
     }
   }
 
+  isAdmin():boolean{
+    return this.authService.logIn;
+  }
+
 }

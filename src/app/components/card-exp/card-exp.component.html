@@ -1,6 +1,6 @@
 <section>
-    <div cdkDropList (cdkDropListDropped)="drop($event)">
-        <div *ngFor="let card of cardExp let i=index" id="{{i + 1}}" cdkDrag>
+    <div cdkDropList (cdkDropListDropped)="drop($event)"  >
+        <div *ngFor="let card of cardExp let i=index" id="{{i + 1}}" cdkDrag [cdkDragDisabled]="!isAdmin()">
             <div class="categoria">
                 Empresa:&nbsp; {{card.empresa}}<br />
                 Puesto:&nbsp; {{card.puesto}}<br />

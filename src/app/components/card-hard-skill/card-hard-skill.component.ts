@@ -74,4 +74,8 @@ export class CardHardSkillComponent implements OnInit {
       moveItemInArray(this.cardHardSkill, event.previousIndex, event.currentIndex);
     }
   }
+
+  isAdmin():boolean{
+    return this.authService.logIn;
+  }
 }

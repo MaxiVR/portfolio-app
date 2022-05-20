@@ -1,6 +1,6 @@
 <section>
     <div cdkDropList (cdkDropListDropped)="drop($event)">
-        <div *ngFor="let card of cardEdu; let i=index" id="{{i + 1}}" cdkDrag>
+        <div *ngFor="let card of cardEdu; let i=index" id="{{i + 1}}" cdkDrag [cdkDragDisabled]="!isAdmin()">
             <div class="categoria">
                 Institución:&nbsp; {{card.nombreInstitucion}}<br />
                 Peridodo:&nbsp; {{card.fechaInicio}} - {{card.fechaFin}}<br /><br />

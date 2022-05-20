@@ -1,6 +1,6 @@
 <section>
     <div cdkDropList (cdkDropListDropped)="drop($event)" class="container-sofSkill">
-        <div *ngFor="let card of cardSoftSkill let i=index" cdkDrag>
+        <div *ngFor="let card of cardSoftSkill let i=index" cdkDrag [cdkDragDisabled]="!isAdmin()">
             <div class="softSkill">
                 <div>
                     <img class="icon" src={{card.urlImagen}} />

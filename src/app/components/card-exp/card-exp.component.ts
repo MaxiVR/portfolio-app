@@ -18,6 +18,7 @@ export class CardExpComponent implements OnInit {
   index:number = 0;
 
   formExp : FormGroup;
+
   
   constructor(private authService:AuthService, private servicioExp:ServicioExpService) { 
 
@@ -85,5 +86,9 @@ export class CardExpComponent implements OnInit {
       moveItemInArray(this.cardExp, event.previousIndex, event.currentIndex);
     }
   }
+  isAdmin():boolean{
+    return this.authService.logIn;
+  }
+
 }
 

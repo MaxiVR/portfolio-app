@@ -1,6 +1,6 @@
 <section>
     <div cdkDropList (cdkDropListDropped)="drop($event)">
-        <div *ngFor="let card of cardHardSkill let i=index" cdkDrag>
+        <div *ngFor="let card of cardHardSkill let i=index" cdkDrag [cdkDragDisabled]="!isAdmin()">
             <div class="container">
                 <div class="cont-lang">
                     <div>

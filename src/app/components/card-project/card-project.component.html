@@ -1,6 +1,6 @@
 <section>
-    <div cdkDropList (cdkDropListDropped)="drop($event)">
-        <div *ngFor="let card of cardProject let i=index" cdkDrag>
+    <div cdkDropList (cdkDropListDropped)="drop($event)" >
+        <div *ngFor="let card of cardProject let i=index" cdkDrag [cdkDragDisabled]="!isAdmin()">
             <app-btn-edit (add)="actulizarId_Info($event)" (delete)="eliminarInfo($event)" [i]="i"
                 [targetModal]="'#modalProject'">
             </app-btn-edit>

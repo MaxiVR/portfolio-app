@@ -73,5 +73,9 @@ export class CardEduComponent implements OnInit {
       moveItemInArray(this.cardEdu, event.previousIndex, event.currentIndex);
     }
   }
+
+  isAdmin():boolean{
+    return this.authService.logIn;
+  }
 }
 
